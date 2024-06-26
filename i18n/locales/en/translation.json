@@ -1,0 +1,21 @@
+{
+    "nav-home" : "Home",
+    "nav-projects" : "Projects",
+    "nav-about" : "About",
+    "nav-contact" : "Contact",
+    
+    "footer-menu-header" : "Menu",
+    "footer-contact-header" : "Contact",
+    "footer-socials-header" : "Socials",
+
+    "CTA" : "Get In Touch",
+    "CTA2" : "Browse Projects",
+
+    "hero-header" : "Hey I'm Marc",
+    "hero-text" : "I'm a frontend developer based in Sweden, I'll help youbuild beautiful websites your users will love.",
+
+    "projects-header" : "Former Frontend Projects",
+    "projects-text" : "Explore some of my past frontend projects showcasing creativity and innovation."
+
+
+}
