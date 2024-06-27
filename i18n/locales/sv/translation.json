@@ -11,10 +11,35 @@
     "CTA" : "Kom i kontakt",
     "CTA2" : "Utforska projekt",
 
-    "hero-header" : "Hej, jag är Marc!",
-    "hero-text" : "Jag är en frontendutvecklare baserad i Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
+    "hero-header" : "Utvecklare",
+    "hero-text" : "Hej, jag är Marc!",
+    "hero-text2" : "Jag är en frontendutvecklare baserad i Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
 
-    "projects-header" : "Tidigare Frontend Projekt",
-    "projects-text" : "Utforska några av mina tidigare frontend-projekt som visar upp kreativitet och innovation."
+    "projects-header" : "Tidigare Frontend-projekt",
+    "projects-text" : "Utforska några av mina tidigare frontend-projekt som visar kreativitet och innovation.",
+    "projects-card-one-header" : "Behovsanalys",
+    "projects-card-two-header" : "Discord-skin",
+    "projects-card-three-header" : "CMS-projekt",
+    "projects-card-one" : "Detta Behovsanalys-projekt skapades för Digital Fans för att förbättra kundrelationer och innehåller en detaljerad enkät utformad för att identifiera specifika krav och preferenser hos kunderna. Byggt med React, TypeScript och Next.js, utnyttjar detta projekt moderna webbutvecklingsteknologier för att säkerställa en sömlös och effektiv användarupplevelse. Stilen tillhandahålls av Tailwind CSS, som erbjuder en ren och responsiv design. Genom att adressera nyckelområden och skräddarsy lösningar baserat på insikter från enkäten hjälper detta verktyg Digital Fans att effektivt möta kundbehov och främja starkare och mer personliga kundrelationer.",
+    "projects-card-two" : "Jag skapade en anpassad Discord-skin för att lära mig kodstrukturering och stil och det var en djupgående övning i design, vilket tillät mig att experimentera med olika element som layout, färgscheman, typografi och övergripande estetik. Detta projekt är en noggrann replika av Discords gränssnitt, med fokus enbart på visuella aspekter utan att inkludera någon funktionalitet. Genom detta projekt syftade jag till att återskapa Discords utseende och känsla så nära som möjligt, vilket förbättrade mina färdigheter inom frontend-utveckling och design. Processen innebar noggrann uppmärksamhet på detaljer för att säkerställa att varje komponent matchade originalet och erbjöd en omfattande inlärningsupplevelse inom UI/UX-design.",
+    "projects-card-three" : "Jag byggde ett anpassat Content Management System (CMS) för att förbättra mina backend-utvecklingsfärdigheter och med detta projekt använder jag ExpressJS för att bygga servern och hantera rutterna. Jag använder Mongoose för databasinteraktioner med MongoDB och jsonwebtoken för att implementera autentisering och auktorisering. För att säkerställa lösenordsäkerhet används både bcrypt och bcryptjs för hashning. CMS:en inkluderar också CORS för att hantera delning av resurser över olika ursprung. För effektiv utveckling använde jag nodemon för att möjliggöra automatiska serveromstarter. Detta projekt gav värdefulla insikter inom backend-utveckling, autentisering och datamanagement.",
+    "projects-card-one-sentance" : "Detta Behovsanalys-projekt skapades för Digital Fans för att förbättra kundrelationer och innehåller en detaljerad enkät utformad för att identifiera specifika krav och preferenser hos kunderna.",
+    "projects-card-two-sentance" : "Jag skapade en anpassad Discord-skin för att lära mig kodstrukturering och stil och det var en djupgående övning i design, vilket tillät mig att experimentera med olika element som layout, färgscheman, typografi och övergripande estetik.",
+    "projects-card-three-sentance" : "Jag byggde ett anpassat Content Management System (CMS) för att förbättra mina backend-utvecklingsfärdigheter och med detta projekt använder jag ExpressJS för att bygga servern och hantera rutter.",
 
+    "about-header" : "Om Mig",
+    "about-text" : "Jag är en frontend-utvecklare med fullstack-ambitioner.",
+    "about-education" : "Utbildning",
+    "about-bento" : "Yrkeshögskoleexamen med inriktning mot Front End-utveckling. Denna examen omfattar totalt 405 YH-poäng.",
+    "about-bento2" : "Yrkesutbildning i C#-programmering samt dator- och nätverksteknik. Detta utbildningsprogram omfattade totalt 250 studietimmar.",
+
+    "contact-header" : "Kontakta",
+    "contact-name" : "Namn",
+    "contact-last-name" : "Efternamn",
+    "contact-email" : "Email",
+    "contact-subject" : "Ämne",
+    "contact-message" : "Meddelande",
+    "contact-button" : "Skicka meddelande",
+    "contact-error" : "Ogiltigt email format",
+    "contact-message-sent" : "Meddelande Skickat!"
 }

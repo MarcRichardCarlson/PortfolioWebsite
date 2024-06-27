@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const techStacks: string[] = [
     'UI/UX Design',
-    'Responsive Desgin',
+    'Responsive Design',
     'WireFraming',
     'Figma',
     'WordPress',

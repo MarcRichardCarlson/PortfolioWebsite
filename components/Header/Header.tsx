@@ -1,9 +1,7 @@
 "use client";
 
 import React, { RefObject, useState, useEffect } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import ChatIcon from '../../public/PhChatTeardropTextLight.svg';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import HeaderMediaIcons from './HeaderMediaIcons';

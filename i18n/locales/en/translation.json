@@ -11,11 +11,36 @@
     "CTA" : "Get In Touch",
     "CTA2" : "Browse Projects",
 
-    "hero-header" : "Hey I'm Marc",
-    "hero-text" : "I'm a frontend developer based in Sweden, I'll help youbuild beautiful websites your users will love.",
+    "hero-header" : "Developer",
+    "hero-text" : "Hey I'm Marc",
+    "hero-text2" : "I'm a frontend developer based in Sweden, I'll help youbuild beautiful websites your users will love.",
 
     "projects-header" : "Former Frontend Projects",
-    "projects-text" : "Explore some of my past frontend projects showcasing creativity and innovation."
+    "projects-text" : "Explore some of my past frontend projects showcasing creativity and innovation.",
+    "projects-card-one-header" : "Needs Analysis",
+    "projects-card-two-header" : "Discord Skin",
+    "projects-card-three-header" : "CMS Project",
+    "projects-card-one" : "This Needs Analysis project was created for Digital Fans to improve customer relations. It features a detailed questionnaire designed to identify specific requirements and preferences of the customers. Built using React, TypeScript, and Next.js, this project leverages modern web development technologies to ensure a seamless and efficient user experience. The styling is provided by Tailwind CSS, which offers a clean and responsive design. By addressing key areas and tailoring solutions based on insights gathered from the questionnaire, this tool helps Digital Fans meet customer needs more effectively, fostering stronger and more personalized customer relationships.",
+    "projects-card-two" : "I created a custom Discord skin to learn code structuring and styling. It was an in-depth exercise in design, allowing me to experiment with various elements such as layout, color schemes, typography, and overall aesthetics. This project is a meticulous replica of Discord's interface, focusing solely on the visual aspects without incorporating any functionality. Through this project, I aimed to replicate the look and feel of Discord as closely as possible, enhancing my skills in front-end development and design. The process involved careful attention to detail to ensure that every component matched the original, providing a comprehensive learning experience in UI/UX design.",
+    "projects-card-three" : "I built a custom Content Management System (CMS) to enhance my backend development skills. For this project, I utilized ExpressJS to build the server and handle routes. I used Mongoose for database interactions with MongoDB, and jsonwebtoken for implementing authentication and authorization. To ensure password security, both bcrypt and bcryptjs were used for hashing. The CMS also incorporates CORS to manage cross-origin resource sharing. For efficient development, I used nodemon to enable automatic server restarts. This project provided valuable insights into backend development, authentication, and data management.",
+    "projects-card-one-sentance" : "This Needs Analysis project was created for Digital Fans to improve customer relations. It features a detailed questionnaire designed to identify specific requirements and preferences of the customers.",
+    "projects-card-two-sentance" : "I created a custom Discord skin to learn code structuring and styling. It was an in-depth exercise in design, allowing me to experiment with various elements such as layout, color schemes, typography, and overall aesthetics.",
+    "projects-card-three-sentance" : "I built a custom Content Management System (CMS) to enhance my backend development skills. For this project, I utilized ExpressJS to build the server and handle routes.",
 
+    "about-header" : "About me",
+    "about-text" : "I am a frontend developer with fullstack ambitions.",
+    "about-education" : "Education",
+    "about-bento" : "Vocational Higher Education Diploma specializing in Front End Development. This diploma comprises a total of 405 YH credits.",
+    "about-bento2" : "Vocational training in C# programming and computer and network technology. This training program covered a total of 250 study hours.",
+
+    "contact-header" : "Contact",
+    "contact-name" : "Name",
+    "contact-last-name" : "Last Name",
+    "contact-email" : "Email",
+    "contact-subject" : "Subject",
+    "contact-message" : "Message",
+    "contact-button" : "Send Message",
+    "contact-error" : "Invalid email format",
+    "contact-message-sent" : "Message sent!"
 
 }
