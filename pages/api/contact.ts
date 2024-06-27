@@ -1,36 +1,35 @@
-// /pages/api/contact.ts
-import { NextApiRequest, NextApiResponse } from 'next';
-import sequelize from '../../lib/sequelize';
-import Contact from '../../models/Contact';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import nodemailer from 'nodemailer';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  await sequelize.sync();
+const transporter = nodemailer.createTransport({
+  service: process.env.EMAIL_SERVICE,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { name, lastName, email, subject, message } = req.body;
 
-    // Basic validation
-    if (!name || !lastName || !email || !subject || !message) {
-      return res.status(400).json({ error: 'All fields are required.' });
-    }
+    const mailOptions = {
+      from: email,
+      to: process.env.RECIVER_EMAIL, // Your email address to receive messages
+      subject: `Contact Form Submission: ${subject}`,
+      text: `You have a new message from ${name} ${lastName} (${email}): \n\n${message}`,
+    };
 
-    try {
-      const newContact = await Contact.create({
-        name,
-        lastName,
-        email,
-        subject,
-        message,
-      });
-
-      res.status(200).json({ message: 'Form submitted successfully!', data: newContact });
-    } catch (error) {
-      res.status(500).json({ error: 'Error saving data to the database' });
-    }
+    transporter.sendMail(mailOptions, (error: any, info: { response: any; }) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        return res.status(500).json({ error: 'Error sending email' });
+      }
+      console.log('Email sent:', info.response);
+      res.status(200).json({ message: 'Email sent successfully' });
+    });
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-};
-
-export default handler;
+}

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import ContactButton from "./ContactButton";
 import Popup from '../ProjectSection/PopUp';
@@ -15,15 +13,7 @@ const ContactSection: React.FC = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [csrfToken, setCsrfToken] = useState(""); 
   const [isEmailValid, setIsEmailValid] = useState(true);
-
-  useEffect(() => {
-    // Fetch the CSRF token from your backend and set it
-    fetch('/api/csrf-token')
-      .then(response => response.json())
-      .then(data => setCsrfToken(data.csrfToken));
-  }, []);
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -65,7 +55,6 @@ const ContactSection: React.FC = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'CSRF-Token': csrfToken,
       },
       body: JSON.stringify(sanitizedData),
     })
@@ -82,7 +71,7 @@ const ContactSection: React.FC = () => {
     })
     .catch(error => {
       console.error('Error:', error);
-    });    
+    });
   };
 
   const closePopup = () => {
