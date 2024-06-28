@@ -11,24 +11,42 @@ export const config = {
 
 export async function middleware(req: NextRequest) {
   try {
-    // match user's locale (if needed)
+    // Match user's locale (if needed)
     let matches = withLocaleUriPattern.exec(req.nextUrl.pathname);
     if (matches == null) {
       let langHeaders = { "accept-language": req.headers.get("accept-language")! };
       let languages = new Negotiator({ headers: langHeaders }).languages();
-      let locale = match(languages, APP_LOCALES, "en");
+      let locale = match(languages, APP_LOCALES, "en"); // Default to "en" if no match
+
       let appOrigin = process.env.NEXT_PUBLIC_APP_ORIGIN;
 
       if (!appOrigin) {
         throw new Error("NEXT_PUBLIC_APP_ORIGIN is not set");
       }
 
+      // Ensure appOrigin is a valid URL and has a protocol
+      if (!/^https?:\/\//i.test(appOrigin)) {
+        appOrigin = `https://${appOrigin}`;
+      }
+
+      // Ensure appOrigin ends with a slash
+      if (!appOrigin.endsWith('/')) {
+        appOrigin += '/';
+      }
+
       // Construct the destination URL
-      let destinationUrl = `${appOrigin}/${locale}${req.nextUrl.pathname}`;
+      let destinationUrl;
+      if (req.nextUrl.pathname === "/") {
+        // Redirect to /en if no specific locale is matched
+        destinationUrl = `${appOrigin}en/`;
+      } else {
+        destinationUrl = `${appOrigin}${locale}${req.nextUrl.pathname}${req.nextUrl.search}`;
+      }
+
       console.log('Destination URL:', destinationUrl);
 
       let destination = new URL(destinationUrl);
-      return NextResponse.redirect(destination + req.nextUrl.search);
+      return NextResponse.redirect(destination);
     }
   } catch (error) {
     console.error("Error in middleware:", error);
