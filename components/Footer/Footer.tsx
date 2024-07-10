@@ -6,7 +6,7 @@ import MediaIcons from "./FooterMediaIcons";
 import LanguagePicker from "./LanguagePicker";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
-import Popup from "../ProjectSection/PopUp";
+import Popup from "../PopUp";
 
 interface FooterProps {
   heroRef: RefObject<HTMLElement>;
@@ -18,7 +18,8 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
-  const [showPopup, setShowPopup] = useState<boolean>(false); // State to manage popup visibility
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [popupType, setPopupType] = useState<'success' | 'fail'>('success');
 
   const scrollToSection = (ref: RefObject<HTMLElement>) => {
     if (ref.current) {
@@ -31,7 +32,8 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-    setShowPopup(true); // Show popup when success
+    setPopupType('success');
+    setShowPopup(true); // Show success popup
   };
 
   const closePopup = () => {
@@ -126,9 +128,10 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
       {showPopup && (
         <Popup
-          message="Copied to clipboard!"
-          onClose={closePopup}
-        />
+        message={popupType === 'success' ? 'Copied to clipboard!' : 'Failed to copy!'}
+        onClose={closePopup}
+        type={popupType}
+      />
       )}
     </footer>
   );

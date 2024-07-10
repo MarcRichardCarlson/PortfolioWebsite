@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import ContactButton from "./ContactButton";
-import Popup from '../ProjectSection/PopUp';
+import React, { useState } from "react";
+import Popup from '../PopUp';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import ResponsiveButton from "../Buttons";
+import { useSelectedPackages } from "./SelectedPackagesContext";
 
 const ContactSection: React.FC = () => {
   const locale = useCurrentLocale();
@@ -14,6 +15,7 @@ const ContactSection: React.FC = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const { selectedPackages, removePackage } = useSelectedPackages();
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,11 +81,11 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full min-h-screen bg-white flex flex-col items-center justify-center gap-8 p-4 md:p-8 shadow-md">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center gap-8 p-4 md:p-8 shadow-md">
+      <span className="absolute top-0 h-px w-full bg-indigo-700"></span>
       <h2 className="text-5xl font-bold">{t("contact-header")}
         <span className="font-2xl text-indigo-700">.</span>
       </h2>
-      <span className="h-px w-full bg-indigo-700"></span>
       <div className="flex flex-col gap-4 w-full md:w-2/3">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -109,6 +111,7 @@ const ContactSection: React.FC = () => {
                 required
               />
             </div>
+            
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-gray-800 font-semibold">{t("contact-email")}</label>
               <input
@@ -121,6 +124,7 @@ const ContactSection: React.FC = () => {
               />
               {!isEmailValid && <span className="text-red-500 text-sm">{t("contact-error")}</span>}
             </div>
+
             <div className="flex flex-col gap-2">
               <label htmlFor="subject" className="text-gray-800 font-semibold">{t("contact-subject")}</label>
               <input
@@ -133,6 +137,7 @@ const ContactSection: React.FC = () => {
               />
             </div>
           </div>
+
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-gray-800 font-semibold">{t("contact-message")}</label>
             <textarea
@@ -144,15 +149,33 @@ const ContactSection: React.FC = () => {
               required
             ></textarea>
           </div>
+          
+          <div className="flex flex-col gap-2">
+            <h3 className="text-gray-800 font-semibold">{t("contact-selected")}</h3>
+            <ul className="list-disc list-inside flex flex-col gap-2">
+              {selectedPackages.map((pkg, index) => (
+                <li key={index} className="flex flex-row gap-4 items-center justify-left">
+                  {pkg}
+                  <ResponsiveButton size="sm" variant="remove" onClick={() => removePackage(pkg)}>
+                    {t('remove')}
+                  </ResponsiveButton>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="flex justify-end">
-            <ContactButton onClick={() => document.querySelector('form')?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))} />
+            <ResponsiveButton size="xl" variant="primary" onClick={() => document.querySelector('form')?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))}>
+              {t("contact-button")}
+            </ResponsiveButton>
           </div>
         </form>
       </div>
+
       {showPopup && (
         <Popup
-          message={t("contact-message-sent")}
-          onClose={closePopup}
+        message={t("contact-message-sent")}
+        onClose={closePopup} 
+        type={"success"}
         />
       )}
     </section>

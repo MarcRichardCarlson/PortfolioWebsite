@@ -1,28 +1,46 @@
 import React from 'react';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import WheelMarquee from './WheelMarquee';
 
 const Education: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
-  
+
+  const items = [
+    <div key="item-1" className="flex flex-col gap-2">
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">KYH Liljeholmen {t("about-item1")} -  
+        <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
+      <p className="text-neutral-600 font-semibold text-sm md:text-base lg:text-md">{t("about-item-text1")}</p>
+    </div>,
+    <div key="item-2" className="flex flex-col gap-2">
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item2")} -  
+        <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
+      <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text2")}</p>
+    </div>,
+    <div key="item-3" className="flex flex-col gap-2">
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item3")} -  
+      <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
+      <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text3")}</p>
+    </div>,
+    <div key="item-4" className="flex flex-col gap-2">
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item4")} -  
+      <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
+      <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text4")}</p>
+    </div>,
+    <div key="item-5" className="flex flex-col gap-2">
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item5")} -  
+      <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
+      <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text5")}</p>
+    </div>
+  ];
+
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 items-center">
       <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black'>{t("about-education")}
         <span className='text-indigo-700'>.</span>
       </h2>
-      <div className='flex flex-col md:flex-row md:justify-between gap-2 md:gap-4'>
-        <div className="flex flex-col gap-2 rounded-lg bg-neutral-200 border-2 border-neutral-300 p-4 md:w-1/2">
-          <h2 className="text-2xl font-bold text-black">KYH Liljeholmen -  
-            <span className='text-indigo-700'>Stockholm</span></h2>
-          <p className="text-neutral-600 font-semibold">{t("about-bento")}</p>
-        </div>
-        <div className="flex flex-col gap-2 rounded-lg bg-neutral-200 border-2 border-neutral-300 p-4 md:w-1/2">
-          <h2 className="text-2xl font-bold text-black">NTI -  
-            <span className='text-indigo-700'>Stockholm</span></h2>
-          <p className="text-neutral-600 font-semibold">{t("about-bento2")}</p>
-        </div>
-      </div>
+      <WheelMarquee items={items} />
     </div>
   );
 }

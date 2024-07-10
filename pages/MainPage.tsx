@@ -7,15 +7,18 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Header/Header';
 import HeroSection from '@/components/HeroSection/HeroSection';
 import ProjectSection from '@/components/ProjectSection/ProjectSection';
+import PriceSection from '@/components/PriceSection/PriceSection';
+import { SelectedPackagesProvider } from '@/components/ContactSection/SelectedPackagesContext';
 
 const MainPage = () => {
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
+  const priceRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
 
   return (
-    <main>
+    <main className='background'>
       <Navbar 
         heroRef={heroRef}
         projectsRef={projectsRef}
@@ -27,17 +30,23 @@ const MainPage = () => {
         contactRef={contactRef} 
         projectsRef={projectsRef} 
       />
-
       </section>
       <section ref={projectsRef}>
         <ProjectSection />
       </section>
-      <section ref={aboutRef}>
-        <AboutSection />
-      </section>
-      <section ref={contactRef}>
-        <ContactSection />
-      </section>
+
+      <SelectedPackagesProvider>
+        <section ref={priceRef}>
+          <PriceSection />
+        </section>
+        <section ref={aboutRef}>
+          <AboutSection />
+        </section>
+        <section ref={contactRef} id="contactRef">
+          <ContactSection />
+        </section>
+      </SelectedPackagesProvider>
+
       <Footer 
         heroRef={heroRef}
         projectsRef={projectsRef}

@@ -4,15 +4,16 @@ import { motion, useAnimation } from 'framer-motion';
 interface PopupProps {
   message: string;
   onClose: () => void;
+  type: 'success' | 'fail';
 }
 
-const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
+const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
   const controls = useAnimation();
 
   useEffect(() => {
     // When component mounts, start the animation
     controls.start({ opacity: 1, scale: 1 });
-    
+
     // Set a timeout to close the popup after 2.5 seconds
     const timeout = setTimeout(() => {
       controls.start({ opacity: 0, scale: 0.5 });
@@ -22,6 +23,9 @@ const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
     // Clean up the timeout if the component unmounts or onClose is triggered
     return () => clearTimeout(timeout);
   }, [controls, onClose]);
+
+  // Determine the background color based on the type
+  const backgroundColor = type === 'success' ? 'bg-green-300' : 'bg-red-300';
 
   return (
     <motion.div
@@ -33,7 +37,7 @@ const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
       onClick={onClose} // Close popup on click anywhere
     >
       <motion.div
-        className="bg-green-300 p-4 rounded shadow-lg"
+        className={`${backgroundColor} p-4 rounded shadow-lg`}
         onClick={(e) => e.stopPropagation()}
       >
         <p className="text-gray-800 text-lg font-semibold">{message}</p>
@@ -43,4 +47,3 @@ const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
 };
 
 export default Popup;
-

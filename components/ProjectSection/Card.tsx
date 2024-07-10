@@ -1,79 +1,55 @@
-import React, { ReactNode } from "react";
-import { StaticImageData } from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image, { StaticImageData } from 'next/image';
+import ResponsiveButton from '../Buttons';
+import { useTranslation } from '@/i18n/client';
+import { useCurrentLocale } from '@/hooks/locale';
 
 interface CardProps {
   title: string;
+  description: string;
   image: StaticImageData;
-  children: ReactNode;
-  showMore: boolean;
-  onToggle: () => void;
-  showMoreContent: string;
+  isExpanded: boolean;
+  height: 'full' | 'half';
 }
 
-const Card: React.FC<CardProps> = ({
-  title,
-  image,
-  children,
-  showMore,
-  onToggle,
-  showMoreContent,
-}) => {
-  const imageUrl = image.src;
+const Card: React.FC<CardProps> = ({ title, description, image, isExpanded, height }) => {
+  const locale = useCurrentLocale();
+  const { t } = useTranslation(locale, 'translation');
+  const [hovered, setHovered] = useState(false);
+  const heightClass = height === 'full' ? 'h-80' : 'h-44';
 
- 
   return (
     <motion.div
-      className="flex flex-col gap-2 relative cursor-pointer shadow-xl rounded-lg overflow-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 min-h-96 transform transition-transform hover:scale-105"
-      onClick={onToggle}
       layout
-      whileHover={{ scale: 1.05 }}
+      className={`relative cursor-pointer bg-white rounded-lg shadow-xl overflow-hidden ${heightClass}`}
+      style={height === 'full' ? { height: 'calc(22rem + 8px)' } : {}}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      onClick={() => setHovered(!hovered)}
     >
-      <AnimatePresence>
-        {showMore ? (
-          <motion.div
-            key="expanded"
-            className="flex flex-col justify-start items-left bg-white p-4 absolute inset-0 z-10 pb-2"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          >
-            <div className="flex flex-col gap-2 items-start">
-              <h3 className="text-2xl font-bold">{title}</h3>
-              <div className="font-inter flex flex-col gap-2 items-start pb-2">
-                {/* Display showMoreContent here */}
-                <p>{showMoreContent}</p>
-              </div>
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="collapsed"
-            className="flex flex-col gap-0"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          >
-            <motion.img
-              src={imageUrl}
-              alt={title}
-              className="object-cover z-0 rounded-t-lg min-h-1/3 md:h-48 lg:h-64"
-              layout
-            />
-            <motion.div
-              className="flex flex-col justify-start items-left bg-white p-4 rounded-b-lg"
-              layout
-            >
-              <div className="flex flex-col gap-2 items-start">
-                <h3 className="text-2xl font-bold">{title}</h3>
-                <p className="text-sm">{children}</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Image src={image} alt={title} className="w-full h-full object-cover rounded-t-lg" />
+
+      <div className='absolute top-4 right-4'>
+        <ResponsiveButton size="sm" variant="bento">
+          {t('projects-discover')}
+        </ResponsiveButton>
+      </div>
+
+      {(isExpanded || hovered) && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center"
+        >
+          <div className="text-center p-4 text-white">
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <p className="text-sm">{description}</p>
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };
