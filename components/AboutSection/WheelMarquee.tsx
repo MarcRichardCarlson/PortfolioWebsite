@@ -14,6 +14,7 @@ const positions = [
 const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchTimeout, setTouchTimeout] = useState<number | null>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -33,10 +34,37 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
     return -1;
   };
 
-  const handleMouseDown = () => setIsPaused(true);
-  const handleMouseUp = () => setIsPaused(false);
-  const handleTouchStart = () => setIsPaused(true);
-  const handleTouchEnd = () => setIsPaused(false);
+  const handleMouseDown = () => {
+    setTouchTimeout(
+      window.setTimeout(() => {
+        setIsPaused(true);
+      }, 200)
+    );
+  };
+
+  const handleMouseUp = () => {
+    if (touchTimeout) {
+      clearTimeout(touchTimeout);
+      setTouchTimeout(null);
+    }
+    setIsPaused(false);
+  };
+
+  const handleTouchStart = () => {
+    setTouchTimeout(
+      window.setTimeout(() => {
+        setIsPaused(true);
+      }, 200)
+    );
+  };
+
+  const handleTouchEnd = () => {
+    if (touchTimeout) {
+      clearTimeout(touchTimeout);
+      setTouchTimeout(null);
+    }
+    setIsPaused(false);
+  };
 
   return (
     <div

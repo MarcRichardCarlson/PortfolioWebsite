@@ -25,23 +25,22 @@ const MaintenanceCard: React.FC<MaintenanceCardProps> = ({ title, priceRange, fe
         <div className={`absolute inset-0 ${gradientClassName} opacity-25 pointer-events-none`}></div>
 
         <div className='flex flex-col gap-2'>
-          <h3 className={`text-center relative text-2xl font-extrabold text-transparent bg-clip-text ${gradientClassName}`}>{title}</h3>
+          <h3 className={`text-center relative text-transparent bg-clip-text font-extrabold text-xl sm:text-2xl ${gradientClassName}`}>{title}</h3>
           <p className="text-xs text-center">{disclaimer}</p>
         </div>
 
         <p className={`items-end justify-center relative flex flex-row gap-1 text-gray-600 text-transparent bg-clip-text ${gradientClassName} text-center text-4xl font-bold`}>
-          <div className='flex flex-col gap-1'>
+          <div className='flex flex-row items-end sm:flex-col gap-1'>
             <span className='text-black font-semibold text-xs'>{t('price-starting-at')}</span>
             {priceRange}
-            <span className='text-black text-sm font-semibold'>{t("price-mothly")}</span>
+            <span className='text-black text-xs sm:text-sm font-semibold'>{t("price-mothly")}</span>
           </div>
         </p>
 
         <ul className="relative list-none p-2 sm:p-4 flex flex-col md:flex-row lg:flex-col justify-center gap-1 sm:gap-3">
           {features.map((inclusion, index) => (
             <div key={index} className='flex flex-row gap-2 items-center'>
-                <div className={`h-px w-px p-1 rounded-full ${gradientClassName}`}></div>
-                <li className="decoration-none">{inclusion}</li>
+              <li className="before:content-['•'] before:text-black-soil before:mr-2 before:ml-2">{inclusion}</li>
             </div>
           ))}
         </ul>

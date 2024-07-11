@@ -37,8 +37,7 @@ const DevelopmentCard: React.FC<DevelopmentCardProps> = ({ title, priceRange, fe
         <ul className="relative list-none p-2 sm:p-4 flex flex-col md:flex-row lg:flex-col justify-center gap-1 sm:gap-3">
           {features.map((feature, index) => (
             <div key={index} className='flex flex-row gap-2 items-center'>
-              <div className={`h-px w-px p-1 rounded-full ${gradientClassName}`}></div>
-              <li className="decoration-none">{feature}</li>
+              <li className="before:content-['•'] before:text-black-soil before:mr-2 before:ml-2">{feature}</li>
             </div>
           ))}
         </ul>
