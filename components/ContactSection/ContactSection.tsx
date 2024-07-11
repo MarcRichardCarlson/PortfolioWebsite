@@ -15,7 +15,7 @@ const ContactSection: React.FC = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { selectedPackages, removePackage } = useSelectedPackages();
+  const { selectedPackages, removePackage, resetPackages } = useSelectedPackages();
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,6 +33,7 @@ const ContactSection: React.FC = () => {
     setEmail("");
     setSubject("");
     setMessage("");
+    resetPackages(); // Clear selected packages
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -51,6 +52,7 @@ const ContactSection: React.FC = () => {
       email: sanitizeInput(email),
       subject: sanitizeInput(subject),
       message: sanitizeInput(message),
+      selectedPackages: selectedPackages, // Include selected packages in the data
     };
 
     fetch('/api/contact', {
@@ -150,8 +152,12 @@ const ContactSection: React.FC = () => {
             ></textarea>
           </div>
           
-          <div className="flex flex-col gap-2">
-            <h3 className="text-gray-800 font-semibold">{t("contact-selected")}</h3>
+          <div className="drop-shadow-md flex flex-col gap-2 bg-white p-4 rounded-lg w-fit">
+            <div className="flex flex-row gap-2 text-neutral-500">
+              <h3 className="text-gray-800 font-semibold">{t("contact-selected") + ' :'}</h3>
+              {selectedPackages.length}
+            </div>
+            <div className="w-full bg-indigo-500 h-px"></div>
             <ul className="list-disc list-inside flex flex-col gap-2">
               {selectedPackages.map((pkg, index) => (
                 <li key={index} className="flex flex-row gap-4 items-center justify-left">

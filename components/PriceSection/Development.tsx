@@ -17,8 +17,8 @@ const DevelopmentCard: React.FC<DevelopmentCardProps> = ({ title, priceRange, fe
   const { t } = useTranslation(locale, 'translation');
 
   return (
-    <div 
-      className='drop-shadow-xl relative flex flex-col gap-2 justify-between rounded-tl-md rounded-br-md rounded-tr-large rounded-bl-large p-4 md:p-6 min-w-80 bg-white text-black font-inter overflow-hidden lg:max-w-80 cursor-pointer'
+    <div
+      className='drop-shadow-xl relative flex flex-col gap-2 justify-between rounded-tl-md rounded-br-md rounded-tr-large rounded-bl-large p-4 md:p-6 min-w-72 sm:min-w-80 bg-white text-black font-inter overflow-hidden lg:max-w-80 cursor-pointer'
       onClick={onSelect}
     >
       <div className='flex flex-col gap-4'>
@@ -29,12 +29,12 @@ const DevelopmentCard: React.FC<DevelopmentCardProps> = ({ title, priceRange, fe
           <p className="text-xs text-center">{disclaimer}</p>
         </div>
 
-        <p className={`px-4 items-end justify-center relative flex flex-row gap-1 text-gray-600 text-transparent bg-clip-text ${gradientClassName} text-center text-4xl font-bold`}>
+        <p className={`items-end justify-center relative flex flex-row gap-1 text-gray-600 text-transparent bg-clip-text ${gradientClassName} text-center text-4xl font-bold`}>
           <span className='text-black font-semibold text-xs'>{t('price-starting-at')}</span>
           {priceRange}
         </p>
 
-        <ul className="relative list-none p-4 flex flex-col md:flex-row lg:flex-col justify-center gap-3">
+        <ul className="relative list-none p-2 sm:p-4 flex flex-col md:flex-row lg:flex-col justify-center gap-1 sm:gap-3">
           {features.map((feature, index) => (
             <div key={index} className='flex flex-row gap-2 items-center'>
               <div className={`h-px w-px p-1 rounded-full ${gradientClassName}`}></div>
@@ -44,7 +44,7 @@ const DevelopmentCard: React.FC<DevelopmentCardProps> = ({ title, priceRange, fe
         </ul>
       </div>
 
-      <div className='relative z-10 w-full flex justify-end lg:justify-center'>
+      <div className='relative z-10 w-full flex justify-center sm:justify-end lg:justify-center'>
         <ResponsiveButton size="lg" variant="plan" onClick={onSelect}>
           {t('price-select-package')}
         </ResponsiveButton>
@@ -56,8 +56,8 @@ const DevelopmentCard: React.FC<DevelopmentCardProps> = ({ title, priceRange, fe
 const Development: React.FC<{ onSelect: (selectedPackage: string) => void }> = ({ onSelect }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
-  const handleSelect = (packageTitle: string) => {
-    onSelect(packageTitle);
+  const handleSelect = (packageKey: string) => {
+    onSelect(packageKey);
   };
 
   return (
@@ -75,9 +75,9 @@ const Development: React.FC<{ onSelect: (selectedPackage: string) => void }> = (
             t('price-basic-feature-5'),
           ]}
           gradientClassName="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-          onSelect={() => handleSelect('Basic Website')}
+          onSelect={() => handleSelect(t('price-basic'))}
         />
-        <DevelopmentCard 
+        <DevelopmentCard
           title={t('price-intermediate')}
           disclaimer={t('price-disclaimer')}
           priceRange={t('price-intermediate-development')}
@@ -90,9 +90,9 @@ const Development: React.FC<{ onSelect: (selectedPackage: string) => void }> = (
             t('price-intermediate-feature-6'),
           ]}
           gradientClassName="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500"
-          onSelect={() => handleSelect('Intermediate Website')}
+          onSelect={() => handleSelect(t('price-intermediate'))}
         />
-        <DevelopmentCard 
+        <DevelopmentCard
           title={t('price-advanced')}
           disclaimer={t('price-disclaimer')}
           priceRange={t('price-advanced-development')}
@@ -106,7 +106,7 @@ const Development: React.FC<{ onSelect: (selectedPackage: string) => void }> = (
             t('price-advanced-feature-7'),
           ]}
           gradientClassName="bg-gradient-to-r from-green-400 via-blue-500 to-teal-500"
-          onSelect={() => handleSelect('Advanced Website')}
+          onSelect={() => handleSelect(t('price-advanced'))}
         />
       </div>
     </div>

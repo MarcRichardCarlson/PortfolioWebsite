@@ -47,7 +47,7 @@
     "price-choice" : "Great choice!",
     "price-description" : "The packages listed has been added below for discussion:",
 
-    "price-basic" : "Basic Website ",
+    "price-basic" : "Basic Website",
     "price-basic-development" : "$499:-",
     "price-basic-feature-1": "Simple static website",
     "price-basic-feature-2": "A few pages",
@@ -73,6 +73,12 @@
     "price-advanced-feature-5": "Complex integrations",
     "price-advanced-feature-6": "Extensive backend work",
     "price-advanced-feature-7": "Custom SEO Optimization",
+
+    "package": {
+    "basic": "Basic",
+    "premium": "Premium",
+    "pro": "Pro"
+    },
 
     "price-mothly" : "per month",
     "price-basic-maintenance" : "$50",

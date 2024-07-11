@@ -4,7 +4,7 @@ interface SelectedPackagesContextType {
   selectedPackages: string[];
   addPackage: (pkg: string) => void;
   removePackage: (pkg: string) => void;
-  resetPackages: () => void; // Add resetPackages function to the context type
+  resetPackages: () => void;
 }
 
 const SelectedPackagesContext = createContext<SelectedPackagesContextType | undefined>(undefined);
