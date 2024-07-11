@@ -145,7 +145,7 @@ const PriceSection: React.FC = () => {
               ))}
             </ul>
 
-            <div className='w-full flex justify-center items-center'>
+            <div className='max-w-fit flex justify-center items-center'>
               <ResponsiveButton onClick={handleReset} size="sm" variant="redo">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 14l-4-4l4-4"></path><path d="M5 10h11a4 4 0 1 1 0 8h-1"></path></g></svg>
               </ResponsiveButton>

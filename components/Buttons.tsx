@@ -24,7 +24,7 @@ const variantClasses = {
   plan: 'bg-black-soil text-white rounded-md font-base shadow-xl text-sm sm:text-base md:text-md',
   remove: 'text-xs flex justify-center items-center text-red-500 font-semibold hover:text-red-700 text-xs',
   skip: 'max-w-24 text-black hover:text-neutral-500 underline underline-offset-2 font-semibold text-sm sm:text-base md:text-md',
-  redo: 'flex justify-center items-center hover:bg-indigo-500 text-black border border-black hover:text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md'
+  redo: 'flex justify-center items-center hover:bg-indigo-500 text-black border border-black hover:text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md max-w-10 sm:max-w-12'
 };
 
 const ResponsiveButton: React.FC<ButtonProps> = ({ size, variant, children, onClick }) => {
