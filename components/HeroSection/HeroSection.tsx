@@ -20,8 +20,8 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
   };
 
   return (
-    <section className="min-h-dvh px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 flex flex-col lg:flex-row justify-center items-center hero-section">
-      <div className="relative z-10 flex flex-col gap-32px items-center lg:items-start text-center lg:text-left text-white">
+    <section className="min-h-screen px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 flex flex-col lg:flex-row justify-center items-center hero-section">
+      <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left text-white gap-16px sm:gap-32px">
         <span className="text-black font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{t("hero-text")}👋</span>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-black">
           <span className="text-indigo-700">Front</span>end<br />{t("hero-header")}
