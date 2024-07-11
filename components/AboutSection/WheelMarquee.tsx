@@ -53,7 +53,7 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
         return (
           <motion.div
             key={`item-${index}`}
-            className="absolute left-0 right-0 flex items-center justify-center h-16"
+            className="absolute left-0 right-0 flex items-center justify-center h-16 text-center"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
               opacity: position === 0 ? 1 : 0.5,
