@@ -11,13 +11,17 @@ const transporter = nodemailer.createTransport({
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const { name, lastName, email, subject, message } = req.body;
+    const { name, lastName, email, subject, message, selectedPackages } = req.body;
+
+    const packageList = selectedPackages && selectedPackages.length > 0 
+      ? selectedPackages.map((pkg: string, index: number) => `\n${index + 1}. ${pkg}`).join('') 
+      : '\nNone';
 
     const mailOptions = {
       from: email,
       to: process.env.RECIVER_EMAIL, // Your email address to receive messages
       subject: `Contact Form Submission: ${subject}`,
-      text: `You have a new message from ${name} ${lastName} (${email}): \n\n${message}`,
+      text: `You have a new message from ${name} ${lastName} (${email}): \n\n${message}\n\nSelected Packages: ${packageList}`,
     };
 
     transporter.sendMail(mailOptions, (error: any, info: { response: any; }) => {

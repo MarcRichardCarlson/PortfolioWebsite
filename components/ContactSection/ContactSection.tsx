@@ -15,6 +15,7 @@ const ContactSection: React.FC = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Added state to handle form submission
   const { selectedPackages, removePackage, resetPackages } = useSelectedPackages();
 
   const validateEmail = (email: string) => {
@@ -36,7 +37,7 @@ const ContactSection: React.FC = () => {
     resetPackages(); // Clear selected packages
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
@@ -45,6 +46,7 @@ const ContactSection: React.FC = () => {
     }
 
     setIsEmailValid(true);
+    setIsSubmitting(true); // Disable form submission
 
     const sanitizedData = {
       name: sanitizeInput(name),
@@ -55,27 +57,28 @@ const ContactSection: React.FC = () => {
       selectedPackages: selectedPackages, // Include selected packages in the data
     };
 
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(sanitizedData),
-    })
-    .then(response => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sanitizedData),
+      });
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.json();
-    })
-    .then(data => {
+
+      const data = await response.json();
       console.log('Success:', data);
       resetFormFields();
       setShowPopup(true);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error:', error);
-    });
+    } finally {
+      setIsSubmitting(false); // Re-enable form submission
+    }
   };
 
   const closePopup = () => {
@@ -170,7 +173,7 @@ const ContactSection: React.FC = () => {
             </ul>
           </div>
           <div className="flex justify-end">
-            <ResponsiveButton size="xl" variant="primary" onClick={() => document.querySelector('form')?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))}>
+            <ResponsiveButton size="xl" variant="primary" type="submit" disabled={isSubmitting}>
               {t("contact-button")}
             </ResponsiveButton>
           </div>

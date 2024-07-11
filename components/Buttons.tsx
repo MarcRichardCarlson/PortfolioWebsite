@@ -6,6 +6,8 @@ interface ButtonProps {
   variant: 'primary' | 'secondary' | 'success' | 'bento' | 'plan' | 'remove' | 'skip' | 'redo';
   children: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const sizeClasses = {

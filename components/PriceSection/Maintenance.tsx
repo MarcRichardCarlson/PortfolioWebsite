@@ -18,7 +18,7 @@ const MaintenanceCard: React.FC<MaintenanceCardProps> = ({ title, priceRange, fe
 
   return (
     <div 
-      className='drop-shadow-xl relative flex flex-col gap-2 justify-between rounded-tl-md rounded-br-md rounded-tr-large rounded-bl-large p-4 md:p-6 min-w-72 sm:min-w-80 bg-white text-black font-inter overflow-hidden lg:max-w-80 cursor-pointer'
+      className='relative flex flex-col gap-2 justify-between rounded-tl-md rounded-br-md rounded-tr-large rounded-bl-large p-4 md:p-6 min-w-72 sm:min-w-80 bg-white text-black font-inter overflow-hidden lg:max-w-80 cursor-pointer drop-shadow-none sm:drop-shadow-xl'
       onClick={onSelect}
     >
       <div className='flex flex-col gap-2 sm:gap-4'>
