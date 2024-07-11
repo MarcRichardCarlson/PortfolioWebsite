@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="shortcut icon" href="/favicon/favicon.ico"></link>
       </head>
-      <body className="m-0 p-0">
+      <body className="bg-black-soil m-0 p-0">
         <AppProviders locale={params.locale}>
           {children}
         </AppProviders>
