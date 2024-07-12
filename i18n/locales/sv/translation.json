@@ -13,7 +13,8 @@
 
     "hero-header" : "Utvecklare",
     "hero-text" : "Hej, jag är Marc!",
-    "hero-text2" : "Jag är en frontendutvecklare baserad i Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
+    "hero-text2" : "Jag är en frontendutvecklare baserad i",
+    "hero-text3" : "Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
 
     "projects-header" : "Tidigare Frontend-projekt",
     "projects-text" : "Utforska några av mina tidigare frontend-projekt som visar kreativitet och innovation.",

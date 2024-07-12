@@ -2,6 +2,7 @@ import Portrait from "./Portrait";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import ResponsiveButton from "../Buttons";
+import WeatherComponent from "./Weather";
 
 const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projectsRef: React.RefObject<HTMLElement> }> = ({ contactRef, projectsRef }) => {
   const locale = useCurrentLocale();
@@ -26,9 +27,18 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-black">
           <span className="text-indigo-700">Front</span>end<br />{t("hero-header")}
         </h1>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-neutral-600">
-          {t("hero-text2")}
-        </p>
+        <div className="flex flex-wrap justify-center lg:justify-start text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-neutral-600">
+          <span className="flex items-center flex-wrap justify-center lg:justify-start" style={{ flex: "1 1 auto", minWidth: "0" }}>
+            {t("hero-text2")}&nbsp;
+            <WeatherComponent city="Stockholm" />
+          </span>&nbsp;
+          <span style={{ flex: "1 1 auto", minWidth: "0" }}>
+            {t("hero-text3")}
+          </span>
+        </div>
+
+
+
         <div className="flex flex-row gap-8px">
 
           <ResponsiveButton size="xl" variant="primary" onClick={scrollToContact}>
