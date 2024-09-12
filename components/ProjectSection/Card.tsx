@@ -10,39 +10,18 @@ interface CardProps {
   description: string;
   image: StaticImageData;
   isExpanded: boolean;
-  height: 'full' | 'half';
 }
 
-const Card: React.FC<CardProps> = ({ title, description, image, isExpanded, height }) => {
+const Card: React.FC<CardProps> = ({ title, description, image, isExpanded }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
   const [hovered, setHovered] = useState(false);
-  const [dynamicHeight, setDynamicHeight] = useState<string>('calc(22rem + 8px)');
 
-  useEffect(() => {
-    const updateHeight = () => {
-      if (window.innerWidth < 640) {
-        setDynamicHeight('calc(12rem + 8px)');
-      } else {
-        setDynamicHeight('calc(22rem + 8px)');
-      }
-    };
-
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-
-    return () => {
-      window.removeEventListener('resize', updateHeight);
-    };
-  }, []);
-
-  const heightClass = height === 'full' ? 'h-80 sm:h-44' : 'h-44';
 
   return (
     <motion.div
       layout
-      className={`relative cursor-pointer bg-white rounded-lg shadow-xl overflow-hidden ${heightClass}`}
-      style={height === 'full' ? { height: dynamicHeight } : {}}
+      className='relative cursor-pointer bg-white rounded-lg shadow-xl overflow-hidden h-full'
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       onClick={() => setHovered(!hovered)}

@@ -16,8 +16,8 @@
     "hero-text2" : "Jag är en frontendutvecklare baserad i",
     "hero-text3" : "Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
 
-    "projects-header" : "Tidigare Frontend-projekt",
-    "projects-text" : "Utforska några av mina tidigare frontend-projekt som visar kreativitet och innovation.",
+    "projects-header" : "Tidigare Projekt",
+    "projects-text" : "Utforska några av mina tidigare frontend-, backend- och fullstack-projekt för att få en inblick i mitt arbetssätt och mina tekniska lösningar.",
     "projects-discover" : "Utforska",
     "projects-card-one-header" : "Behovsanalys",
     "projects-card-two-header" : "Discord-skin",
@@ -71,9 +71,10 @@
     "price-advanced-feature-6": "Omfattande backend-arbete",
     "price-advanced-feature-7": "Anpassad SEO-optimering",
 
-    "price-mothly": "per månad",
+    "dollar" : "",
+    "price-monthly": "/månaden",
     "price-maintenance-basic": "Minimumunderhåll",
-    "price-basic-maintenance" : "500",
+    "price-basic-maintenance" : "500:-",
     "price-maintenance-basic-feature1": "Tillfälliga uppdateringar",
     "price-maintenance-basic-feature2": "Säkerhetskontroller",
     "price-maintenance-basic-feature3": "Mindre reparationer",
@@ -81,7 +82,7 @@
     "price-maintenance-basic-feature5": "Grundläggande SEO",
 
     "price-maintenance-standard": "Standardunderhåll",
-    "price-standard-maintenance" : "1499",
+    "price-standard-maintenance" : "1499:-",
     "price-maintenance-standard-feature1": "Regelbundna uppdateringar",
     "price-maintenance-standard-feature2": "Säkerhetsövervakning",
     "price-maintenance-standard-feature3": "Prestandaoptimering",
@@ -90,7 +91,7 @@
     "price-maintenance-standard-feature6": "Regelbunden SEO-optimering",
 
     "price-maintenance-premium": "Premiumunderhåll",
-    "price-premium-maintenance" : "4999",
+    "price-premium-maintenance" : "4999:-",
     "price-maintenance-premium-feature1": "Omfattande uppdateringar",
     "price-maintenance-premium-feature2": "Avancerad säkerhet",
     "price-maintenance-premium-feature3": "Övervakningskontroll",

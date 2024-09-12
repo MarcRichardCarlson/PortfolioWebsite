@@ -12,35 +12,35 @@ interface MaintenanceCardProps {
   onSelect: () => void;
 }
 
-const MaintenanceCard: React.FC<MaintenanceCardProps> = ({ title, priceRange, features, disclaimer, gradientClassName, onSelect }) => {
+const MaintenanceCard: React.FC<MaintenanceCardProps> = ({ title, priceRange, features, disclaimer, onSelect }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
 
   return (
     <div 
-      className='relative flex flex-col gap-2 justify-between rounded-tl-md rounded-br-md rounded-tr-large rounded-bl-large p-4 md:p-6 min-w-72 sm:min-w-80 bg-white text-black font-inter overflow-hidden lg:max-w-80 cursor-pointer drop-shadow-none sm:drop-shadow-xl'
+      className='relative flex flex-col gap-2 justify-between rounded-2xl p-4 md:p-6 min-w-72 sm:min-w-80 bg-dark-grey font-inter overflow-hidden lg:max-w-80 cursor-pointer drop-shadow-none sm:drop-shadow-xl'
       onClick={onSelect}
     >
       <div className='flex flex-col gap-2 sm:gap-4'>
-        <div className={`absolute inset-0 ${gradientClassName} opacity-25 pointer-events-none`}></div>
+        <div className='absolute inset-0 opacity-25 pointer-events-none'></div>
 
         <div className='flex flex-col gap-2'>
-          <h3 className={`text-center relative text-transparent bg-clip-text font-extrabold text-xl sm:text-2xl ${gradientClassName}`}>{title}</h3>
-          <p className="text-xs text-center">{disclaimer}</p>
+          <h3 className='text-white-grey text-center relative text-transparent bg-clip-text font-extrabold text-xl sm:text-2xl'>{title}</h3>
+          <p className="text-xs text-center text-light-grey">{disclaimer}</p>
         </div>
 
-        <p className={`items-end justify-center relative flex flex-row gap-1 text-gray-600 text-transparent bg-clip-text ${gradientClassName} text-center text-4xl font-bold`}>
-          <div className='flex flex-row items-end sm:flex-col gap-1'>
-            <span className='text-black font-semibold text-xs'>{t('price-starting-at')}</span>
-            {priceRange}
-            <span className='text-black text-xs sm:text-sm font-semibold'>{t("price-mothly")}</span>
+        <p className='items-end justify-center relative flex flex-row gap-1 text-gray-600 text-transparent bg-clip-text text-center text-4xl font-bold'>
+          <div className='relative flex flex-col items-center'>
+            <span className='absolute top-0 -left-3 text-white-grey text-lg'>{t("dollar")}</span>
+            <span className='text-indigo-500'>{priceRange}</span>
+            <span className='text-white-grey text-xs font-semibold'>{t("price-monthly")}</span>
           </div>
         </p>
 
-        <ul className="relative list-none p-2 sm:p-4 flex flex-col md:flex-row lg:flex-col justify-center gap-1 sm:gap-3">
+        <ul className="relative list-none p-2 sm:p-4 flex flex-col justify-center gap-1 sm:gap-3 text-light-grey">
           {features.map((inclusion, index) => (
             <div key={index} className='flex flex-row gap-2 items-center'>
-              <li className="before:content-['•'] before:text-black-soil before:mr-2 before:ml-2">{inclusion}</li>
+              <li className="before:content-['•'] before:text-light-grey before:mr-2 before:ml-2">{inclusion}</li>
             </div>
           ))}
         </ul>

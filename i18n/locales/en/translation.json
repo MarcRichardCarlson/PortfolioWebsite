@@ -16,8 +16,8 @@
     "hero-text2" : "I'm a frontend developer based in",
     "hero-text3" : "Sweden, I'll help you build beautiful websites your users will love.",
 
-    "projects-header" : "Former Frontend Projects",
-    "projects-text" : "Explore some of my past frontend projects showcasing creativity and innovation.",
+    "projects-header" : "Former Projects",
+    "projects-text" : "Explore some of my previous frontend, backend, and fullstack projects to get an insight into my approach and technical solutions.",
     "projects-discover" : "Discover",
     "projects-card-one-header" : "Needs Analysis",
     "projects-card-one" : "This Needs Analysis project was created for Digital Fans to improve customer relations. It features a detailed questionnaire designed to identify specific requirements and preferences of the customers. Built using React, TypeScript, and Next.js, this project leverages modern web development technologies to ensure a seamless and efficient user experience. The styling is provided by Tailwind CSS, which offers a clean and responsive design. By addressing key areas and tailoring solutions based on insights gathered from the questionnaire, this tool helps Digital Fans meet customer needs more effectively, fostering stronger and more personalized customer relationships.",
@@ -49,7 +49,7 @@
     "price-description" : "The packages listed has been added below for discussion:",
 
     "price-basic" : "Basic Website",
-    "price-basic-development" : "$499:-",
+    "price-basic-development" : "499:-",
     "price-basic-feature-1": "Simple static website",
     "price-basic-feature-2": "A few pages",
     "price-basic-feature-3": "Basic design",
@@ -57,7 +57,7 @@
     "price-basic-feature-5": "Relative responsiveness",
 
     "price-intermediate" : "Intermediate Website",
-    "price-intermediate-development" : "$1499:-",
+    "price-intermediate-development" : "1499:-",
     "price-intermediate-feature-1": "More pages",
     "price-intermediate-feature-2": "Custom designs",
     "price-intermediate-feature-3": "Responsive design",
@@ -66,7 +66,7 @@
     "price-intermediate-feature-6": "SEO adjustment",
 
     "price-advanced" : "Advanced Website",
-    "price-advanced-development" : "$4999:-",
+    "price-advanced-development" : "4999:-",
     "price-advanced-feature-1": "E-commerce functionality",
     "price-advanced-feature-2": "Advanced custom features",
     "price-advanced-feature-3": "Responsive design",
@@ -80,9 +80,9 @@
     "premium": "Premium",
     "pro": "Pro"
     },
-
-    "price-mothly" : "per month",
-    "price-basic-maintenance" : "$50",
+    "dollar" : "$",
+    "price-monthly" : "/month",
+    "price-basic-maintenance" : "50",
     "price-maintenance-basic" : "Basic Maintenance",
     "price-maintenance-basic-feature1": "Occasional updates",
     "price-maintenance-basic-feature2": "Basic security checks",
@@ -91,7 +91,7 @@
     "price-maintenance-basic-feature5": "Basic SEO",
 
     "price-maintenance-standard" : "Standard Maintenance",
-    "price-standard-maintenance" : "$150",
+    "price-standard-maintenance" : "150",
     "price-maintenance-standard-feature1": "Regular updates",
     "price-maintenance-standard-feature2": "Security monitoring",
     "price-maintenance-standard-feature3": "Performance optimization",
@@ -100,7 +100,7 @@
     "price-maintenance-standard-feature6": "Regular SEO Optimization",
 
     "price-maintenance-premium" : "Premium Maintenance",
-    "price-premium-maintenance" : "$500",
+    "price-premium-maintenance" : "500",
     "price-maintenance-premium-feature1": "Extensive updates",
     "price-maintenance-premium-feature2": "Advanced security",
     "price-maintenance-premium-feature3": "Surveillance monitoring",

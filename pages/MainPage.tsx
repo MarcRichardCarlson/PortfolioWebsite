@@ -13,47 +13,52 @@ import { SelectedPackagesProvider } from '@/components/ContactSection/SelectedPa
 const MainPage = () => {
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
-  const priceRef = useRef(null);
   const aboutRef = useRef(null);
+  const packagesRef = useRef(null);
   const contactRef = useRef(null);
 
   return (
-    <main className='background'>
-      <Navbar 
-        heroRef={heroRef}
-        projectsRef={projectsRef}
-        aboutRef={aboutRef}
-        contactRef={contactRef}
-      />
-      <section ref={heroRef}>
-      <HeroSection 
-        contactRef={contactRef} 
-        projectsRef={projectsRef} 
-      />
-      </section>
-      <section ref={projectsRef}>
-        <ProjectSection />
-      </section>
+    < >
+      <div className='flex h-screen transition-all duration-300 ease-in-out'>
+        <Navbar 
+          heroRef={heroRef}
+          projectsRef={projectsRef}
+          aboutRef={aboutRef}
+          packagesRef={packagesRef}
+          contactRef={contactRef}
+        />
+        <div className="flex-grow h-full overflow-auto">
+          <section ref={heroRef}>
+          <HeroSection 
+            contactRef={contactRef} 
+            projectsRef={projectsRef} 
+          />
+          </section>
+          <section ref={projectsRef}>
+            <ProjectSection />
+          </section>
 
-      <SelectedPackagesProvider>
-        <section ref={priceRef}>
-          <PriceSection />
-        </section>
-        <section ref={aboutRef}>
-          <AboutSection />
-        </section>
-        <section ref={contactRef} id="contactRef">
-          <ContactSection />
-        </section>
-      </SelectedPackagesProvider>
+          <SelectedPackagesProvider>
+            <section ref={aboutRef}>
+              <AboutSection />
+            </section>
+            <section ref={packagesRef}>
+              <PriceSection />
+            </section>
+            <section ref={contactRef} id="contactRef">
+              <ContactSection />
+            </section>
+          </SelectedPackagesProvider>
 
-      <Footer 
-        heroRef={heroRef}
-        projectsRef={projectsRef}
-        aboutRef={aboutRef}
-        contactRef={contactRef} 
-      />
-    </main>
+          <Footer 
+            heroRef={heroRef}
+            projectsRef={projectsRef}
+            aboutRef={aboutRef}
+            contactRef={contactRef} 
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

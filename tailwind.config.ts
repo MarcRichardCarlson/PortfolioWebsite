@@ -37,7 +37,11 @@ const config: Config = {
         'stone': '#626c69',
         'cloud': '#bdbbbd',
         'light-sky': '#a4c4dc',
-        'black-soil' : '#282828'
+        'black-soil' : '#222',
+        'dark-grey' : '#333',
+        'light-grey' : '#bbb',
+        'white-grey' : '#eee'
+
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

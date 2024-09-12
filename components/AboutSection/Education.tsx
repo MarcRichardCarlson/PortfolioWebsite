@@ -9,27 +9,27 @@ const Education: React.FC = () => {
 
   const items = [
     <div key="item-1" className="flex flex-col gap-2">
-      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">KYH Liljeholmen {t("about-item1")} -  
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-white-grey">KYH Liljeholmen {t("about-item1")} -  
         <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
       <p className="text-neutral-600 font-semibold text-sm md:text-base lg:text-md">{t("about-item-text1")}</p>
     </div>,
     <div key="item-2" className="flex flex-col gap-2">
-      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item2")} -  
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-white-grey">NTI {t("about-item2")} -  
         <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
       <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text2")}</p>
     </div>,
     <div key="item-3" className="flex flex-col gap-2">
-      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item3")} -  
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-white-grey">NTI {t("about-item3")} -  
       <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
       <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text3")}</p>
     </div>,
     <div key="item-4" className="flex flex-col gap-2">
-      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item4")} -  
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-white-grey">NTI {t("about-item4")} -  
       <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
       <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text4")}</p>
     </div>,
     <div key="item-5" className="flex flex-col gap-2">
-      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-black">NTI {t("about-item5")} -  
+      <h2 className="sm:text-lg md:text-2xl lg:text-3xl font-bold text-white-grey">NTI {t("about-item5")} -  
       <span className='text-indigo-700 sm:text-lg md:text-2xl lg:text-3xl'>Stockholm</span></h2>
       <p className="text-neutral-600 font-semibold text-sm md:text-lg lg:text-xl">{t("about-item-text5")}</p>
     </div>
@@ -37,7 +37,7 @@ const Education: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black'>{t("about-education")}
+      <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white-grey'>{t("about-education")}
         <span className='text-indigo-700'>.</span>
       </h2>
       <WheelMarquee items={items} />

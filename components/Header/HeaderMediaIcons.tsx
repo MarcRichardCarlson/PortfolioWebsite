@@ -45,11 +45,11 @@ const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebo
     ];
   
     return (
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col gap-4 md:flex-row transition-all duration-300 ease-in-out">
         {urls.map(({ url, icon, alt }, index) => (
           isValidUrl(url) ? (
-            <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="text-black cursor-pointer flex flex-row gap-2">
-              <Image src={icon} alt={alt} width={25} height={25} className='md:invert' />
+            <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex flex-col gap-2 md:flex-row">
+              <Image src={icon} alt={alt} width={25} height={25} className='invert' />
             </a>
           ) : null
         ))}

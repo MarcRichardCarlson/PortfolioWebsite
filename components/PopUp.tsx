@@ -9,10 +9,17 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
   const controls = useAnimation();
+  const progressControls = useAnimation();
 
   useEffect(() => {
-    // When component mounts, start the animation
+    // Start animation for the popup visibility
     controls.start({ opacity: 1, scale: 1 });
+
+    // Start animation for the loading bar
+    progressControls.start({
+      width: '0%',
+      transition: { duration: 2.5, ease: 'linear' },
+    });
 
     // Set a timeout to close the popup after 2.5 seconds
     const timeout = setTimeout(() => {
@@ -22,14 +29,14 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
 
     // Clean up the timeout if the component unmounts or onClose is triggered
     return () => clearTimeout(timeout);
-  }, [controls, onClose]);
+  }, [controls, progressControls, onClose]);
 
   // Determine the background color based on the type
   const backgroundColor = type === 'success' ? 'bg-green-300' : 'bg-red-300';
 
   return (
     <motion.div
-      className="fixed left-4 top-4 flex items-end justify-start z-50"
+      className="fixed right-2 bottom-2 md:right-4 md:bottom-4 flex items-end justify-start z-50"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={controls}
       exit={{ opacity: 0, scale: 0.5 }}
@@ -37,10 +44,19 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
       onClick={onClose} // Close popup on click anywhere
     >
       <motion.div
-        className={`${backgroundColor} p-4 rounded shadow-lg`}
+        className="relative bg-white p-2 md:p-4 rounded shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-gray-800 text-lg font-semibold">{message}</p>
+        <p className="text-sm md:text-base text-gray-800 text-lg font-semibold">
+          {message}
+        </p>
+
+        {/* Dynamic loading bar positioned at the bottom with border-radius on bottom-left for md */}
+        <motion.div
+          className={`${backgroundColor} h-2 absolute bottom-0 left-0 rounded-none md:rounded-bl-md`}
+          initial={{ width: '100%' }}
+          animate={progressControls}
+        ></motion.div>
       </motion.div>
     </motion.div>
   );

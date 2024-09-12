@@ -36,7 +36,7 @@ const WeatherComponent = ({ city }: { city: string }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="text-black font-semibold text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl">
+    <div className="text-white-grey font-semibold text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl">
       <p>{weather ? Math.round(weather.main.temp) : ''}°C</p>
     </div>
   );

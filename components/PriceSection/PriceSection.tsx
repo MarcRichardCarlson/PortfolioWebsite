@@ -7,6 +7,8 @@ import { useSelectedPackages } from '../ContactSection/SelectedPackagesContext';
 import ResponsiveButton from '../Buttons';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import Image from 'next/image';
+import BackButton from '../../public/TablerArrowBack.svg'
 
 const PriceSection: React.FC = () => {
   const locale = useCurrentLocale();
@@ -62,7 +64,7 @@ const PriceSection: React.FC = () => {
   };
 
   return (
-    <div className="relative price-section min-h-screen flex flex-col gap-8 justify-around text-center font-inter p-4 md:p-8">
+    <div className="relative price-section min-h-screen flex flex-col gap-8 justify-around text-center font-inter px-4 sm:px-8 md:px-16">
       <AnimatePresence mode="wait">
         {!showMaintenance && !showThankYou && (
           <motion.div
@@ -73,9 +75,9 @@ const PriceSection: React.FC = () => {
             key="development"
             className="flex flex-col gap-8 z-10 relative"
           >
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-2 text-white-grey'>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold">
-                <span className="text-indigo-700">{t("price-development-header")}</span>{t("price-development-header2")}
+                <span className="text-indigo-500">{t("price-development-header")}</span>{t("price-development-header2")}
               </h2>
               <span>{t("price-text")}</span>
             </div>
@@ -100,13 +102,13 @@ const PriceSection: React.FC = () => {
             className="flex flex-col gap-8 z-10 relative"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold">
-              <span className="text-indigo-700">{t("price-maintenance-header")}</span>{t("price-maintenance-header2")}
+              <span className="text-indigo-700">{t("price-maintenance-header")}</span><span className='text-white-grey'>{t("price-maintenance-header2")}</span>
             </h2>
 
             <div className='w-full flex justify-end gap-2 items-end'>
               <div className='max-w-fit'>
                 <ResponsiveButton onClick={handleReset} size="sm" variant="redo">
-                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 14l-4-4l4-4"></path><path d="M5 10h11a4 4 0 1 1 0 8h-1"></path></g></svg>
+                  <Image src={BackButton.src} alt="Back Button" width={20} height={20} className="invert"/>
                 </ResponsiveButton>
               </div>
 

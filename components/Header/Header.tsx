@@ -5,15 +5,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import HeaderMediaIcons from './HeaderMediaIcons';
+import Projects from '../../public/IcRoundCode.svg'
+import Home from '../../public/BxHomeAlt2.svg'
+import About from '../../public/TablerUser.svg'
+import Packages from '../../public/TablerPackages.svg'
+import Contact from '../../public/PhPaperPlaneTiltBold.svg'
+import Image from 'next/image';
+import Profile from '../../public/images/Profile.png';
 
 interface NavbarProps {
   heroRef: RefObject<HTMLElement>;
   projectsRef: RefObject<HTMLElement>;
   aboutRef: RefObject<HTMLElement>;
+  packagesRef: RefObject<HTMLElement>;
   contactRef: RefObject<HTMLElement>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contactRef }) => {
+const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, packagesRef, contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
   const [isOpen, setIsOpen] = useState(false);
@@ -25,13 +33,11 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
 
   const scrollToSection = (ref: RefObject<HTMLElement>, section: string) => {
     if (ref.current) {
-      window.scrollTo({
-        top: ref.current.offsetTop,
-        behavior: 'smooth',
-      });
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveSection(section);
     }
   };
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,24 +45,38 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         { ref: heroRef, id: "home" },
         { ref: projectsRef, id: "projects" },
         { ref: aboutRef, id: "about" },
+        { ref: packagesRef, id: "packages" },
         { ref: contactRef, id: "contact" },
       ];
-
-      for (let section of sections) {
-        if (section.ref.current) {
-          const { offsetTop, offsetHeight } = section.ref.current;
-          if (window.scrollY >= offsetTop && window.scrollY < offsetTop + offsetHeight) {
-            setActiveSection(section.id);
-            break;
+  
+      let activeSectionId = "home"; // Default section
+  
+      // Loop through each section and check if the top is within the viewport
+      sections.forEach((section) => {
+        const element = section.ref.current;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Adjust the logic to consider when the section is at the top part of the viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            activeSectionId = section.id;
           }
         }
-      }
+      });
+  
+      // Update the active section if necessary
+      setActiveSection(activeSectionId);
     };
-
+  
     window.addEventListener("scroll", handleScroll);
+  
+    // Initial check in case the page loads in the middle of a section
+    handleScroll();
+  
+    // Cleanup the scroll listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [heroRef, projectsRef, aboutRef, contactRef]);
-
+  }, [heroRef, projectsRef, aboutRef, packagesRef, contactRef]);
+  
+  
   const navItemVariants = {
     rest: { scale: 1, opacity: 0.8, transition: { duration: 0.2 } },
     hover: { scale: 1.05, opacity: 1, transition: { duration: 0.3, type: "tween", stiffness: 300 } },
@@ -84,22 +104,103 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   };
 
   const navItems = [
-    { label: t("nav-home"), section: "home", ref: heroRef },
-    { label: t("nav-projects"), section: "projects", ref: projectsRef },
-    { label: t("nav-about"), section: "about", ref: aboutRef },
-    { label: t("nav-contact"), section: "contact", ref: contactRef },
+    { 
+      label: (
+        <>
+          <span className="md:hidden flex items-center justify-center invert">
+            <Image src={Home.src} alt="Home" width={24} height={24}/>
+          </span>
+          <span className="hidden md:flex md:items-center md:gap-2">
+            <Image src={Home.src} alt="Home" width={20} height={20} className="invert"/>
+            {t("nav-home")}
+          </span>
+        </>
+      ), 
+      section: "home", 
+      ref: heroRef 
+    },
+    { 
+      label: (
+        <>
+          <span className="md:hidden flex items-center justify-center invert">
+            <Image src={Projects.src} alt="Projects" width={24} height={24}/>
+          </span>
+          <span className="hidden md:flex md:items-center md:gap-2">
+            <Image src={Projects.src} alt="Projects" width={20} height={20} className="invert"/>
+            {t("nav-projects")}
+          </span>
+        </>
+      ), 
+      section: "projects", 
+      ref: projectsRef 
+    },
+    { 
+      label: (
+        <>
+          <span className="md:hidden flex items-center justify-center invert">
+            <Image src={About.src} alt="About" width={24} height={24}/>
+          </span>
+          <span className="hidden md:flex md:items-center md:gap-2">
+            <Image src={About.src} alt="About" width={20} height={20} className="invert"/>
+            {t("nav-about")}
+          </span>
+        </>
+      ), 
+      section: "about", 
+      ref: aboutRef
+    },
+    { 
+      label: (
+        <>
+          <span className="md:hidden flex items-center justify-center invert">
+            <Image src={Packages.src} alt="Packages" width={24} height={24}/>
+          </span>
+          <span className="hidden md:flex md:items-center md:gap-2">
+            <Image src={Packages.src} alt="Packages" width={20} height={20} className="invert"/>
+            Packages
+          </span>
+        </>
+      ), 
+      section: "packages", 
+      ref: packagesRef
+    },
+    { 
+      label: (
+        <>
+          <span className="md:hidden flex items-center justify-center invert">
+            <Image src={Contact.src} alt="Contact" width={24} height={24}/>
+          </span>
+          <span className="hidden md:md:flex md:items-center md:gap-2">
+            <Image src={Contact.src} alt="Contact" width={20} height={20} className="invert"/>
+            {t("nav-contact")}
+          </span>
+        </>
+      ), 
+      section: "contact", 
+      ref: contactRef
+    },
   ];
 
   return (
-    <nav className="z-50 bg-black-soil shadow-lg w-full flex flex-row justify-between items-center py-4 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32">
-      <h1 className="text-white text-xl font-bold">Macar.</h1>
-      <div className="hidden md:flex space-x-6">
+  <nav className="z-50 bg-dark-grey bg-opacity-50 shadow-lg min-w-[60px] h-full flex flex-col gap-4 md:gap-0 justify-between items-center py-8 md:min-w-[250px] sticky top-0 transition-all duration-300 ease-in-out">
+    <div className='w-10 h-10 md:w-16 md:h-16 relative'>
+      <Image
+        src={Profile}
+        alt="Portrait"
+        fill
+        className="rounded-full object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+    <p className='text-light-grey hidden md:block'>Developer</p>
+    <h2 className="text-white-grey text-base font-bold mb-8 hidden md:block">Marc Richard Carlson</h2>
+      <div className="flex flex-col gap-2 items-start w-full px-2">
         {navItems.map(({ label, section, ref }) => (
           <motion.a
             key={section}
             onClick={() => scrollToSection(ref, section)}
-            className={`font-inter text-md sm:text-md md:text-lg font-bold cursor-pointer ${
-              activeSection === section ? "text-indigo-400 underline underline-offset-4" : "text-white hover:text-indigo-400 hover:underline underline-offset-4"
+            className={`rounded-md md:px-6 py-2 w-full font-inter text-base font-bold cursor-pointer ${
+              activeSection === section ? "bg-white-grey bg-opacity-10 text-indigo-400" : "text-white hover:text-indigo-400 hover:underline underline-offset-4"
             }`}
             initial="rest"
             whileHover="hover"
@@ -112,52 +213,10 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
       </div>
       <motion.div
         transition={{ type: 'tween', stiffness: 300, damping: 20 }}
-        className="hidden md:flex justify-center items-center"
+        className="mt-auto"
       >
         <HeaderMediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
       </motion.div>
-      <div className="md:hidden flex items-center">
-        <button onClick={toggleMenu} className="text-neutral-500 text-xl sm:text-2xl font-bold focus:outline-none">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
-          </svg>
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            className="md:hidden absolute top-[60px] left-0 w-full bg-neutral-200 text-center py-4 z-30 shadow-xl flex flex-col items-center gap-4"
-          >
-            {navItems.map(({ label, section, ref }) => (
-              <motion.a
-                key={section}
-                onClick={() => { scrollToSection(ref, section); toggleMenu(); }}
-                className={`z-30 block py-2 text-xl sm:text-2xl font-bold cursor-pointer ${
-                  activeSection === section ? "text-indigo-700 underline" : "text-neutral-500 hover:text-indigo-700"
-                }`}
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
-                variants={navItemVariants}
-              >
-                {label}
-              </motion.a>
-            ))}
-            <motion.div
-              whileHover={{ scale: 1.05, backgroundColor: '#4338ca'}}
-              transition={{ type: 'tween', stiffness: 300, damping: 20 }}
-              className="cursor-pointer flex justify-center items-center"
-            >
-              <HeaderMediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };
