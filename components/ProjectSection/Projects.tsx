@@ -5,7 +5,7 @@ import Image, { StaticImageData } from 'next/image';
 interface Project {
   title: string;
   description: string;
-  image: StaticImageData;
+  image: StaticImageData | string; 
   tag: {
     text: string;
     color: string;
