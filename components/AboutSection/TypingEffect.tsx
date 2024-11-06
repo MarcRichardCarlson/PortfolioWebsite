@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/i18n/client';
 import { useCurrentLocale } from '@/hooks/locale';
@@ -7,13 +7,13 @@ const TypingEffect: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
 
-  const quotes = [
+  const quotes  = useMemo(() => [
     t('about-text1'),
     t('about-text2'),
     t('about-text3'),
     t('about-text4'),
     t('about-text5'),
-  ];
+  ], [locale, t]);
 
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
