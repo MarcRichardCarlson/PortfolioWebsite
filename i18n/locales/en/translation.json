@@ -1,5 +1,5 @@
 {
-    "nav-home" : "Home",
+    "nav-home" : "Introduction",
     "nav-projects" : "Projects",
     "nav-about" : "About",
     "nav-contact" : "Contact",
@@ -11,10 +11,10 @@
     "CTA" : "Get In Touch",
     "CTA2" : "Browse Projects",
 
-    "hero-header" : "Developer",
-    "hero-text" : "Hey I'm Marc",
+    "hero-header" : "frontend developer",
+    "hero-text" : "Hello, I'm Marc",
     "hero-text2" : "I'm a frontend developer based in",
-    "hero-text3" : "Sweden, I'll help you build beautiful websites your users will love.",
+    "hero-text3" : "Sweden, passionate about creating engaging and responsive websites. With a focus on modern, user-friendly designs, I'll help you build beautiful and intuitive websites your users will love, ensuring a seamless experience across all devices.",
 
     "projects-header" : "Former Projects",
     "projects-text" : "Explore some of my previous frontend, backend, and fullstack projects to get an insight into my approach and technical solutions.",
@@ -111,12 +111,12 @@
 
 
     "about-header" : "About me",
-    "about-text" : "My journey into the world of development began through a friend who had attended an intensive coding course at <Salt/>. They described coding as incredibly fun, sparking my curiosity. I decided to give it a try, and to my delight, I found it was indeed as enjoyable as my friend had described. I started working on small projects, and my fascination with coding grew. I soon set a goal for myself: to become a developer. To achieve this, I took several courses to prepare for a frontend program. After two short, fun-filled years of learning and hard work, I am proud to say that I am now a developer, equipped with a robust tech stack in my arsenal.",
-    "about-text1" : "I am a frontend developer with fullstack ambitions.",
-    "about-text2" : "Passionate about creating seamless user experiences.",
-    "about-text3" : "Combining design and functionality for intuitive web applications.",
-    "about-text4" : "Committed to continuous learning and improvement.",
-    "about-text5" : "Aspiring to bridge the gap between frontend and backend development.",
+    "about-text" : "My journey into development began with a spark of curiosity, inspired by a friend who had completed an intensive coding course at <Salt/>. Intrigued by their experiences, I dove into coding myself, starting with small projects that only deepened my interest. Determined to build a career in this field, I enrolled in a dedicated frontend program, where I developed a solid technical foundation. During my studies, I had the opportunity to work at DigitalFans for six months. This role allowed me to collaborate with companies like Vattenfall, Folkspel, ARetroTale, Nova8, and others, tackling real-world projects and honing my skills in frontend development.",
+    "about-text1": "Frontend developer with a foundation in fullstack development.",
+    "about-text2": "Focused on delivering smooth, user-centered experiences.",
+    "about-text3": "Merging design and functionality to create intuitive web solutions.",
+    "about-text4": "Dedicated to growth through continuous learning and improvement.",
+    "about-text5": "Aiming to unify frontend and backend for cohesive development solutions.",
     "about-education" : "Education",
     "about-item1" : "Front End Development",
     "about-item-text1" : "A program that comprises a total of 405 YH credits.",
@@ -143,6 +143,7 @@
 
 
     "contact-header" : "Contact",
+    "contact-text" : "Feel free to reach out with any questions, whether you’re interested in starting a new project, enhancing an existing one.",
     "contact-name" : "Name",
     "contact-last-name" : "Last Name",
     "contact-email" : "Email",

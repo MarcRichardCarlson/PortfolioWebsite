@@ -7,14 +7,11 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Header/Header';
 import HeroSection from '@/components/HeroSection/HeroSection';
 import ProjectSection from '@/components/ProjectSection/ProjectSection';
-import PriceSection from '@/components/PriceSection/PriceSection';
-import { SelectedPackagesProvider } from '@/components/ContactSection/SelectedPackagesContext';
 
 const MainPage = () => {
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
   const aboutRef = useRef(null);
-  const packagesRef = useRef(null);
   const contactRef = useRef(null);
 
   return (
@@ -24,7 +21,6 @@ const MainPage = () => {
           heroRef={heroRef}
           projectsRef={projectsRef}
           aboutRef={aboutRef}
-          packagesRef={packagesRef}
           contactRef={contactRef}
         />
         <div className="flex-grow h-full overflow-auto">
@@ -35,20 +31,16 @@ const MainPage = () => {
           />
           </section>
           <section ref={projectsRef}>
-            <ProjectSection />
+            <ProjectSection/>
           </section>
 
-          <SelectedPackagesProvider>
-            <section ref={aboutRef}>
-              <AboutSection />
-            </section>
-            <section ref={packagesRef}>
-              <PriceSection />
-            </section>
-            <section ref={contactRef} id="contactRef">
-              <ContactSection />
-            </section>
-          </SelectedPackagesProvider>
+          <section ref={aboutRef}>
+            <AboutSection />
+          </section>
+          
+          <section ref={contactRef} id="contactRef">
+            <ContactSection />
+          </section>
 
           <Footer 
             heroRef={heroRef}

@@ -4,8 +4,8 @@ import { AppLocale } from "./locales";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Marc Richard Carlson's Portfolio Website",
+  title: "carlsonmarc",
+  description: "Marc Carlson - Portfolio Website",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="shortcut icon" href="/favicon/favicon.ico"></link>
       </head>
-      <body className="bg-black-soil">
+      <body>
         <AppProviders locale={params.locale}>
           {children}
         </AppProviders>

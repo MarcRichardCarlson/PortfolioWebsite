@@ -1,5 +1,5 @@
 {
-    "nav-home" : "Hem",
+    "nav-home" : "Introduction",
     "nav-projects" : "Projekt",
     "nav-about" : "Om mig",
     "nav-contact" : "Kontakt",
@@ -12,7 +12,7 @@
     "CTA2" : "Utforska projekt",
 
     "hero-header" : "Utvecklare",
-    "hero-text" : "Hej, jag är Marc!",
+    "hero-text" : "Hej, jag är Marc",
     "hero-text2" : "Jag är en frontendutvecklare baserad i",
     "hero-text3" : "Sverige och kan hjälpa dig att skapa attraktiva webbplatser som dina användare kommer att älska.",
 
@@ -134,6 +134,7 @@
 
 
     "contact-header" : "Kontakta",
+    "contact-text" : "Du är välkommen att kontakta mig med frågor, oavsett om du vill starta ett nytt projekt, förbättra ett befintligt.",
     "contact-name" : "Namn",
     "contact-last-name" : "Efternamn",
     "contact-email" : "Email",

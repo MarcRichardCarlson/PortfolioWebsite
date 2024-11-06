@@ -8,20 +8,19 @@ import HeaderMediaIcons from './HeaderMediaIcons';
 import Projects from '../../public/IcRoundCode.svg'
 import Home from '../../public/BxHomeAlt2.svg'
 import About from '../../public/TablerUser.svg'
-import Packages from '../../public/TablerPackages.svg'
 import Contact from '../../public/PhPaperPlaneTiltBold.svg'
 import Image from 'next/image';
-import Profile from '../../public/images/Profile.png';
+import TextSwitcher from './TextSwitcher';
+import Logo from '../../public/favicon/favicon.ico'
 
 interface NavbarProps {
   heroRef: RefObject<HTMLElement>;
   projectsRef: RefObject<HTMLElement>;
   aboutRef: RefObject<HTMLElement>;
-  packagesRef: RefObject<HTMLElement>;
   contactRef: RefObject<HTMLElement>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, packagesRef, contactRef }) => {
+const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +39,18 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, package
   
 
   useEffect(() => {
+    let lastActiveSectionId = "home"; // Track the last active section
+
     const handleScroll = () => {
       const sections = [
         { ref: heroRef, id: "home" },
         { ref: projectsRef, id: "projects" },
         { ref: aboutRef, id: "about" },
-        { ref: packagesRef, id: "packages" },
         { ref: contactRef, id: "contact" },
       ];
-  
+
       let activeSectionId = "home"; // Default section
-  
+
       // Loop through each section and check if the top is within the viewport
       sections.forEach((section) => {
         const element = section.ref.current;
@@ -62,24 +62,32 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, package
           }
         }
       });
-  
+
+      // Log only if the section has changed
+      if (activeSectionId !== lastActiveSectionId) {
+        console.log("Current section:", activeSectionId);
+        lastActiveSectionId = activeSectionId;
+      }
+
       // Update the active section if necessary
       setActiveSection(activeSectionId);
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     // Initial check in case the page loads in the middle of a section
     handleScroll();
-  
+
     // Cleanup the scroll listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [heroRef, projectsRef, aboutRef, packagesRef, contactRef]);
+  }, [heroRef, projectsRef, aboutRef, contactRef]);
+
+
   
   
   const navItemVariants = {
     rest: { scale: 1, opacity: 0.8, transition: { duration: 0.2 } },
-    hover: { scale: 1.05, opacity: 1, transition: { duration: 0.3, type: "tween", stiffness: 300 } },
+    hover: { opacity: 1, transition: { duration: 0.1, type: "tween", stiffness: 300 } },
   };
 
   const menuVariants = {
@@ -106,75 +114,60 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, package
   const navItems = [
     { 
       label: (
-        <>
+        <div className='flex'>
           <span className="md:hidden flex items-center justify-center invert">
             <Image src={Home.src} alt="Home" width={24} height={24}/>
           </span>
-          <span className="hidden md:flex md:items-center md:gap-2">
-            <Image src={Home.src} alt="Home" width={20} height={20} className="invert"/>
-            {t("nav-home")}
+          <span className="hidden md:flex justify-start md:gap-2">
+            <Image src={Home.src} alt="Home" width={20} height={20} className="invert self-start" />
+            <span className="self-start text-white">{t("nav-home")}</span>
           </span>
-        </>
+        </div>
       ), 
       section: "home", 
       ref: heroRef 
     },
     { 
       label: (
-        <>
+        <div className='flex'>
           <span className="md:hidden flex items-center justify-center invert">
             <Image src={Projects.src} alt="Projects" width={24} height={24}/>
           </span>
-          <span className="hidden md:flex md:items-center md:gap-2">
-            <Image src={Projects.src} alt="Projects" width={20} height={20} className="invert"/>
-            {t("nav-projects")}
+          <span className="hidden md:flex justify-start md:gap-2">
+            <Image src={Projects.src} alt="Projects" width={22} height={22} className="invert"/>
+            <span className="self-start text-white">{t("nav-projects")}</span>
           </span>
-        </>
+        </div>
       ), 
       section: "projects", 
       ref: projectsRef 
     },
     { 
       label: (
-        <>
+        <div className='flex'>
           <span className="md:hidden flex items-center justify-center invert">
             <Image src={About.src} alt="About" width={24} height={24}/>
           </span>
-          <span className="hidden md:flex md:items-center md:gap-2">
-            <Image src={About.src} alt="About" width={20} height={20} className="invert"/>
-            {t("nav-about")}
+          <span className="hidden md:flex justify-start md:gap-2">
+            <Image src={About.src} alt="About" width={22} height={22} className="invert"/>
+            <span className="self-start text-white">{t("nav-about")}</span>
           </span>
-        </>
+        </div>
       ), 
       section: "about", 
       ref: aboutRef
     },
     { 
       label: (
-        <>
-          <span className="md:hidden flex items-center justify-center invert">
-            <Image src={Packages.src} alt="Packages" width={24} height={24}/>
-          </span>
-          <span className="hidden md:flex md:items-center md:gap-2">
-            <Image src={Packages.src} alt="Packages" width={20} height={20} className="invert"/>
-            Packages
-          </span>
-        </>
-      ), 
-      section: "packages", 
-      ref: packagesRef
-    },
-    { 
-      label: (
-        <>
+        <div className='flex'>
           <span className="md:hidden flex items-center justify-center invert">
             <Image src={Contact.src} alt="Contact" width={24} height={24}/>
           </span>
-          <span className="hidden md:md:flex md:items-center md:gap-2">
+          <span className="hidden md:flex justify-start md:gap-2">
             <Image src={Contact.src} alt="Contact" width={20} height={20} className="invert"/>
-            {t("nav-contact")}
+            <span className="self-start text-white">{t("nav-contact")}</span>
           </span>
-        </>
+        </div>
       ), 
       section: "contact", 
       ref: contactRef
@@ -182,35 +175,34 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, package
   ];
 
   return (
-  <nav className="z-50 bg-dark-grey bg-opacity-50 shadow-lg min-w-[60px] h-full flex flex-col gap-4 md:gap-0 justify-between items-center py-8 md:min-w-[250px] sticky top-0 transition-all duration-300 ease-in-out">
-    <div className='w-10 h-10 md:w-16 md:h-16 relative'>
-      <Image
-        src={Profile}
-        alt="Portrait"
-        fill
-        className="rounded-full object-cover"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
+  <nav className="z-50 bg-dark-grey shadow-lg min-w-[60px] h-full flex flex-col gap-4 md:gap-2 justify-between items-left px-8 py-10 md:min-w-[250px] lg:min-w-[350px] sticky top-0 transition-all duration-300 ease-in-out">
+    <Image src={Logo} className='h-12 w-12 md:h-24 md:w-24' alt={'Logo'}/>
+    <div className='flex flex-col justify-center items-left'>
+      <TextSwitcher/>
+      <p className='text-light-grey hidden md:block uppercase'>Developer</p>
+      <h2 className="text-white-grey text-base font-bold mb-8 hidden md:block">Marc Richard Carlson</h2>
     </div>
-    <p className='text-light-grey hidden md:block'>Developer</p>
-    <h2 className="text-white-grey text-base font-bold mb-8 hidden md:block">Marc Richard Carlson</h2>
-      <div className="flex flex-col gap-2 items-start w-full px-2">
-        {navItems.map(({ label, section, ref }) => (
-          <motion.a
-            key={section}
-            onClick={() => scrollToSection(ref, section)}
-            className={`rounded-md md:px-6 py-2 w-full font-inter text-base font-bold cursor-pointer ${
-              activeSection === section ? "bg-white-grey bg-opacity-10 text-indigo-400" : "text-white hover:text-indigo-400 hover:underline underline-offset-4"
-            }`}
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={navItemVariants}
-          >
-            {label}
-          </motion.a>
-        ))}
-      </div>
+
+    <div className="flex flex-col gap-2 items-start w-full">
+      {navItems.map(({ label, section, ref }) => (
+        <motion.a
+          key={section}
+          onClick={() => scrollToSection(ref, section)}
+          className={`rounded-sm md:px-8 py-6 w-full font-inter text-base font-bold cursor-pointer transition-all duration-300 ${
+            activeSection === section
+              ? "bg-white-grey bg-opacity-10 text-green-500"
+              : "text-white hover:text-green-500 hover:underline underline-offset-4 decoration-green-400"
+          }`}
+          initial="rest"
+          whileHover="hover"
+          animate="rest"
+          variants={navItemVariants}
+        >
+          {label}
+        </motion.a>
+      ))}
+    </div>
+
       <motion.div
         transition={{ type: 'tween', stiffness: 300, damping: 20 }}
         className="mt-auto"

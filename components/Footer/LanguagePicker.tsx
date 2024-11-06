@@ -53,7 +53,7 @@ export default function AppLocaleSwitcher() {
             {locale}
             {locale === activeLocale && (
               <motion.div
-                className="absolute bottom--1 left-0 right-0 h-1 w-full bg-indigo-500"
+                className="absolute bottom--1 left-0 right-0 h-1 w-full bg-green-700"
                 layoutId="languagePickerUnderline"
               />
             )}

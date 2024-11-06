@@ -50,6 +50,9 @@ const config: Config = {
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        targa: ['Targa', 'sans-serif'],
+        'targa-ms': ['Targa MS', 'sans-serif'],
+        'targa-hand': ['Targa MS Hand', 'sans-serif'],
       },
       borderRadius: {
         'none': '0',

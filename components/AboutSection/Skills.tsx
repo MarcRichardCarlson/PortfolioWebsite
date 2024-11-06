@@ -9,7 +9,7 @@ type TechStacks = {
     [category: string]: (string | null)[];
 };
 
-const columnNames = ["Webb Design", "Frontend", "Backend", "Skills"];
+const columnNames = ["Web Design", "Frontend", "Backend", "Others"];
 
 interface SkillsProps {
     columnNames: string[];
@@ -20,16 +20,16 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     const { t } = useTranslation(locale, "translation");
 
     const techStacks: TechStacks = {
-        "Webb Design": [
+        "Web Design": [
             'UI/UX Design',
             t("about-skill-responsive"),
             'Wireframing',
             'Figma',
-            'WordPress',
             t("about-skill-interaction"),
             t("about-skill-animation"),
             t("about-skill-grid"),
             'Prototyping',
+            'User Research'
         ],
         "Frontend": [
             'Next.JS',
@@ -53,7 +53,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
             'Azure',
             'Firebase',
         ],
-        "Skills": [
+        "Others": [
             'Postman',
             'Git / GitHub',
             t("about-skill-time"),
@@ -67,11 +67,9 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="flex flex-col gap-8 min-w-64 max-w-full h-fit p-4 sm:p-8 md:p-16 bg-dark-grey">
-            <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white-grey'>Skills
-                <span className='text-indigo-700'>.</span>
-            </h2>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 text-center sm:text-left">
+        <div className="bg-black-soil flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8">
+           
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 text-center sm:text-left max-w-[1400px]">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex}>
                         <h3 className="text-white-grey font-extrabold text-2xl mb-4">{colName}</h3>

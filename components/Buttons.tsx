@@ -17,16 +17,16 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  primary: 'max-w-24 bg-dark-grey hover:bg-indigo-700 text-white rounded-lg font-semibold shadow-xl text-sm sm:text-base md:text-md',
-  secondary: 'bg-white-grey hover:bg-indigo-500 text-black border border-black hover:text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md',
-  success: 'bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md',
-  bento: 'bg-indigo-700 text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md',
-  plan: 'bg-black-soil text-white rounded-md font-base shadow-xl text-sm sm:text-base md:text-md',
+  primary: 'max-w-24 bg-dark-grey hover:bg-indigo-700 text-white rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md',
+  secondary: 'bg-white-grey hover:bg-indigo-500 text-black border border-black hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
+  success: 'bg-green-500 hover:bg-green-600 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
+  bento: 'bg-indigo-700 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
+  plan: 'bg-black-soil text-white rounded-sm font-base shadow-xl text-sm sm:text-base md:text-md',
   remove: 'text-xs flex justify-center items-center text-red-500 font-semibold hover:text-red-700 text-xs',
   skip: 'max-w-24 text-light-grey hover:text-neutral-500 underline underline-offset-2 font-semibold text-sm sm:text-base md:text-md',
-  redo: 'flex justify-center items-center hover:bg-indigo-500 border border-white hover:text-white rounded-lg font-bold shadow-xl text-sm sm:text-base md:text-md max-w-10 sm:max-w-12',
+  redo: 'flex justify-center items-center hover:bg-indigo-500 border border-white hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md max-w-10 sm:max-w-12',
   scroll: 'max-w-8 min-w-8 max-h-8 min-h-8 flex justify-center items-center hover:bg-indigo-500 text-black border border-black hover:text-white rounded-full font-bold shadow-xl text-sm sm:text-base md:text-md',
-  send: 'max-w-24 bg-indigo-700 hover:bg-indigo-700 text-white-grey rounded-md font-semibold shadow-xl text-sm sm:text-base md:text-md'
+  send: 'max-w-24 bg-green-800 hover:bg-green-700 text-white-grey rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md'
 };
 
 const ResponsiveButton: React.FC<ButtonProps> = ({ size, variant, children, onClick }) => {
