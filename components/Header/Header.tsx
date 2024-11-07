@@ -175,20 +175,20 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   ];
 
   return (
-  <nav className="z-50 bg-dark-grey shadow-lg min-w-[60px] h-full flex flex-col gap-4 md:gap-2 justify-between items-left px-8 py-10 md:min-w-[250px] lg:min-w-[350px] sticky top-0 transition-all duration-300 ease-in-out">
-    <Image src={Logo} className='h-12 w-12 md:h-24 md:w-24' alt={'Logo'}/>
-    <div className='flex flex-col justify-center items-left'>
+  <nav className="z-50 bg-dark-grey shadow-lg min-w-[60px] h-full flex flex-col gap-4 md:gap-2 justify-between items-center md:items-start px-0 md:px-8 py-10 md:min-w-[250px] lg:min-w-[350px] sticky top-0 transition-all duration-300 ease-in-out">
+    <Image src={Logo} className='h-8 w-8 md:h-24 md:w-24' alt={'Logo'}/>
+    <div className='hidden md:flex flex-col justify-center items-left'>
       <TextSwitcher/>
       <p className='text-light-grey hidden md:block uppercase'>Developer</p>
       <h2 className="text-white-grey text-base font-bold mb-8 hidden md:block">Marc Richard Carlson</h2>
     </div>
 
-    <div className="flex flex-col gap-2 items-start w-full">
+    <div className="flex flex-col gap-4 md:gap-2 items-start w-full">
       {navItems.map(({ label, section, ref }) => (
         <motion.a
           key={section}
           onClick={() => scrollToSection(ref, section)}
-          className={`rounded-sm md:px-8 py-6 w-full font-inter text-base font-bold cursor-pointer transition-all duration-300 ${
+          className={`flex items-center justify-center md:justify-start rounded-sm px-2 md:px-8 py-4 md:py-6 w-full font-inter text-base font-bold cursor-pointer transition-all duration-300 ${
             activeSection === section
               ? "bg-white-grey bg-opacity-10 text-green-500"
               : "text-white hover:text-green-500 hover:underline underline-offset-4 decoration-green-400"

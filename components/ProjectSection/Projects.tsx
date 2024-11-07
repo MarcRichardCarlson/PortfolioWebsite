@@ -28,7 +28,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   }, [hoveredIndex]);
 
   return (
-    <div className="max-w-[1400px] mx-auto h-full flex px-4 sm:px-6 md:px-8">
+    <div className="max-w-[1400px] mx-auto h-full flex md:flex-row flex-col px-4 sm:px-6 md:px-8">
 
       {projects.map((project, index) => {
         let flexBasis = '33.33%';
@@ -63,14 +63,14 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full min-w-[300px] min-h-[500px]">
             <Image 
                 src={project.image} 
                 alt={project.title} 
-                fill // replaces layout="fill"
-                style={{ objectFit: 'cover' }} // replaces objectFit="cover"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="rounded-none"
-                quality={100} // Adjust quality for balance between size and clarity
+                quality={100}
             />
 
               {/* Darkening overlay with opacity adjustment on hover */}

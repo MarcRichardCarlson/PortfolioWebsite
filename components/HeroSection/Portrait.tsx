@@ -4,7 +4,7 @@ import PortraitImage from '../../public/images/Portrait.png';
 
 const Portrait: React.FC = () => {
   return (
-    <div className="z-50 w-24 h-24 sm:w-48 sm:h-48 md:w-48 md:h-48 lg:w-48 lg:h-48 xl:w-64 xl:h-64 relative overflow-hidden rounded-full bg-gradient-to-r from-green-800 via-green-600 to-green-400">
+    <div className="z-50 w-48 h-48 sm:w-48 sm:h-48 md:w-48 md:h-48 lg:w-48 lg:h-48 xl:w-64 xl:h-64 relative overflow-hidden rounded-full bg-gradient-to-r from-green-800 via-green-600 to-green-400">
       <Image
         src={PortraitImage}
         alt="Portrait"
