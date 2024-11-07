@@ -17,8 +17,8 @@ const SkillDashboard: React.FC = () => {
         <h3 className='text-3xl font-bold font-targa text-white'>What Inspires Me</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-center gap-4">
         {skills.map((skill) => (
-            <div className='grid grid-cols-2 md:grid-cols-2 lg:flex lg:flex-col lg:justify-between items-center gap-4 whitespace-nowrap m-0 p-0'>
-              <div className="flex flex-col justify-center items-center gap-2 h-24 lg:h-36 xl:h-48" key={skill.name}>
+            <div key={skill.name}  className='grid grid-cols-2 md:grid-cols-2 lg:flex lg:flex-col lg:justify-between items-center gap-4 whitespace-nowrap m-0 p-0'>
+              <div className="flex flex-col justify-center items-center gap-2 h-24 lg:h-36 xl:h-48">
                 <CircularProgressbar
                   value={skill.level}
                   text={`${skill.level}%`}
