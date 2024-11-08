@@ -22,7 +22,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
 
   return (
     <section className="bg-black-soil relative mx-auto flex lg:flex-row justify-center items-center transition-all duration-300 ease-in-out overflow-hidden h-screen">
-      <div className='absolute top-2 -right-2 md:top-4 md:right-8 text-white'>
+      <div className='absolute top-4 right-4 md:top-4 md:right-8 text-white'>
       <LanguagePicker />
       </div>
       <div className="max-w-[1400px] px-4 sm:px-6 md:px-8 relative z-10 flex flex-col items-center md:items-start text-white-grey gap-16px">

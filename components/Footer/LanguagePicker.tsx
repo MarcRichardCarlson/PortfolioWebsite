@@ -49,7 +49,7 @@ export default function AppLocaleSwitcher() {
       {/* Dropdown button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-row justify-between text-CustomWhite cursor-pointer text-base md:text-sm hover:text-CustomHover font-ttcommons bg-dark-grey p-4 w-24"
+        className="flex flex-row justify-between text-CustomWhite cursor-pointer text-base md:text-sm hover:text-CustomHover font-ttcommons bg-dark-grey p-4 w-24 rounded-lg"
       >
         {activeLocale === "en" ? "EN" : "SV"}
         <Image
@@ -68,8 +68,8 @@ export default function AppLocaleSwitcher() {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute mt-2 bg-dark-grey shadow-lg z-50"
+            transition={{ duration: 0.3 }}
+            className="absolute mt-1 bg-dark-grey shadow-lg z-50 rounded-lg"
           >
             {displayNames.map((locale) => (
               <button

@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
   
   return (
     <footer className="flex flex-col gap-6 bg-black-soil bg-opacity-95 text-white relative p-8">
-      <div className="absolute top-4 right-8">
+      <div className="absolute top-4 right-4 md:right-8">
         <LanguagePicker />
       </div>
       <div className="w-full flex flex-col md:flex-row justify-around items-start md:items-center relative z-10">
