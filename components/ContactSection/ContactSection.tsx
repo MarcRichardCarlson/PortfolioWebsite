@@ -99,7 +99,7 @@ const ContactSection: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(sanitizeInput(e.target.value))}
                 placeholder={t("contact-name")}
-                className="bg-dark-grey rounded-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-700 text-white-grey text-sm md:text-base "
+                className="bg-dark-grey py-2 px-3 focus:outline-none focus:ring-2 focus:ring-white text-white-grey text-sm md:text-base "
                 required
               />
             </div>
@@ -110,7 +110,7 @@ const ContactSection: React.FC = () => {
                 value={lastName}
                 onChange={(e) => setLastName(sanitizeInput(e.target.value))}
                 placeholder={t("contact-last-name")}
-                className="bg-dark-grey rounded-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-700 text-white-grey text-sm md:text-base "
+                className="bg-dark-grey py-2 px-3 focus:outline-none focus:ring-2 focus:ring-white text-white-grey text-sm md:text-base "
                 required
               />
             </div>
@@ -122,7 +122,7 @@ const ContactSection: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(sanitizeInput(e.target.value))}
                 placeholder={t("contact-email")}
-                className={`bg-dark-grey rounded-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-700 text-white-grey text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
+                className={`bg-dark-grey py-2 px-3 focus:outline-none focus:ring-2 focus:ring-white text-white-grey text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
                 required
               />
               {!isEmailValid && <span className="text-red-500 text-sm">{t("contact-error")}</span>}
@@ -135,7 +135,7 @@ const ContactSection: React.FC = () => {
                 value={subject}
                 onChange={(e) => setSubject(sanitizeInput(e.target.value))}
                 placeholder={t("contact-subject")}
-                className="bg-dark-grey rounded-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-700 text-white-grey text-sm md:text-base "
+                className="bg-dark-grey py-2 px-3 focus:outline-none focus:ring-2 focus:ring-white text-white-grey text-sm md:text-base "
                 required
               />
             </div>
@@ -148,7 +148,7 @@ const ContactSection: React.FC = () => {
                 value={message}
                 onChange={(e) => setMessage(sanitizeInput(e.target.value))}
                 placeholder={t("contact-message")}
-                className="bg-dark-grey max-h-64 min-h-32 rounded-sm py-2 px-3 block w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-white-grey text-sm md:text-base "
+                className="bg-dark-grey max-h-64 min-h-32 py-2 px-3 block w-full focus:outline-none focus:ring-2 focus:ring-white text-white-grey text-sm md:text-base "
                 rows={5}
                 required
               ></textarea>

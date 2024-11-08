@@ -191,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
           className={`flex items-center justify-center md:justify-start rounded-sm px-2 md:px-8 py-4 md:py-6 w-full font-inter text-base font-bold cursor-pointer transition-all duration-300 ${
             activeSection === section
               ? "bg-white-grey bg-opacity-10 text-green-500"
-              : "text-white hover:text-green-500 hover:underline underline-offset-4 decoration-green-400"
+              : "text-white hover:text-green-500 hover:bg-white hover:bg-opacity-5"
           }`}
           initial="rest"
           whileHover="hover"

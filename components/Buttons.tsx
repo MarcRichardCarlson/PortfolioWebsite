@@ -17,8 +17,8 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  primary: 'max-w-24 bg-dark-grey hover:bg-indigo-700 text-white rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md',
-  secondary: 'bg-white-grey hover:bg-indigo-500 text-black border border-black hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
+  primary: 'max-w-24 bg-dark-grey hover:bg-green-700 text-white rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md',
+  secondary: 'bg-white-grey hover:bg-green-700 text-black border border-black hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   success: 'bg-green-500 hover:bg-green-600 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   bento: 'bg-indigo-700 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   plan: 'bg-black-soil text-white rounded-sm font-base shadow-xl text-sm sm:text-base md:text-md',

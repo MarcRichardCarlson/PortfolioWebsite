@@ -19,7 +19,7 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState<boolean>(false); // Initialize as false for SSR
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [descriptionHeight, setDescriptionHeight] = useState<number>(0);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
 
@@ -32,11 +32,19 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     
-    handleResize(); // Set initial value on mount
+    handleResize();
     window.addEventListener('resize', handleResize);
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const descriptionVariants = {
+    initial: { y: 0, transform: 'none' },
+    hover: (descriptionHeight: number) => ({
+      y: -descriptionHeight,
+      transform: 'none',
+    }),
+  };
 
   return (
     <div className="max-w-[1400px] mx-auto h-full flex xl:flex-row flex-col px-4 sm:px-6 md:px-8">
@@ -110,20 +118,21 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 {project.tag.text}
               </div>
 
-              {/* Container for header and description */}
               <motion.div
                 className="absolute bottom-4 left-4 right-4 text-white"
-                initial={{ y: 0 }}
-                animate={{ y: hoveredIndex === index ? -descriptionHeight : 0 }}
+                variants={descriptionVariants}
+                initial="initial"
+                animate={hoveredIndex === index ? 'hover' : 'initial'}
+                custom={descriptionHeight}
                 transition={{ duration: 0.3 }}
               >
-                {/* Header positioned above description text */}
+
                 <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                {/* Invisible description element for height measurement */}
+
                 <p className="text-sm opacity-0 absolute" ref={descriptionRef}>
                   {project.description}
                 </p>
-                {/* Visible description */}
+               
                 <p className="text-sm mt-1">
                   {hoveredIndex === index ? project.description : ''}
                 </p>

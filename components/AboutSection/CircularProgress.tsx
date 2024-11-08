@@ -16,7 +16,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   size = 100,
   strokeWidth = 10,
   pathColor = '#4ade80',
-  trailColor = '#e5e7eb',
+  trailColor = 'rgba(255, 255, 255, 0.2)',
   textColor = 'white',
 }) => {
   // Calculate the radius and circumference
@@ -34,6 +34,10 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
         fill="none"
         stroke={trailColor}
         strokeWidth={strokeWidth}
+        style={{
+          transform: 'rotate(-90deg)',
+          transformOrigin: '50% 50%',
+        }}
       />
       {/* Progress circle */}
       <circle
@@ -45,8 +49,11 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
         strokeWidth={strokeWidth}
         strokeDasharray={circumference}
         strokeDashoffset={offset}
-        strokeLinecap="round"
-        style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+        style={{
+          transform: 'rotate(-90deg)',
+          transformOrigin: '50% 50%',
+          transition: 'stroke-dashoffset 0.5s ease',
+        }}
       />
       {/* Center text */}
       <text
