@@ -36,8 +36,8 @@ const Education: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-4 items-center justify-center">
-      <h2 className='text-1xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white-grey'>{t("about-education")}
+    <div className="flex flex-col gap-4 items-start xl:items-center justify-center">
+      <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white-grey'>{t("about-education")}
         <span className='bg-gradient-to-r from-green-800 via-green-600 to-green-400 bg-clip-text text-transparent'>.</span>
       </h2>
       <WheelMarquee items={items} />

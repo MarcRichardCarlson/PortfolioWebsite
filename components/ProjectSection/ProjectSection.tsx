@@ -9,7 +9,7 @@ import Projects from './Projects';
 
 const ProjectSection = () => {
   return (
-    <div className='bg-black-soil pb-32'>
+    <div className='bg-black-soil pb-0 md:pb-32'>
       <Projects
         projects={[
           {

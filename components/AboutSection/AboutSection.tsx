@@ -21,7 +21,7 @@ const AboutSection: React.FC = () => {
 
                         <TypingEffect/>
 
-                        <span className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-lg font-inter text-white-grey whitespace-normal">
+                        <span className="text-base md:text-sm lg:text-sm xl:text-lg font-inter text-white-grey whitespace-normal">
                             {t("about-text")}
                         </span>
 
