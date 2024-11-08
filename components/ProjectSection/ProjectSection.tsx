@@ -6,29 +6,34 @@ import ProjectImage4 from '../../public/images/DFSync.png';
 import ProjectImage5 from '../../public/images/Discord.png';
 import ProjectImage6 from '../../public/images/UnknownMedia.png';
 import Projects from './Projects';
+import { useTranslation } from "@/i18n/client";
+import { useCurrentLocale } from "@/hooks/locale";
 
 const ProjectSection = () => {
+  const locale = useCurrentLocale();
+  const { t } = useTranslation(locale, "translation");
+
   return (
     <div className='bg-black-soil pb-0 md:pb-32'>
       <Projects
         projects={[
           {
             title: 'GrönaHus',
-            description: 'A tech company where I conducted a detailed analysis of their website’s content, scalability, and SEO potential. I provided insights and made minor adjustments to enhance their overall site structure.',
+            description: t("projects-grönahus"),
             image: ProjectImage1,
-            tag: { text: 'Content - SEO', color: '#4392f1' },
+            tag: { text: t("projects-grönahus-tag"), color: '#4392f1' },
           },
           {
             title: 'Lamtek AB',
-            description: 'A business specializing in paper laminate products. I’m currently developing a semi-e-commerce site for them, focusing on SEO to increase traffic, boost visibility, and drive customer engagement.',
+            description: t("projects-lamtek"),
             image: ProjectImage2,
-            tag: { text: 'Semi-Ecommerce', color: '#c5d1eb' },
+            tag: { text: t("projects-lamtek-tag"), color: '#c5d1eb' },
           },
           {
             title: 'HelloSmart',
-            description: 'A company that sells motorized blinds for smart homes. I’m currently designing their full e-commerce site from scratch, with a strong emphasis on SEO to attract traffic and grow their online sales.',
+            description: t("projects-hellosmart"),
             image: ProjectImage3,
-            tag: { text: 'E-commerce', color: '#f2c14e' },
+            tag: { text: t("projects-hellosmart-tag"), color: '#f2c14e' },
           }
         ]}
       />
@@ -36,21 +41,21 @@ const ProjectSection = () => {
         projects={[
           {
             title: 'DigitalFans - Sync',
-            description: 'A company where I completed my internship during my studies in development. I created a customer analysis form to help them better understand client needs and improve their service offerings.',
+            description: t("projects-digitalfans"),
             image: ProjectImage4,
-            tag: { text: 'Assignment', color: '#f7aef8' },
+            tag: { text: t("projects-digitalfans-tag"), color: '#f7aef8' },
           },
           {
             title: 'Discord - Skin',
-            description: 'A passion project where I recreated the Discord interface as a custom “skin.” This was purely for learning, with no collaboration with Discord. It’s not fully functional but captures the design elements.',
+            description: t("projects-discord"),
             image: ProjectImage5,
-            tag: { text: 'Passion - Project', color: '#fe7f2d' },
+            tag: { text: t("projects-discord-tag"), color: '#fe7f2d' },
           },
           {
             title: 'Unknown Media',
-            description: 'Coming Soon! A media company I may collaborate with to create a website showcasing their film projects and team. This project is currently in the planning stages.',
+            description: t("projects-media"),
             image: ProjectImage6,
-            tag: { text: 'Production -Website', color: '#9046cf' },
+            tag: { text: t("projects-media-tag"), color: '#9046cf' },
           },
         ]}
       />

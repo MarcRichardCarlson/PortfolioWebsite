@@ -1,20 +1,25 @@
 import React from 'react';
 import CircularProgress from './CircularProgress';
-
-const skills = [
-  { name: 'Nature & Wild', level: 71 },
-  { name: 'Art & Design', level: 46 },
-  { name: 'Tech Trends', level: 52 },
-  { name: 'Traveling', level: 100 },
-  { name: 'Music & Audio', level: 93 },
-];
+import { useTranslation } from "@/i18n/client";
+import { useCurrentLocale } from "@/hooks/locale";
 
 const SkillDashboard: React.FC = () => {
+  const locale = useCurrentLocale();
+  const { t } = useTranslation(locale, "translation");
+
+  const skills = [
+    { name: t("about-nature"), level: 71 },
+    { name: t("about-art"), level: 46 },
+    { name: t("about-tech"), level: 52 },
+    { name: t("about-travel"), level: 100 },
+    { name: t("about-music"), level: 93 },
+  ];
+
   return (
     <div className='px-4 sm:px-6 md:px-8'>
       <div className='flex flex-col gap-10 border-t border-b py-12'>
         <h3 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white-grey'>
-          What Inspires Me
+          {t("about-title")}<span className="bg-gradient-to-r from-green-800 via-green-600 to-green-400 bg-clip-text text-transparent">.</span>
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-center gap-4">
           {skills.map((skill) => (
