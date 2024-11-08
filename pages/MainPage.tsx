@@ -16,7 +16,7 @@ const MainPage = () => {
 
   return (
     < >
-      <div className='flex h-screen transition-all duration-300 ease-in-out'>
+      <div className='flex h-svh transition-all duration-300 ease-in-out'>
         <Navbar 
           heroRef={heroRef}
           projectsRef={projectsRef}
