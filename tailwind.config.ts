@@ -20,6 +20,7 @@ const config: Config = {
           '32px': '32px',
           '64px': '64px',
           '128px': '128px',
+          '13': '3.25rem', // 13 units = 13 * 0.25rem = 3.25rem
         }
       },
       gap: {
