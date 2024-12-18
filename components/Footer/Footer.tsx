@@ -6,7 +6,6 @@ import LanguagePicker from "./LanguagePicker";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import Popup from "../PopUp";
-import FeedbackButton from "../FeedbackButton";
 import LetsWork from "./LetsWork";
 import MediaIcons from "../Footer/FooterMediaIcons"
 
@@ -50,15 +49,13 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
       <MediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
 
 
-      <footer className="w-full flex flex-col gap-8 text-black dark:text-white relative shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-8 rounded-3xl">
+      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-8 rounded-3xl">
         <div className="absolute top-4 right-4 md:right-8">
           <LanguagePicker />
         </div>
-        <div className="absolute bottom-4 left-4 md:right-8">
-          <FeedbackButton/>
-        </div>
-        <p className="text-2xl md:text-3xl font-bold text-white">Before you go, Check out these links</p>
-        <div className="w-full flex flex-col md:flex-row justify-around items-start md:items-center relative z-10">
+  
+        <p className="text-2xl md:text-3xl font-bold text-black dark:text-white">Before you go, Check out these links</p>
+        <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative z-10">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex flex-col gap-4">
               <h4 className="font-inter font-bold">{t("footer-menu-header")}</h4>

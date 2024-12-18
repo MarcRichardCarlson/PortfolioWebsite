@@ -9,7 +9,7 @@ interface RevealOnScrollProps {
 
 export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, className }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0, triggerOnce: true });
 
   React.useEffect(() => {
     if (inView) {
@@ -19,7 +19,7 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, classN
 
   const variants = {
     hidden: { y: "10%", opacity: 0 },
-    visible: { y: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
+    visible: { y: "0%", opacity: 1, transition: { duration: 0.2, ease: "easeOut" } },
   };
 
   return (

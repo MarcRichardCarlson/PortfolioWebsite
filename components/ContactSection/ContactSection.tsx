@@ -87,7 +87,7 @@ const ContactSection: React.FC = () => {
       <section className="flex justify-center items-center shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-8 rounded-3xl">
 
         <div className="relative flex flex-col gap-4 items-start justify-center w-full">
-          <h2 className="text-2xl md:text-3xl font-bold text-white font-montserrat">{t("contact-header")}
+          <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white font-montserrat">{t("contact-header")}
             <span className="font-2xl">.</span>
           </h2>
           <span className="text-white-grey font-montserrat">{t("contact-text")}</span>

@@ -17,12 +17,12 @@ const LetsWork = () => {
 
       {/* Central Call-to-Action */}
       <div className="flex flex-col justify-between items-start h-full">
-        <h2 className="text-2xl md:text-3xl font-bold text-white">
+        <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
           {t("footer-lets-work1")}
           <br />
           {t("footer-lets-work2")}
         </h2>
-        <div className="flex flex-col justify-start gap-2 text-gray-300">
+        <div className="flex flex-col justify-start gap-2 text-gray-700 dark:text-gray-300">
           <a href="#collaborate" className="hover:text-gray-200 transition-all">
             Collaborate With Me
           </a>

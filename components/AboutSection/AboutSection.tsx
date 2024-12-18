@@ -36,7 +36,7 @@ const AboutSection: React.FC = () => {
             </section>
 
             <Skills columnNames={columnNames} />
-            <div className="bg-dark-grey p-8 rounded-3xl">
+            <div className="bg-light-grey dark:bg-dark-grey p-8 rounded-3xl">
                 <AnimateOnView direction="bottom" duration={1} delay={0.4}>
                     <Education />
                 </AnimateOnView>

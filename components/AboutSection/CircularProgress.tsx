@@ -16,8 +16,8 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   size = 100,
   strokeWidth = 8,
   pathColor = '#4ade80',
-  trailColor = 'rgba(255, 255, 255, 0.2)',
-  textColor = 'white',
+  trailColor = 'rgba(255, 255, 255, 0.9) dark:rgba(255, 255, 255, 0.2)',
+  textColor = 'text-black dark:text-white-grey',
 }) => {
   // Calculate the radius and circumference
   const radius = (size - strokeWidth) / 2;
