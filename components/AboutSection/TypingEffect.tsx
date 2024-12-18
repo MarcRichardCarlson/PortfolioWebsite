@@ -13,7 +13,7 @@ const TypingEffect: React.FC = () => {
     t('about-text3'),
     t('about-text4'),
     t('about-text5'),
-  ], [locale, t]);
+  ], [t]);
 
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);

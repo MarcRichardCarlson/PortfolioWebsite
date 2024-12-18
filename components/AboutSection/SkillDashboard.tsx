@@ -26,8 +26,13 @@ const SkillDashboard: React.FC = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-center gap-6">
         {skills.map((skill) => (
-          <AnimateOnView direction="bottom" duration={1} delay={0.4}>
-            <div key={skill.name} className="flex flex-row md:flex-col items-center justify-start xl:justify-center gap-4 m-0 p-0">
+          <AnimateOnView 
+            key={skill.name} // Add the key prop here
+            direction="bottom" 
+            duration={1} 
+            delay={0.4}
+          >
+            <div className="flex flex-row md:flex-col items-center justify-start xl:justify-center gap-4 m-0 p-0">
               <CircularProgress value={skill.level} text={`${skill.level}%`} size={120} />
               <p className="text-black dark:text-white text-sm lg:text-lg font-orbitron">{skill.name}</p>
             </div>
