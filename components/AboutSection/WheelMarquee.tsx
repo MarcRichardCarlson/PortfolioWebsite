@@ -7,7 +7,7 @@ interface WheelMarqueeProps {
 
 const positions = [
   { top: '40%', transform: 'translateY(-50%) scale(1)', zIndex: 2 },
-  { top: '10%', transform: 'translateY(-50%) scale(0.8)', zIndex: 1 },
+  { top: '10%', transform: 'translateY(-50%) scale(0.1)', zIndex: 1 },
   { top: '70%', transform: 'translateY(-50%) scale(0.8)', zIndex: 1 },
 ];
 
@@ -68,7 +68,7 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
 
   return (
     <div
-      className="relative h-96 w-full overflow-hidden"
+      className="relative h-80 w-full overflow-hidden"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onTouchStart={handleTouchStart}
@@ -85,7 +85,7 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
               opacity: position === 0 ? 1 : 0.5,
-              scale: position === 0 ? 1 : 0.8,
+              scale: position === 0 ? 1 : 1,
               top: positions[position].top,
               zIndex: positions[position].zIndex,
               transition: { duration: 0.8, type: 'spring' },

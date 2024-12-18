@@ -14,7 +14,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   value,
   text,
   size = 100,
-  strokeWidth = 10,
+  strokeWidth = 8,
   pathColor = '#4ade80',
   trailColor = 'rgba(255, 255, 255, 0.2)',
   textColor = 'white',
@@ -62,7 +62,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
         dominantBaseline="middle"
         textAnchor="middle"
         fill={textColor}
-        fontSize={size / 5}
+        fontSize={size / 8}
         fontWeight="bold"
       >
         {text}

@@ -5,41 +5,47 @@ import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import TypingEffect from "./TypingEffect";
 import SkillDashboard from "./SkillDashboard";
+import AnimateOnView from "../AnimateOnView";
 
 const AboutSection: React.FC = () => {
     const locale = useCurrentLocale();
     const { t } = useTranslation(locale, "translation");
 
     return (
-        <div className="bg-black-soil min-h-screen flex justify-center items-center">
-            <div className="w-full max-w-[1400px] mx-auto">
-                <section className="w-full w-full flex flex-col xl:flex-row justify-around px-4 sm:px-6 md:px-8 gap-16 xl:gap-0 pt-24 xl:pt-0 pb-4">
-                    <div className="w-full xl:w-1/2 flex flex-col gap-2 justify-center xl:justify-start">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white-grey">
-                            <span>{t("about-header")}</span><span className="bg-gradient-to-r from-green-800 via-green-600 to-green-400 bg-clip-text text-transparent">.</span>
-                        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8 px-4 sm:px-6 md:px-8 text-black dark:text-white">
+            <section className="overflow-hidden bg-light-grey dark:bg-dark-grey rounded-3xl p-8 w-full shadow-custom-shadow">
+                <div className="w-full flex flex-col gap-2">
+                    <AnimateOnView direction="left" duration={1} delay={0}>
+                        <h3 className="text-5xl font-montserrat">
+                            <span>{t("about-header")}</span><span>.</span>
+                        </h3>
+                    </AnimateOnView>
 
-                        <TypingEffect/>
+                    <AnimateOnView direction="top" duration={1} delay={0.4}>
+                        <TypingEffect />
+                    </AnimateOnView>
 
-                        <span className="text-base md:text-sm lg:text-sm xl:text-lg font-inter text-white-grey whitespace-normal">
+                    <AnimateOnView direction="right" duration={1} delay={0}>
+                        <span className="text-base lg:text-base xl:text-lg font-montserrat text-white-grey">
                             {t("about-text")}
                         </span>
+                    </AnimateOnView>
 
-                    </div>
-                    
-                    <div className="w-full xl:w-1/2">
-                        <Education/>
-                    </div>
-
-                </section>
-
-                <div className="flex flex-col gap-16">
-                    <SkillDashboard/>
-                    <Skills columnNames={columnNames} />
                 </div>
-                
 
+            </section>
+
+            <Skills columnNames={columnNames} />
+            <div className="bg-dark-grey p-8 rounded-3xl">
+                <AnimateOnView direction="bottom" duration={1} delay={0.4}>
+                    <Education />
+                </AnimateOnView>
             </div>
+
+
+            <SkillDashboard />
+
+
         </div>
     );
 };

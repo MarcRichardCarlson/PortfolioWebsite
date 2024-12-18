@@ -53,7 +53,7 @@ export default function AppLocaleSwitcher() {
       {/* Dropdown button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-row justify-between text-CustomWhite cursor-pointer text-base md:text-sm hover:text-CustomHover font-ttcommons bg-dark-grey p-3 md:p-4 w-fit md:w-24 rounded-lg"
+        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base md:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 md:p-4 w-fit md:w-24 rounded-xl"
       >
         <span className="md:block hidden"> 
           {activeLocale === "en" ? "EN" : "SV"}
@@ -83,7 +83,7 @@ export default function AppLocaleSwitcher() {
   animate={{ y: 0, opacity: 1 }}
   exit={{ y: -10, opacity: 0 }}
   transition={{ duration: 0.3 }}
-  className={`absolute mt-1 bg-dark-grey shadow-lg z-50 rounded-lg ${
+  className={`absolute mt-1 bg-light-grey dark:bg-dark-grey shadow-lg z-50 rounded-lg ${
     isMediumScreen ? "right-0" : "-left-[3.25rem]"
   }`}
 >
@@ -93,8 +93,8 @@ export default function AppLocaleSwitcher() {
       onClick={handleClick}
       data-locale={locale.label}
       className={twMerge(
-        "block w-full text-left px-4 py-3 text-CustomWhite hover:bg-light-grey hover:bg-opacity-10 cursor-pointer w-24",
-        locale.label === activeLocale && "text-green-500"
+        "font-montserrat block w-full text-left px-4 py-3 text-black dark:text-white hover:bg-light-grey hover:bg-opacity-10 cursor-pointer w-24",
+        locale.label === activeLocale && "text-true-blue"
       )}
     >
       {locale.displayName}

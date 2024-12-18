@@ -15,42 +15,41 @@ const MainPage = () => {
   const contactRef = useRef(null);
 
   return (
-    < >
-      <div className='flex h-svh transition-all duration-300 ease-in-out'>
-        <Navbar 
-          heroRef={heroRef}
-          projectsRef={projectsRef}
-          aboutRef={aboutRef}
-          contactRef={contactRef}
-        />
-        <div className="flex-grow h-full overflow-auto">
-          <section ref={heroRef}>
-          <HeroSection 
-            contactRef={contactRef} 
-            projectsRef={projectsRef} 
-          />
-          </section>
-          <section ref={projectsRef}>
-            <ProjectSection/>
-          </section>
+    <div className="bg-white-smooth dark:bg-black-smooth transition-colors duration-250">
+      
+      <Navbar 
+        heroRef={heroRef}
+        projectsRef={projectsRef}
+        aboutRef={aboutRef}
+        contactRef={contactRef}
+      />
+      <section ref={heroRef}>
+      <HeroSection 
+        contactRef={contactRef} 
+        projectsRef={projectsRef} 
+      />
+      </section>
 
-          <section ref={aboutRef}>
-            <AboutSection />
-          </section>
-          
-          <section ref={contactRef} id="contactRef">
-            <ContactSection />
-          </section>
+      <section ref={aboutRef}>
+        <AboutSection />
+      </section>
+      
+      <section ref={projectsRef}>
+        <ProjectSection/>
+      </section>
+      
+      <section ref={contactRef} id="contactRef">
+        <ContactSection />
+      </section>
 
-          <Footer 
-            heroRef={heroRef}
-            projectsRef={projectsRef}
-            aboutRef={aboutRef}
-            contactRef={contactRef} 
-          />
-        </div>
-      </div>
-    </>
+      <Footer 
+        heroRef={heroRef}
+        projectsRef={projectsRef}
+        aboutRef={aboutRef}
+        contactRef={contactRef} 
+      />
+
+    </div>
   );
 };
 

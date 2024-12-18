@@ -39,30 +39,21 @@ const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebo
   const { t } = useTranslation(locale, "translation");
 
   const urls = [
-    { url: ensureHttps(githubUrl), icon: Github, alt: 'Github', label: 'Github' },
-    { url: ensureHttps(linkedinUrl), icon: LinkedIn, alt: 'LinkedIn', label: 'LinkedIn' },
-    { url: ensureHttps(facebookUrl), icon: Facebook, alt: 'Facebook', label: 'Facebook' },
-    { url: ensureHttps(instagramUrl), icon: Instagram, alt: 'Instagram', label: 'Instagram' },
+    { url: ensureHttps(githubUrl), icon: Github, alt: 'Github'},
+    { url: ensureHttps(linkedinUrl), icon: LinkedIn, alt: 'LinkedIn'},
+    { url: ensureHttps(facebookUrl), icon: Facebook, alt: 'Facebook'},
+    { url: ensureHttps(instagramUrl), icon: Instagram, alt: 'Instagram'},
   ];
 
   return (
-    <div className='flex flex-col gap-4 font-inter'>
-      <h4 className="font-inter font-bold underline underline-offset-4">{t("footer-socials-header")}</h4>
-      <div className="flex flex-col items-left gap-4">
-        {urls.map(({ url, icon, alt, label }, index) => (
-          isValidUrl(url) ? (
-            <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="text-black cursor-pointer flex flex-row gap-2">
-              <Image src={icon} alt={alt} width={25} height={25} style={{ filter: 'invert(1)' }} />
-              <motion.span
-                whileHover={{ scale: 1.1 }}
-                className="text-white cursor-pointer hover:underline underline-offset-4"
-              >
-                {label}
-              </motion.span>
-            </a>
-          ) : null
-        ))}
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full min-w-[350px]">
+      {urls.map(({ url, icon, alt }, index) => (
+      isValidUrl(url) ? (
+        <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="min-w-[150px] flex justify-center items-center dark:bg-dark-grey bg-light-grey cursor-pointer flex flex-row gap-2p-2 rounded-xl">
+          <Image src={icon} alt={alt} width={50} height={50} style={{ filter: 'invert(1)' }} />
+        </a>
+      ) : null
+      ))}
     </div>
   );
 };

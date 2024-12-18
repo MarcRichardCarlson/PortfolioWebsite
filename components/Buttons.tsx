@@ -17,8 +17,8 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  primary: 'max-w-24 bg-dark-grey hover:bg-green-700 text-white rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md',
-  secondary: 'bg-white-grey hover:bg-green-700 text-black border border-black hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
+  primary: 'max-w-24 bg-dark-grey hover:bg-green-700 text-white rounded-xl font-semibold shadow-xl text-sm sm:text-base md:text-md',
+  secondary: 'bg-tech-orange-hover hover:bg-tech-orange dark:bg-tech-orange dark:hover:bg-tech-orange-hover font-montserrat text-white rounded-md font-semibold shadow-xl text-sm sm:text-base md:text-md',
   success: 'bg-green-500 hover:bg-green-600 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   bento: 'bg-indigo-700 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   plan: 'bg-black-soil text-white rounded-sm font-base shadow-xl text-sm sm:text-base md:text-md',
@@ -48,15 +48,13 @@ export default ResponsiveButton;
 /*Usage example*/
 
 {/* 
-<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-4">
-    <ResponsiveButton size="xl" variant="primary">
-    Extra Large Button
-    </ResponsiveButton>
-    <ResponsiveButton size="lg" variant="success">
-    Large Button
-    </ResponsiveButton>
-    <ResponsiveButton size="sm" variant="secondary">
-    Small Button
-    </ResponsiveButton>
-</div> 
+  <ResponsiveButton size="xl" variant="primary">
+  Extra Large Button
+  </ResponsiveButton>
+  <ResponsiveButton size="lg" variant="success">
+  Large Button
+  </ResponsiveButton>
+  <ResponsiveButton size="sm" variant="secondary">
+  Small Button
+  </ResponsiveButton>
 */}

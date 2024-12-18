@@ -4,16 +4,18 @@
     "nav-about" : "Om mig",
     "nav-contact" : "Kontakt",
 
-    "footer-menu-header" : "Meny",
-    "footer-contact-header" : "Kontakt",
-    "footer-socials-header" : "Sociala plattformar",
-
     "CTA" : "Kom i kontakt",
-    "CTA2" : "Utforska projekt",
 
-    "hero-header" : "Utvecklare",
-    "hero-text" : "Hej, jag är Marc",
-    "hero-text2" : "Jag är en frontendutvecklare baserad i Sverige, med en passion för att skapa engagerande och responsiva webbplatser. Med fokus på moderna och användarvänliga designprinciper hjälper jag dig att bygga vackra och intuitiva webbplatser som dina användare kommer att älska, och säkerställer en fantastisk upplevelse på alla enheter.",
+    "hero-header" : "Mitt namn är Marc Carlson, jag är en webbutvecklare som arbetar och bor i Sverige.",
+    
+    "hero-gridbox-header-1": "Interaktiva animationer",
+    "hero-gridbox-text-1": "Skapar smidiga och engagerande animationer som förverkligar dina idéer med expertis inom rörelsedesign. Oavsett om det handlar om mikrointeraktioner eller storskalig rörelse, ser jag till att varje pixel rör sig med ett syfte.",
+    "hero-gridbox-header-2": "Skalbara webbupplevelser",
+    "hero-gridbox-text-2": "Bygger moderna webblösningar utformade för att växa med din publik. Från responsiva layouter till prestandaoptimering, jag fokuserar på att skapa en sömlös upplevelse oavsett var dina användare befinner sig.",
+    "hero-gridbox-header-3": "Anpassad digital identitet",
+    "hero-gridbox-text-3": "Utvecklar skräddarsydda funktioner och lösningar som gör att din plattform sticker ut. Varje kodrad är anpassad för att uppfylla dina unika behov och visa upp din individualitet online.",
+    "hero-gridbox-header-4": "Har du ett projekt i åtanke?",
+    "hero-gridbox-text-4": "Låt oss diskutera ditt projekt och hur vi kan förverkliga det. Hör av dig idag, så skapar vi något extraordinärt tillsammans!",
 
 
     "projects-grönahus": "Fantastiska Grönahus, ett teknikföretag där jag genomförde en detaljerad analys av deras webbplats innehåll, skalbarhet och SEO-potential. Jag gav insikter och gjorde mindre justeringar för att förbättra deras övergripande webbstruktur.",
@@ -32,7 +34,7 @@
       
     
     "about-header" : "Om mig",
-    "about-text" : "Min resa in i utvecklingens värld började genom en vän som hade gått en intensiv kodningskurs på <Salt/>. De beskrev kodning som otroligt roligt, vilket väckte min nyfikenhet. Jag bestämde mig för att ge det ett försök, och till min glädje upptäckte jag att det var precis så roligt som min vän hade beskrivit. Jag började arbeta på små projekt, och min fascination för kodning växte. Snart satte jag ett mål för mig själv: att bli utvecklare. För att uppnå detta tog jag flera kurser för att förbereda mig för ett frontend-program. Efter två korta, roliga år av lärande och hårt arbete är jag stolt över att kunna säga att jag nu är utvecklare, utrustad med en robust teknikstack i min arsenal.",
+    "about-text" : "Min resa in i utvecklingens värld började med mitt intresse för datorer och teknik. Jag tog en extra kurs i dator- och nätverksteknik, vilket väckte min nyfikenhet för programmering. För att fördjupa mina kunskaper och ta nästa steg gick jag en kurs i programmering med C#, som gav mig den grund jag behövde för att söka högre utbildningar. Det ledde mig till KYH Liljeholmen, där jag påbörjade deras program för frontendutvecklare. Under utbildningen fick jag möjligheten att bygga upp en robust teknisk kompetens och arbeta med verktyg som React och TypeScript – som snabbt blev en av mina favoriter – samt fördjupa mig i backend med C# och .NET. Efter två intensiva och lärorika år är jag nu stolt över att kunna kalla mig utvecklare. Idag använder jag min teknikstack i spännande projekt, som mitt nuvarande samarbete med Gröna Hus och HelloSmart, där jag bidrar till att skapa moderna och innovativa lösningar. Jag strävar alltid efter att lära mig mer och söker ständigt nya möjligheter, projekt och samarbeten där jag kan bidra med mina färdigheter och växa som utvecklare. Att få kombinera tekniska utmaningar med kreativ problemlösning är något jag brinner för, och jag ser fram emot att fortsätta utvecklas och möta nya utmaningar i denna spännande bransch.",
     "about-text1" : "Jag är en frontend-utvecklare med fullstack-ambitioner.",
     "about-text2" : "Passionerad om att skapa sömlösa användarupplevelser.",
     "about-text3" : "Kombinerar design och funktionalitet för intuitiva webbapplikationer.",
@@ -80,7 +82,10 @@
     "contact-button" : "Skicka meddelande",
     "contact-error" : "Ogiltigt email format",
     "contact-message-sent" : "Meddelande Skickat!",
-    "contact-selected" : "Valda Paket",
 
-    "remove" : "Ta bort"
+
+    "footer-menu-header" : "Meny",
+    "footer-contact-header" : "Kontakt",
+    "footer-socials-header" : "Sociala plattformar",
+    "footer" : "© Alla rättigheter förbehållna"
 }

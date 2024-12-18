@@ -1,8 +1,8 @@
 import React from 'react';
-import ProjectImage1 from '../../public/images/GrönaHus.png';
-import ProjectImage2 from '../../public/images/Lamtek.png';
-import ProjectImage3 from '../../public/images/HelloSmart.png';
-import ProjectImage4 from '../../public/images/DFSync.png';
+import ProjectImage1 from '../../public/images/hD$VW$d5L.png';
+import ProjectImage2 from '../../public/images/6e0e167b589.png';
+import ProjectImage3 from '../../public/images/Lamtek.png';
+import ProjectImage4 from '../../public/images/164fe47a71001a6c.png';
 import ProjectImage5 from '../../public/images/Discord.png';
 import ProjectImage6 from '../../public/images/UnknownMedia.png';
 import Projects from './Projects';
@@ -14,7 +14,7 @@ const ProjectSection = () => {
   const { t } = useTranslation(locale, "translation");
 
   return (
-    <div className='bg-black-soil pb-0 md:pb-32'>
+    <div className='pb-8'>
       <Projects
         projects={[
           {
@@ -24,21 +24,17 @@ const ProjectSection = () => {
             tag: { text: t("projects-grönahus-tag"), color: '#4392f1' },
           },
           {
-            title: 'Lamtek AB',
-            description: t("projects-lamtek"),
-            image: ProjectImage2,
-            tag: { text: t("projects-lamtek-tag"), color: '#c5d1eb' },
-          },
-          {
             title: 'HelloSmart',
             description: t("projects-hellosmart"),
-            image: ProjectImage3,
+            image: ProjectImage2,
             tag: { text: t("projects-hellosmart-tag"), color: '#f2c14e' },
-          }
-        ]}
-      />
-      <Projects
-        projects={[
+          },
+          {
+            title: 'Lamtek AB',
+            description: t("projects-lamtek"),
+            image: ProjectImage3,
+            tag: { text: t("projects-lamtek-tag"), color: '#c5d1eb' },
+          },
           {
             title: 'DigitalFans - Sync',
             description: t("projects-digitalfans"),

@@ -83,14 +83,14 @@ const TypingEffect: React.FC = () => {
   return (
     <div className="flex justify-start items-center h-fit" style={{ minHeight }}>
       <motion.div
-        className="flex items-center font-inter text-sm md:text-md lg:text-lg xl:text-xl text-neutral-600"
+        className="flex items-center font-inter text-sm md:text-sm lg:text-base xl:text-lg text-neutral-600"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
         <span ref={textRef}>{text}</span>
         <motion.span
-          className="text-2xl font-mono sm:min-h-16 md:min-h-12 lg:min-h-6"
+          className="text-lg font-mono sm:min-h-16 md:min-h-12 lg:min-h-6"
           initial={{ opacity: 1 }}
           animate={{ opacity: [1, 0, 1] }}
           transition={{ repeat: Infinity, duration: 0.8 }}

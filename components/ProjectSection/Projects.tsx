@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Image, { StaticImageData } from 'next/image';
+import { motion } from "framer-motion";
+import Image, { StaticImageData } from "next/image";
 
 interface Project {
   title: string;
@@ -17,130 +16,51 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [descriptionHeight, setDescriptionHeight] = useState<number>(0);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    if (descriptionRef.current) {
-      setDescriptionHeight(descriptionRef.current.clientHeight);
-    }
-  }, [hoveredIndex]);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const descriptionVariants = {
-    initial: { y: 0, transform: 'none' },
-    hover: (descriptionHeight: number) => ({
-      y: -descriptionHeight,
-      transform: 'none',
-    }),
-  };
-
   return (
-    <div className="max-w-[1400px] mx-auto h-full flex xl:flex-row flex-col px-4 sm:px-6 md:px-8">
-      {projects.map((project, index) => {
-        let flexBasis = '33.33%';
-        let flexGrow = 1;
-        let flexShrink = 1;
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 sm:px-6 md:px-8">
+      {projects.map((project, index) => (
+        <motion.div
+          key={index}
+          className="flex flex-col overflow-hidden cursor-pointer rounded-3xl bg-light-grey dark:bg-dark-grey shadow-lg hover:shadow-xl transition-shadow duration-300"
+          whileHover={{ scale: 1.02 }} // Subtle hover scaling
+          whileTap={{ scale: 0.98 }} // Press-down effect
+        >
+          {/* Project Image */}
+          <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-t-3xl">
+            <Image
+              src={project.image}
+              alt={project.title}
+              layout="fill"
+              objectFit="cover"
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </div>
 
-        if (hoveredIndex === 0 && index === 0) {
-          flexBasis = '45%';
-        } else if (hoveredIndex === 0 && index !== 0) {
-          flexBasis = '27.5%';
-        } else if (hoveredIndex === 1 && index === 1) {
-          flexBasis = '45%';
-        } else if (hoveredIndex === 1 && index !== 1) {
-          flexBasis = '27.5%';
-        } else if (hoveredIndex === 2 && index === 2) {
-          flexBasis = '45%';
-        } else if (hoveredIndex === 2 && index !== 2) {
-          flexBasis = '27.5%';
-        }
-
-        return (
-          <motion.div
-            key={index}
-            className="relative bg-dark-grey overflow-hidden cursor-pointer border"
-            style={{
-              flexBasis,
-              flexGrow,
-              flexShrink,
-              height: isMobile
-                ? expandedIndex === index
-                  ? '700px'
-                  : '150px'
-                : '600px',
-              transition: 'height 0.3s ease-in-out, flex-basis 0.3s ease-in-out',
-            }}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() =>
-              isMobile ? setExpandedIndex(expandedIndex === index ? null : index) : null
-            } // Only toggle expanded state on click for mobile
-          >
-            <div className="relative w-full h-full min-w-[300px] min-h-[150px]">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                style={{ objectFit: 'cover' }}
-                className="rounded-none"
-                quality={100}
-              />
-
-              {/* Darkening overlay with opacity adjustment on hover */}
-              <motion.div
-                className="absolute inset-0 bg-black"
-                initial={{ opacity: 0.95 }}
-                animate={{ opacity: hoveredIndex === index ? 0 : 0.95 }}
-                transition={{ duration: 0.3 }}
-              />
-
-              {/* Tag in top-left corner */}
-              <div
-                className="w-auto flex justify-center items-center absolute top-4 left-4 py-2 px-4 text-sm font-semibold"
+          {/* Project Content */}
+          <div className="p-6 flex flex-col gap-4">
+            {/* Title and Tag */}
+            <div className="flex flex-wrap gap-4 lg:flex-row justify-between items-start lg:items-center">
+              <h3 className="text-xl font-semibold text-black dark:text-white whitespace-nowrap">
+                {project.title}
+              </h3>
+              <span
+                className="mt-2 lg:mt-0 py-1 px-3 text-xs font-semibold rounded-full whitespace-nowrap"
                 style={{
                   color: project.tag.color,
-                  backgroundColor: `${project.tag.color}4D`,
-                  borderRadius: '12px',
+                  backgroundColor: `${project.tag.color}33`, // Transparent background
                 }}
               >
                 {project.tag.text}
-              </div>
-
-              <motion.div
-                className="absolute bottom-4 left-4 right-4 text-white"
-                variants={descriptionVariants}
-                initial="initial"
-                animate={hoveredIndex === index ? 'hover' : 'initial'}
-                custom={descriptionHeight}
-                transition={{ duration: 0.3 }}
-              >
-
-                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-
-                <p className="text-sm opacity-0 absolute" ref={descriptionRef}>
-                  {project.description}
-                </p>
-               
-                <p className="text-sm mt-1">
-                  {hoveredIndex === index ? project.description : ''}
-                </p>
-              </motion.div>
+              </span>
             </div>
-          </motion.div>
-        );
-      })}
+
+            {/* Description */}
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              {project.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 };

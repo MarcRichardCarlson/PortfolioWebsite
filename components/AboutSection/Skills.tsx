@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import AnimateOnView from '../AnimateOnView';
 
 type TechStacks = {
     [category: string]: (string | null)[];
@@ -67,22 +68,28 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="bg-black-soil flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8">
+        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-light-grey dark:bg-dark-grey p-8 rounded-3xl shadow-custom-shadow font-montserrat">
            
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 text-center sm:text-left max-w-[1400px]">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex}>
-                        <h3 className="text-white-grey font-extrabold text-2xl mb-4">{colName}</h3>
+
+                        <AnimateOnView direction="left" duration={1} delay={0}>
+                            <h3 className="text-black dark:text-true-blue text-2xl mb-4">{colName}</h3>
+                        </AnimateOnView>
+                        
                         {techStacks[colName].map((tech, index) => (
                             tech && (
                                 <motion.div
                                     key={tech}
-                                    className="flex flex-col gap-2 text-center sm:text-left text-white-grey text-lg font-inter text-xs sm:text-sm md:text-md lg:text-lg"
+                                    className="flex flex-col gap-2 text-center sm:text-left text-black dark:text-gray-200 text-lg text-xs sm:text-sm md:text-md lg:text-lg"
                                     initial={{ opacity: 0, y: -50 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.3 }}
                                 >
-                                    {tech}
+                                    <AnimateOnView direction="top" duration={1} delay={0}>
+                                        {tech}
+                                    </AnimateOnView>
                                 </motion.div>
                             )
                         ))}

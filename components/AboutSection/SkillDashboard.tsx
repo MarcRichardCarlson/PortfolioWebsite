@@ -2,6 +2,7 @@ import React from 'react';
 import CircularProgress from './CircularProgress';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import AnimateOnView from '../AnimateOnView';
 
 const SkillDashboard: React.FC = () => {
   const locale = useCurrentLocale();
@@ -16,19 +17,22 @@ const SkillDashboard: React.FC = () => {
   ];
 
   return (
-    <div className='px-4 sm:px-6 md:px-8'>
-      <div className='flex flex-col gap-10 border-t border-b py-12'>
-        <h3 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white-grey'>
-          {t("about-title")}<span className="bg-gradient-to-r from-green-800 via-green-600 to-green-400 bg-clip-text text-transparent">.</span>
+    <div className='overflow-hidden flex flex-col gap-16 pb-16 bg-light-grey dark:bg-dark-grey p-8 rounded-3xl shadow-custom-shadow'>
+      <AnimateOnView direction="left" duration={1} delay={0}>
+        <h3 className='text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-montserrat text-white-grey'>
+          {t("about-title")}.
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-center gap-4">
-          {skills.map((skill) => (
+      </AnimateOnView>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-center gap-6">
+        {skills.map((skill) => (
+          <AnimateOnView direction="bottom" duration={1} delay={0.4}>
             <div key={skill.name} className="flex flex-row md:flex-col items-center justify-start xl:justify-center gap-4 m-0 p-0">
               <CircularProgress value={skill.level} text={`${skill.level}%`} size={120} />
-              <p className="text-white text-sm lg:text-lg font-targa">{skill.name}</p>
+              <p className="text-black dark:text-white text-sm lg:text-lg font-orbitron">{skill.name}</p>
             </div>
-          ))}
-        </div>
+          </AnimateOnView>
+        ))}
       </div>
     </div>
   );

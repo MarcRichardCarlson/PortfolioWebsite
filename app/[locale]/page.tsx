@@ -12,7 +12,7 @@ export default async function Home({
   // in normal cases, locale should be a valid locale
   // but sometimes it's not so we should just return 404
   if (!APP_LOCALES.includes(locale)) return notFound();
-  return ( 
+  return (
     <MainPage/>
   );
 }

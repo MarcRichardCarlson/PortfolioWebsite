@@ -6,24 +6,13 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   images: {
     domains: ['carlsonmarc.com'],
   },
   theme: {
     extend: {
-      extend: {
-        spacing: {
-          '2px': '2px',
-          '4px': '4px',
-          '8px': '8px',
-          '16px': '16px',
-          '32px': '32px',
-          '64px': '64px',
-          '128px': '128px',
-          '13': '3.25rem', // 13 units = 13 * 0.25rem = 3.25rem
-        }
-      },
-      gap: {
+      spacing: {
         '2px': '2px',
         '4px': '4px',
         '8px': '8px',
@@ -31,29 +20,34 @@ const config: Config = {
         '32px': '32px',
         '64px': '64px',
         '128px': '128px',
+        '13': '3.25rem', // 13 units = 13 * 0.25rem = 3.25rem
       },
       colors: {
-        'sky-blue': '#c2def6',
-        'deep-sea': '#204554',
-        'stone': '#626c69',
-        'cloud': '#bdbbbd',
-        'light-sky': '#a4c4dc',
-        'black-soil' : '#222',
-        'dark-grey' : '#333',
-        'light-grey' : '#bbb',
-        'white-grey' : '#eee'
-
+        'black-soil': '#222',
+        'dark-grey': '#1b2024',
+        'light-grey': '#f3f4f6',
+        'black-smooth': '#0d1014',
+        'white-smooth': '#e1e4e8',
+        'true-blue': '#007AFF',
+        'tech-orange': '#D55F28',
+        'tech-orange-hover': '#C14E21',
+        'custom-purple': '#c0a8f2',
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'custom-gradient': 'linear-gradient(to right, #1b2024 20%, #243037 50%, #007AFF 200%)',
+        'custom-gradient-light': 'linear-gradient(to right, #d9d4cf 20%, #bfc3c8 50%, #508fdd 100%)',
+      },
+      boxShadow: {
+        'custom-shadow': '0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         targa: ['Targa', 'sans-serif'],
         'targa-ms': ['Targa MS', 'sans-serif'],
         'targa-hand': ['Targa MS Hand', 'sans-serif'],
+        orbitron: ['Orbitron', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+
       },
       borderRadius: {
         'none': '0',
@@ -63,9 +57,10 @@ const config: Config = {
         'lg': '0.5rem',
         'full': '9999px',
         'large': '64px',
-      }
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

@@ -1,62 +1,53 @@
 import Portrait from "./Portrait";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
-import ResponsiveButton from "../Buttons";
-import LanguagePicker from "../Footer/LanguagePicker";
+import LanguagePicker from '../Footer/LanguagePicker';
+import HeaderMediaIcons from '../Header/HeaderMediaIcons';
+import Image from "next/image";
+import ImageCut from "../../public/images/o1fOaxeAF4K.png"
+import DynamicGrid from "./DynamicGrid";
+import AnimateOnView from "../AnimateOnView";
 
-const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projectsRef: React.RefObject<HTMLElement> }> = ({ contactRef, projectsRef }) => {
+const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projectsRef: React.RefObject<HTMLElement> }> = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
 
-  const scrollToContact = () => {
-    if (contactRef.current) {
-      contactRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToProjects = () => {
-    if (projectsRef.current) {
-      projectsRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="bg-black-soil relative mx-auto flex lg:flex-row justify-center items-center transition-all duration-300 ease-in-out overflow-hidden h-screen">
-      <div className='absolute right-2 top-2 md:top-4 md:right-4 md:top-4 md:right-8 text-white'>
-      <LanguagePicker />
+    <section className="relative z-10 flex flex-col items-center md:items-start text-white-grey gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 w-full">
+
+          <div className="overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-8 shadow-custom-shadow">
+              
+            <div className="flex flex-col gap-8">
+              <AnimateOnView direction="left" duration={1} delay={0}>
+                <div className="flex justify-between">
+                  <Portrait />
+                  <LanguagePicker />
+                </div>
+              </AnimateOnView>
+
+              <AnimateOnView  direction="right" duration={0.8} delay={0.4}>
+                <h1 className="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-montserrat text-black dark:text-white">{t("hero-header")}</h1>
+              </AnimateOnView>
+            </div>
+
+            <AnimateOnView direction="top" duration={1.2} delay={0.8}>
+              <div className="flex justify-between w-full text-black">
+                <HeaderMediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
+              </div>
+            </AnimateOnView>
+          </div>
+
+          <Image
+            className="rounded-3xl shadow-custom-shadow w-full h-[600px]"
+            src={ImageCut}
+            alt="Decorative image 1"
+          />
       </div>
-      <div className="max-w-[1400px] px-4 sm:px-6 md:px-8 relative z-10 flex flex-col items-center md:items-start text-white-grey gap-16px">
 
-        <div className="flex flex-col xl:flex-row items-center gap-6 w-full justify-between">
+      <DynamicGrid/>
 
-          <h1 className="md:text-left text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold font-inter">
-            <span className="bg-gradient-to-r from-green-800 via-green-600 to-green-400 bg-clip-text text-transparent">
-              {t("hero-text")},
-            </span>
-            <br></br>
-            {t("hero-header")}
-          </h1>
-
-          <Portrait />
-        </div>
-
-        <span className="flex flex-wrap items-center justify-start md:text-left text-center font-targa text-white-grey text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl text-neutral-600">
-          {t("hero-text2")}
-        </span>
-
-        <div className="flex flex-row gap-8px">
-
-          <ResponsiveButton size="xl" variant="primary" onClick={scrollToContact}>
-            {t("CTA")}
-          </ResponsiveButton>
-          <ResponsiveButton size="xl" variant="secondary" onClick={scrollToProjects}>
-            {t("CTA2")}
-          </ResponsiveButton>
-        </div>
-        {/* <div className="mt-20">
-          <SpolaKnapp />
-        </div> */}
-      </div>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import LinkedIn from '../../public/BxBxlLinkedinSquare.svg';
 import Image from 'next/image';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
+import DarkModeToggle from '../DarkModeToggle';
 
 type HeaderMediaIconsProps = {
   linkedinUrl: string;
@@ -45,14 +46,17 @@ const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebo
     ];
   
     return (
-      <div className="flex flex-col gap-4 md:flex-row transition-all duration-300 ease-in-out">
-        {urls.map(({ url, icon, alt }, index) => (
-          isValidUrl(url) ? (
-            <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex flex-col gap-2 md:flex-row">
-              <Image src={icon} alt={alt} width={25} height={25} className='invert' />
-            </a>
-          ) : null
-        ))}
+      <div className='flex justify-between items-center w-full'>
+        <div className="gap-4 flex flex-row transition-all duration-300 ease-in-out">
+          {urls.map(({ url, icon, alt }, index) => (
+            isValidUrl(url) ? (
+              <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex flex-col gap-2 md:flex-row">
+                <Image src={icon} alt={alt} width={35} height={35} className='text-black dark:invert' />
+              </a>
+            ) : null
+          ))}
+        </div>
+          <DarkModeToggle/>
       </div>
     );
   };
