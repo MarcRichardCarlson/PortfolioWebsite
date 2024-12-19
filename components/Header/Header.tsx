@@ -30,6 +30,19 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
     }
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (isOpen && !document.getElementById('menu')?.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   // Auto-close menu on screen resize above breakpoint
   useEffect(() => {
     const handleResize = () => {
@@ -83,29 +96,36 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
       <div className="md:hidden">
         <button
           onClick={toggleMenu}
-          className="p-2 rounded bg-gray-200 dark:bg-gray-800 text-black dark:text-white"
+          className="py-2 px-4 rounded bg-light-grey dark:bg-dark-grey text-black dark:text-white"
         >
           {isOpen ? "✖" : "☰"}
         </button>
       </div>
 
-      {/* Slide-out Menu */}
+      {/* Slide-down Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            id="menu"
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="fixed top-0 right-0 w-3/4 h-full bg-white dark:bg-gray-900 shadow-lg z-50 flex flex-col p-8 gap-4"
+            className="fixed top-0 left-0 w-full h-fit bg-white dark:bg-black-smooth shadow-lg z-50 flex flex-col p-4 gap-4"
           >
+            <button
+              onClick={toggleMenu}
+              className="self-end py-2 px-4 bg-light-grey dark:bg-dark-grey rounded-xl text-black dark:text-white"
+            >
+              ✖
+            </button>
             {navItems.map(({ label, section, ref }) => (
               <motion.a
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className="cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
+                className="bg-light-grey dark:bg-dark-grey rounded-xl cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
               >
-                <AnimateOnView direction="left" duration={1} delay={0}>
+                <AnimateOnView direction="top" duration={0.7} delay={0}>
                   {label}
                 </AnimateOnView>
               </motion.a>

@@ -7,7 +7,7 @@ const LetsWork = () => {
   const { t } = useTranslation(locale, "translation");
 
   return (
-    <div className="min-w-[350px] w-full p-8 bg-light-grey dark:bg-dark-grey rounded-3xl shadow-lg font-montserrat">
+    <div className="min-w-[350px] w-full p-6 md:p-8 bg-light-grey dark:bg-dark-grey rounded-3xl shadow-lg font-montserrat">
       {/* Smaller Boxes */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md transition-transform duration-300 hover:scale-105"></div>
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md transition-transform duration-300 hover:scale-105"></div>

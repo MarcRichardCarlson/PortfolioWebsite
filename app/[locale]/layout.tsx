@@ -4,7 +4,7 @@ import { AppLocale } from "./locales";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio - Marc Carlson",
+  title: "Marc Carlson | Web Development, Redefined",
   description: "Marc Carlson - Portfolio Website",
 };
 

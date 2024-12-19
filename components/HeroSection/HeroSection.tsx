@@ -13,13 +13,13 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
   const { t } = useTranslation(locale, "translation");
 
   return (
-    <section className="relative z-10 flex flex-col items-center md:items-start text-white-grey gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-8">
+    <section className="relative z-10 flex flex-col items-center md:items-start text-white-grey gap-4 md:gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-4 md:pb-8">
 
-      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 md:gap-8 w-full">
 
-          <div className="overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-8 shadow-custom-shadow">
+          <div className="overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-6 md:p-8 shadow-custom-shadow">
               
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 md:gap-8">
               <AnimateOnView direction="left" duration={1} delay={0}>
                 <div className="flex justify-between">
                   <Portrait />
@@ -40,7 +40,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
           </div>
 
           <Image
-            className="rounded-3xl shadow-custom-shadow w-full h-[600px]"
+            className="rounded-3xl shadow-custom-shadow w-full h-[400px] md:h-[600px] object-cover"
             src={ImageCut}
             alt="Decorative image 1"
           />

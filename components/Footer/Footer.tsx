@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
   };
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_4fr] gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr_4fr] gap-4 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
       
       <LetsWork/>
 

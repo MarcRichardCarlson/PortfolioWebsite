@@ -17,9 +17,9 @@ const SkillDashboard: React.FC = () => {
   ];
 
   return (
-    <div className='overflow-hidden flex flex-col gap-16 pb-16 bg-light-grey dark:bg-dark-grey p-8 rounded-3xl shadow-custom-shadow'>
-      <AnimateOnView direction="left" duration={1} delay={0}>
-        <h3 className='text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-montserrat text-black dark:text-white-grey'>
+    <div className='overflow-hidden flex flex-col gap-6 md:gap-8 bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl shadow-custom-shadow'>
+      <AnimateOnView direction="left" duration={0.5} delay={0}>
+        <h3 className='text-xl md:text-5xl font-montserrat text-black dark:text-white'>
           {t("about-title")}.
         </h3>
       </AnimateOnView>
@@ -29,7 +29,7 @@ const SkillDashboard: React.FC = () => {
           <AnimateOnView 
             key={skill.name} // Add the key prop here
             direction="bottom" 
-            duration={1} 
+            duration={0.5} 
             delay={0.4}
           >
             <div className="flex flex-row md:flex-col items-center justify-start xl:justify-center gap-4 m-0 p-0">

@@ -68,14 +68,14 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-light-grey dark:bg-dark-grey p-8 rounded-3xl shadow-custom-shadow font-montserrat">
+        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl shadow-custom-shadow font-montserrat">
            
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 text-center sm:text-left">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 gap-8 md:gap-4 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex}>
 
-                        <AnimateOnView direction="left" duration={1} delay={0}>
-                            <h3 className="text-black dark:text-true-blue text-2xl mb-4">{colName}</h3>
+                        <AnimateOnView direction="left" duration={0.5} delay={0}>
+                            <h3 className="text-black dark:text-true-blue text-2xl mb-2 md:mb-4">{colName}</h3>
                         </AnimateOnView>
                         
                         {techStacks[colName].map((tech, index) => (
@@ -87,7 +87,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.3 }}
                                 >
-                                    <AnimateOnView direction="top" duration={1} delay={0}>
+                                    <AnimateOnView direction="top" duration={0.5} delay={0}>
                                         {tech}
                                     </AnimateOnView>
                                 </motion.div>
