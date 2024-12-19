@@ -19,19 +19,19 @@ interface BentoTabsProps {
   projects: Project[];
 }
 
-const CustomArrow = ({ className, style, onClick, direction }: any) => (
+/* const CustomArrow = ({ className, style, onClick, direction }: any) => (
   <div
     className={`${className} ${direction === 'left' ? 'left-4' : 'right-4'} z-10`}
-    style={{ ...style, display: 'block', background: 'none' }}
+    style={{ ...style, display: 'block', background: 'none'}}
     onClick={onClick}
   />
-);
+); */
 
 const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
   const [activeTab, setActiveTab] = useState(0);
   const sliderRef = useRef<Slider>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  /* const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null); */
 
   const settings = {
     dots: false,
@@ -66,7 +66,7 @@ const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
     ],
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const startAutoScroll = () => {
       if (sliderRef.current) {
         sliderRef.current.slickNext();
@@ -111,7 +111,7 @@ const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
         sliderRef.current.slickNext();
       }
     }, 5000);
-  };
+  }; */
 
   return (
     <div className="w-full p-0 md:p-8 overflow-x-scroll">
@@ -124,9 +124,9 @@ const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
             transition={{ duration: 0.2 }}
             className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl bg-light-grey dark:bg-dark-grey duration-300 p-0 md:p-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
             style={{ width: '200px' }}
-            onClick={() => handleCardClick(index)}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
+            /* onClick={() => handleCardClick(index)} */
+            /* onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp} */
           >
             <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-3xl">
               <motion.div
