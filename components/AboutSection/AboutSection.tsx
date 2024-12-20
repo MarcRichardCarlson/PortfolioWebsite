@@ -4,8 +4,9 @@ import Education from "./Education";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import TypingEffect from "./TypingEffect";
-import SkillDashboard from "./SkillDashboard";
 import AnimateOnView from "../AnimateOnView";
+import Image from 'next/image';
+import AboutImage from "../../public/images/kjGgBSc75G0.png"
 
 const AboutSection: React.FC = () => {
     const locale = useCurrentLocale();
@@ -42,9 +43,9 @@ const AboutSection: React.FC = () => {
                 </AnimateOnView>
             </div>
 
-
-            <SkillDashboard />
-
+            <div>
+                <Image src={AboutImage} alt="About image" width={500} height={500} className="w-full max-h-[400px] object-cover rounded-3xl"/>
+            </div>
 
         </div>
     );

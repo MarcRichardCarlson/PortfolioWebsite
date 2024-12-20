@@ -34,7 +34,7 @@
       
 
     "about-header" : "About me",
-    "about-text" : "My journey into the world of development began with my interest in computers and technology. I took an additional course in computer and network technology, which sparked my curiosity for programming. To deepen my knowledge and take the next step, I completed a programming course in C#, which provided me with the foundation needed to pursue higher education. This led me to KYH Liljeholmen, where I enrolled in their frontend development program. During my studies, I had the opportunity to build a strong technical foundation and work with tools like React and TypeScript – which quickly became some of my favorites – as well as delve into backend development with C# and .NET. After two intensive and rewarding years, I am now proud to call myself a developer. Today, I apply my technical skill set to exciting projects, including my current collaboration with Gröna Hus and HelloSmart, where I contribute to creating modern and innovative solutions. I am always striving to learn more and constantly seek new opportunities, projects, and collaborations where I can leverage my skills and grow as a developer. Combining technical challenges with creative problem-solving is something I am passionate about, and I look forward to continuing to grow and tackle new challenges in this exciting field.",
+    "about-text" : "My journey into development began with a deep interest in computers and technology. I started with a course in computer and network technology, which sparked my curiosity about programming. This led to a programming course in C#, providing the foundation I needed to pursue higher education at KYH Liljeholmen's frontend developer program. During my studies, I built strong skills in tools like React and TypeScript, which quickly became favorites, and gained experience in backend development with C# and .NET. After two intensive and rewarding years, I’m proud to call myself a developer. Today, I apply my skills to exciting projects like Gröna Hus and HelloSmart, creating modern and innovative solutions. I’m passionate about combining technical challenges with creative problem-solving and always eager to grow and take on new opportunities.",
     "about-text1": "Frontend developer with a foundation in fullstack development.",
     "about-text2": "Focused on delivering smooth, user-centered experiences.",
     "about-text3": "Merging design and functionality to create intuitive web solutions.",
@@ -72,7 +72,7 @@
     "about-skill-flexibility" : "Flexibility",
 
 
-    "contact-header" : "Contact",
+    "contact-header" : "Come in Contact",
     "contact-text" : "Feel free to reach out with any questions, whether you’re interested in starting a new project, enhancing an existing one.",
     "contact-name" : "Name",
     "contact-last-name" : "Last Name",

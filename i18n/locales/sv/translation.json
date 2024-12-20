@@ -34,7 +34,7 @@
       
     
     "about-header" : "Om mig",
-    "about-text" : "Min resa in i utvecklingens värld började med mitt intresse för datorer och teknik. Jag tog en extra kurs i dator- och nätverksteknik, vilket väckte min nyfikenhet för programmering. För att fördjupa mina kunskaper och ta nästa steg gick jag en kurs i programmering med C#, som gav mig den grund jag behövde för att söka högre utbildningar. Det ledde mig till KYH Liljeholmen, där jag påbörjade deras program för frontendutvecklare. Under utbildningen fick jag möjligheten att bygga upp en robust teknisk kompetens och arbeta med verktyg som React och TypeScript – som snabbt blev en av mina favoriter – samt fördjupa mig i backend med C# och .NET. Efter två intensiva och lärorika år är jag nu stolt över att kunna kalla mig utvecklare. Idag använder jag min teknikstack i spännande projekt, som mitt nuvarande samarbete med Gröna Hus och HelloSmart, där jag bidrar till att skapa moderna och innovativa lösningar. Jag strävar alltid efter att lära mig mer och söker ständigt nya möjligheter, projekt och samarbeten där jag kan bidra med mina färdigheter och växa som utvecklare. Att få kombinera tekniska utmaningar med kreativ problemlösning är något jag brinner för, och jag ser fram emot att fortsätta utvecklas och möta nya utmaningar i denna spännande bransch.",
+    "about-text" : "Min resa in i utveckling började med ett djupt intresse för datorer och teknik. Jag började med en kurs i dator- och nätverksteknik, vilket väckte min nyfikenhet för programmering. Detta ledde till en programmeringskurs i C#, som gav mig den grund jag behövde för att söka vidare utbildning på KYH Liljeholmens frontendutvecklarprogram. Under mina studier byggde jag upp starka färdigheter i verktyg som React och TypeScript, som snabbt blev favoriter, samt fick erfarenhet av backendutveckling med C# och .NET. Efter två intensiva och givande år är jag stolt över att kalla mig utvecklare. Idag använder jag mina färdigheter i spännande projekt som Gröna Hus och HelloSmart, där jag skapar moderna och innovativa lösningar. Jag brinner för att kombinera tekniska utmaningar med kreativ problemlösning och är alltid ivrig att växa och ta mig an nya möjligheter.",
     "about-text1" : "Jag är en frontend-utvecklare med fullstack-ambitioner.",
     "about-text2" : "Passionerad om att skapa sömlösa användarupplevelser.",
     "about-text3" : "Kombinerar design och funktionalitet för intuitiva webbapplikationer.",
@@ -72,7 +72,7 @@
     "about-skill-flexibility" : "Flexibilitet",
 
 
-    "contact-header" : "Kontakta",
+    "contact-header" : "Kom i Kontakt",
     "contact-text" : "Du är välkommen att kontakta mig med frågor, oavsett om du vill starta ett nytt projekt, förbättra ett befintligt.",
     "contact-name" : "Namn",
     "contact-last-name" : "Efternamn",

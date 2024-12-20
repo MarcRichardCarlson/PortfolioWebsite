@@ -50,11 +50,14 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
 
       <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-8 rounded-3xl">
-        <div className="absolute top-4 right-4 md:right-8">
-          <LanguagePicker />
+
+        <div className="flex justify-between gap-2">
+          <p className="text-2xl md:text-3xl font-bold text-black dark:text-white">Before you go, Check out these links</p>
+          <div className="min-h-12 min-w-12">
+            <LanguagePicker />
+          </div>
         </div>
   
-        <p className="text-2xl md:text-3xl font-bold text-black dark:text-white">Before you go, Check out these links</p>
         <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative z-10">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex flex-col gap-4">
@@ -122,16 +125,18 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
           </div>
         </div>
 
-        <p className="text-left md:text-center text-sm">© 2024, Carlsonmarc | Powered by Marc Carlson</p>
+        <div className="flex gap-4">
+          <p className="text-left md:text-center text-sm">© 2024, Carlsonmarc | Powered by Marc Carlson</p>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          className="absolute bottom-8 right-8 bg-white text-black p-2 px-4 rounded-sm shadow-lg"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-          ↑
-        </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            className="bg-white text-black p-2 px-4 rounded-sm shadow-lg"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+            ↑
+          </motion.button>
+        </div>
 
 
         {showPopup && (

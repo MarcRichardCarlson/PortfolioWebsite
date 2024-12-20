@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Image from 'next/image';
 import Popup from '../PopUp';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import ResponsiveButton from "../Buttons";
+import ContactImage from "../../public/images/RuS@wIWo@n.png";
 
 const ContactSection: React.FC = () => {
   const locale = useCurrentLocale();
@@ -82,63 +84,65 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-6 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
+      <Image src={ContactImage} alt="Description" width={1000} height={1000} className="max-h-[600px] w-full object-cover rounded-3xl"/>
 
-      <section className="flex justify-center items-center shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl">
+      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl">
 
-        <div className="relative flex flex-col gap-4 items-start justify-center w-full">
+        <div className="flex flex-col gap-2">
           <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white font-montserrat">{t("contact-header")}
             <span className="font-2xl">.</span>
           </h2>
           <span className="text-white-grey font-montserrat">{t("contact-text")}</span>
-          <div className="flex flex-col gap-4 w-full ">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6 text-black">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2">
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(sanitizeInput(e.target.value))}
-                  placeholder={t("contact-name")}
-                  className="rounded-xl bg-white px-4 py-3 text-sm md:text-base "
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(sanitizeInput(e.target.value))}
-                  placeholder={t("contact-email")}
-                  className={`rounded-xl bg-white px-4 py-3 text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
-                  required
-                />
-                {!isEmailValid && <span className="text-red-500 text-sm">{t("contact-error")}</span>}
-              </div>
+        </div>
 
-              </div>
+        <div className="flex flex-col gap-4 w-full ">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6 text-black">
+            <div className="flex flex-col gap-4 md:gap-6">
+            <div className="flex flex-col gap-2">
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(sanitizeInput(e.target.value))}
+                placeholder={t("contact-name")}
+                className="rounded-lg bg-white px-4 py-3 text-sm md:text-base "
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(sanitizeInput(e.target.value))}
+                placeholder={t("contact-email")}
+                className={`rounded-lg bg-white px-4 py-3 text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
+                required
+              />
+              {!isEmailValid && <span className="text-red-500 text-sm">{t("contact-error")}</span>}
+            </div>
 
-              <div className="flex flex-col gap-2">
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(sanitizeInput(e.target.value))}
-                  placeholder={t("contact-message")}
-                  className="rounded-3xl bg-white max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base "
-                  rows={5}
-                  required
-                ></textarea>
-              </div>
-              
-              <div className="flex justify-end">
-                <ResponsiveButton size="xl" variant="secondary" type="submit" disabled={isSubmitting}>
-                  {t("contact-button")}
-                </ResponsiveButton>
-              </div>
-            </form>
-          </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <textarea
+                id="message"
+                value={message}
+                onChange={(e) => setMessage(sanitizeInput(e.target.value))}
+                placeholder={t("contact-message")}
+                className="rounded-xl bg-white max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base "
+                rows={5}
+                required
+              ></textarea>
+            </div>
+            
+            <div className="flex justify-end">
+              <ResponsiveButton size="xl" variant="secondary" type="submit" disabled={isSubmitting}>
+                {t("contact-button")}
+              </ResponsiveButton>
+            </div>
+          </form>
         </div>
 
         {showPopup && (

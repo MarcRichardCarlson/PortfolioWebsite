@@ -15,7 +15,7 @@ interface Project {
   };
 }
 
-interface BentoTabsProps {
+interface ProjectsProps {
   projects: Project[];
 }
 
@@ -27,7 +27,7 @@ interface BentoTabsProps {
   />
 ); */
 
-const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
+const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [activeTab, setActiveTab] = useState(0);
   const sliderRef = useRef<Slider>(null);
   /* const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -114,7 +114,7 @@ const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
   }; */
 
   return (
-    <div className="w-full p-0 md:p-8 overflow-x-scroll">
+    <div className="w-full p-0 md:p-4 overflow-x-scroll scrollbar-hidden">
       <Slider ref={sliderRef} {...settings}>
         {projects.map((project, index) => (
           <motion.div
@@ -183,4 +183,4 @@ const BentoTabs: React.FC<BentoTabsProps> = ({ projects }) => {
   );
 };
 
-export default BentoTabs;
+export default Projects;
