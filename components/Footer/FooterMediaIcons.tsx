@@ -46,7 +46,7 @@ const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebo
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-4 w-full min-w-[350px] min-h-[350px]">
+    <div className="grid grid-cols-2 gap-4 w-full min-w-[325px] min-h-[325px] md:min-w-[350px] md:min-h-[350px]">
       {urls.map(({ url, icon, alt }, index) => (
       isValidUrl(url) ? (
         <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="min-w-[150px] flex justify-center items-center dark:bg-dark-grey bg-light-grey cursor-pointer flex flex-row gap-2 p-2 rounded-xl">

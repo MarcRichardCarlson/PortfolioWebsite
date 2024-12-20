@@ -125,7 +125,10 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
           </div>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-between w-full">
+
+          <div className="hidden md:flex"></div>
+
           <p className="text-left md:text-center text-sm">© 2024, Carlsonmarc | Powered by Marc Carlson</p>
 
           <motion.button

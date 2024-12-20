@@ -85,7 +85,7 @@ const ContactSection: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
-      <Image src={ContactImage} alt="Description" width={1000} height={1000} className="max-h-[600px] w-full object-cover rounded-3xl"/>
+      <Image src={ContactImage} alt="Description" width={500} height={500} className="max-h-[600px] w-full object-cover rounded-3xl" unoptimized={true}/>
 
       <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl">
 

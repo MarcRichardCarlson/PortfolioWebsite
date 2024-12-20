@@ -43,9 +43,14 @@ const AboutSection: React.FC = () => {
                 </AnimateOnView>
             </div>
 
-            <div>
-                <Image src={AboutImage} alt="About image" width={500} height={500} className="w-full max-h-[400px] object-cover rounded-3xl"/>
-            </div>
+            <Image
+                src={AboutImage}
+                alt="About image"
+                width={500}
+                height={500}
+                className="w-full max-h-[400px] object-cover rounded-3xl"
+                unoptimized={true}
+            />
 
         </div>
     );

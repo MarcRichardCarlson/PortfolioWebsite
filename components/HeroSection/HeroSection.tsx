@@ -43,6 +43,8 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
             className="rounded-3xl shadow-custom-shadow w-full h-[400px] md:h-[600px] object-cover"
             src={ImageCut}
             alt="Decorative image 1"
+            height={500}
+            width={500}
           />
       </div>
 
