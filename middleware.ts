@@ -11,45 +11,34 @@ export const config = {
 
 export async function middleware(req: NextRequest) {
   try {
-    // Match user's locale (if needed)
-    let matches = withLocaleUriPattern.exec(req.nextUrl.pathname);
-    if (matches == null) {
-      let langHeaders = { "accept-language": req.headers.get("accept-language")! };
-      let languages = new Negotiator({ headers: langHeaders }).languages();
-      let locale = match(languages, APP_LOCALES, "en"); // Default to "en" if no match
+    // Check if the request already contains a locale
+    const matches = withLocaleUriPattern.exec(req.nextUrl.pathname);
+    if (!matches) {
+      const langHeaders = { "accept-language": req.headers.get("accept-language") || "" };
+      const languages = new Negotiator({ headers: langHeaders }).languages();
+      const locale = match(languages, APP_LOCALES, "en"); // Default to "en" if no match
 
-      let appOrigin = process.env.NEXT_PUBLIC_APP_ORIGIN;
+      let appOrigin = process.env.NEXT_PUBLIC_APP_ORIGIN || "";
 
-      if (!appOrigin) {
-        throw new Error("NEXT_PUBLIC_APP_ORIGIN is not set");
+      // Ensure appOrigin ends correctly
+      if (!appOrigin.endsWith("/")) {
+        appOrigin += "/";
       }
 
-      // Ensure appOrigin is a valid URL and has a protocol
-      if (!/^https?:\/\//i.test(appOrigin)) {
-        appOrigin = `https://${appOrigin}`;
-      }
+      // Build the destination URL, preserving the original path and query
+      const destinationUrl = new URL(req.nextUrl.href);
+      destinationUrl.pathname = `/${locale}${req.nextUrl.pathname}`;
+      destinationUrl.search = req.nextUrl.search; // Keep query params
 
-      // Ensure appOrigin ends with a slash
-      if (!appOrigin.endsWith('/')) {
-        appOrigin += '/';
-      }
+      console.log("Redirecting to:", destinationUrl.href);
 
-      // Construct the destination URL
-      let destinationUrl;
-      if (req.nextUrl.pathname === "/") {
-        // Redirect to /en if no specific locale is matched
-        destinationUrl = `${appOrigin}en/`;
-      } else {
-        destinationUrl = `${appOrigin}${locale}${req.nextUrl.pathname}${req.nextUrl.search}`;
-      }
-
-      console.log('Destination URL:', destinationUrl);
-
-      let destination = new URL(destinationUrl);
-      return NextResponse.redirect(destination);
+      return NextResponse.redirect(destinationUrl);
     }
+
+    // Proceed with the request if it already has a locale
+    return NextResponse.next();
   } catch (error) {
-    console.error("Error in middleware:", error);
+    console.error("Middleware Error:", error);
     return new Response("Internal Server Error", { status: 500 });
   }
 }
