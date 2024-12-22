@@ -4,7 +4,8 @@ import { useCurrentLocale } from "@/hooks/locale";
 import LanguagePicker from '../Footer/LanguagePicker';
 import HeaderMediaIcons from '../Header/HeaderMediaIcons';
 import Image from "next/image";
-import ImageCut from "../../public/images/o1fOaxeAF4K.png"
+/* import ImageCut from "../../public/images/o1fOaxeAF4K.png"*/
+import HeroImage from "../../public/images/HeroImage.png"
 import DynamicGrid from "./DynamicGrid";
 import RevealOnScroll from "../RevealOnScroll";
 
@@ -40,8 +41,8 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
         </div>
 
         <Image
-          className="rounded-3xl shadow-custom-shadow w-full min-w-325 h-[400px] md:h-[600px] object-cover"
-          src={ImageCut}
+          className="rounded-3xl shadow-custom-shadow w-full min-w-325 h-[400px] md:h-[600px] lg:h-[600px] xl:h-[700px] object-cover"
+          src={HeroImage}
           alt="Decorative image 1"
           height={500}
           width={500}

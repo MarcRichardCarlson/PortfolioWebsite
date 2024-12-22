@@ -18,7 +18,7 @@ const sizeClasses = {
 
 const variantClasses = {
   primary: 'max-w-24 bg-dark-grey hover:bg-green-700 text-white rounded-xl font-semibold shadow-xl text-sm sm:text-base md:text-md',
-  secondary: 'bg-tech-orange-hover hover:bg-tech-orange dark:bg-tech-orange dark:hover:bg-tech-orange-hover font-montserrat text-white rounded-md font-semibold shadow-xl text-sm sm:text-base md:text-md',
+  secondary: 'bg-tech-orange hover:bg-tech-orange-hover dark:bg-tech-orange dark:hover:bg-tech-orange-hover font-montserrat text-white rounded-md font-semibold shadow-xl text-sm sm:text-base md:text-md',
   success: 'bg-green-500 hover:bg-green-600 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   bento: 'bg-indigo-700 text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md',
   plan: 'bg-black-soil text-white rounded-sm font-base shadow-xl text-sm sm:text-base md:text-md',

@@ -75,7 +75,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                     <div key={colIndex}>
 
                         <RevealOnScroll direction="left" duration={0.5} delay={0}>
-                            <h3 className="whitespace-nowrap text-black dark:text-true-blue text-2xl mb-2 md:mb-4">{colName}</h3>
+                            <h3 className="whitespace-nowrap text-true-blue text-2xl mb-2 md:mb-4">{colName}</h3>
                         </RevealOnScroll>
 
                         {techStacks[colName].map((tech, index) => (

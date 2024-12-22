@@ -78,8 +78,9 @@ export default function AppLocaleSwitcher() {
           height={20}
           className={`xl:block hidden transition-transform duration-300 ${
             isOpen ? "rotate-180" : "rotate-0"
-          }`}
+          } dark:filter dark:invert`} // Add dark:filter and dark:invert here
         />
+
         <Image
           src={Globe}
           alt="Arrow"

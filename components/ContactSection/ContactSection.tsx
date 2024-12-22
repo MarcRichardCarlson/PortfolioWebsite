@@ -101,7 +101,7 @@ const ContactSection: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-4 w-full ">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6 text-black">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6 text-black dark:text-white">
             <div className="flex flex-col gap-4 md:gap-6">
 
               <RevealOnScroll direction="bottom" duration={0.4} delay={0.2}>
