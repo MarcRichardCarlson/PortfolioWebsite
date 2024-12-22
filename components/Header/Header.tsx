@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import RevealOnScroll from "../RevealOnScroll";
+import Image from "next/image";
+import CloseIcon from "../../public/icons/IcRoundClose.svg"
+import MenuIcon from "../../public/icons/TablerMenu2.svg"
 
 interface NavbarProps {
   heroRef: RefObject<HTMLElement>;
@@ -97,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
           onClick={toggleMenu}
           className="py-2 px-4 rounded bg-light-grey dark:bg-dark-grey text-black dark:text-white"
         >
-          {isOpen ? "✖" : "☰"}
+          <Image src={MenuIcon} alt={"Hamburger Menu Icon"} className="filter dark:invert"/>
         </button>
       </div>
 
@@ -110,21 +113,21 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 w-full h-fit bg-white dark:bg-black-smooth shadow-lg z-50 flex flex-col p-4 gap-4"
+            className="fixed top-0 left-0 w-full h-fit bg-white dark:bg-dark-grey shadow-lg z-50 flex flex-col p-4 pb-6 gap-4"
           >
             <button
               onClick={toggleMenu}
-              className="self-end py-2 px-4 bg-light-grey dark:bg-dark-grey rounded-xl text-black dark:text-white"
+              className="self-end py-2 px-2 bg-light-grey dark:bg-input-black rounded-lg text-black dark:text-white"
             >
-              ✖
+              <Image src={CloseIcon} alt={"Menu Closing Icon"} className="filter dark:invert"/>
             </button>
             {navItems.map(({ label, section, ref }) => (
               <motion.a
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className="bg-light-grey dark:bg-dark-grey rounded-xl cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
+                className="w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer text-black dark:text-white font-semibold px-4 py-4 hover:bg-true-blue transition-all"
               >
-                <RevealOnScroll direction="top" duration={0.7} delay={0}>
+                <RevealOnScroll direction="right" duration={0.6} delay={0}>
                   {label}
                 </RevealOnScroll>
               </motion.a>

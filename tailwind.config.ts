@@ -24,6 +24,7 @@ const config: Config = {
       },
       colors: {
         'black-soil': '#222',
+        'input-black': '#2c3136',
         'dark-grey': '#1b2024',
         'light-grey': '#f3f4f6',
         'black-smooth': '#0d1014',

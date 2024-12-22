@@ -113,7 +113,7 @@ const ContactSection: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(sanitizeInput(e.target.value))}
                     placeholder={t("contact-name")}
-                    className="rounded-lg bg-white px-4 py-3 text-sm md:text-base "
+                    className="rounded-lg bg-white dark:bg-input-black px-4 py-3 text-sm md:text-base "
                     required
                     />
                 </div>
@@ -127,7 +127,7 @@ const ContactSection: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(sanitizeInput(e.target.value))}
                     placeholder={t("contact-email")}
-                    className={`rounded-lg bg-white px-4 py-3 text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
+                    className={`rounded-lg bg-white dark:bg-input-black px-4 py-3 text-sm md:text-base  ${!isEmailValid ? 'border-red-500' : ''}`}
                     required
                     />
                   {!isEmailValid && <span className="text-red-500 text-sm">{t("contact-error")}</span>}
@@ -143,7 +143,7 @@ const ContactSection: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(sanitizeInput(e.target.value))}
                   placeholder={t("contact-message")}
-                  className="rounded-xl bg-white max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base "
+                  className="rounded-xl bg-white dark:bg-input-black max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base "
                   rows={5}
                   required
                   ></textarea>

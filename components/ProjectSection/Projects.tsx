@@ -19,19 +19,11 @@ interface ProjectsProps {
   projects: Project[];
 }
 
-/* const CustomArrow = ({ className, style, onClick, direction }: any) => (
-  <div
-    className={`${className} ${direction === 'left' ? 'left-4' : 'right-4'} z-10`}
-    style={{ ...style, display: 'block', background: 'none'}}
-    onClick={onClick}
-  />
-); */
+
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [activeTab, setActiveTab] = useState(0);
   const sliderRef = useRef<Slider>(null);
-  /* const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null); */
 
   const settings = {
     dots: false,
@@ -66,53 +58,6 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     ],
   };
 
-  /* useEffect(() => {
-    const startAutoScroll = () => {
-      if (sliderRef.current) {
-        sliderRef.current.slickNext();
-      }
-    };
-
-    intervalRef.current = setInterval(startAutoScroll, 5000);
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
-
-  const handleCardClick = (index: number) => {
-    setActiveTab(index);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(() => {
-        if (sliderRef.current) {
-          sliderRef.current.slickNext();
-        }
-      }, 5000);
-    }, 10000);
-  };
-
-  const handleMouseDown = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
-
-  const handleMouseUp = () => {
-    intervalRef.current = setInterval(() => {
-      if (sliderRef.current) {
-        sliderRef.current.slickNext();
-      }
-    }, 5000);
-  }; */
-
   return (
     <div className="w-full overflow-x-scroll scrollbar-hidden">
       <Slider ref={sliderRef} {...settings}>
@@ -124,9 +69,6 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             transition={{ duration: 0.2 }}
             className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl duration-300 px-0 md:px-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
             style={{ width: '200px' }}
-            /* onClick={() => handleCardClick(index)} */
-            /* onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp} */
           >
             <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-3xl">
               <motion.div
@@ -146,7 +88,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               {activeTab === index && (
                 <>
                   <motion.h3
-                    className="absolute top-6 md:top-8 left-6 md:left-8 text-xl font-semibold text-black dark:text-white whitespace-nowrap"
+                    className="absolute top-6 md:top-8 left-4 md:left-8 text-xl font-semibold text-black dark:text-white whitespace-nowrap"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
@@ -154,7 +96,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                     {project.title}
                   </motion.h3>
                   <motion.span
-                    className="absolute top-4 right-6 md:top-8 md:right-8 mt-2 lg:mt-0 py-1 px-3 text-xs font-semibold rounded-lg whitespace-nowrap"
+                    className="absolute top-4 right-4 md:top-8 md:right-8 mt-2 lg:mt-0 py-1 px-3 text-xs font-semibold rounded-lg whitespace-nowrap"
                     style={{
                       color: project.tag.color,
                       backgroundColor: `${project.tag.color}33`,
@@ -166,7 +108,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                     {project.tag.text}
                   </motion.span>
                   <motion.p
-                    className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 text-sm text-gray-700 dark:text-gray-300"
+                    className="absolute bottom-6 left-4 right-4 md:bottom-8 md:left-8 md:right-8 text-sm text-gray-700 dark:text-gray-300"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
