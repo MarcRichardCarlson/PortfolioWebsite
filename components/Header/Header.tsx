@@ -4,8 +4,7 @@ import React, { RefObject, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
-import { RevealOnScroll } from "../RevealOnScroll";
-import AnimateOnView from "../AnimateOnView";
+import RevealOnScroll from "../RevealOnScroll";
 
 interface NavbarProps {
   heroRef: RefObject<HTMLElement>;
@@ -70,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
     <nav className="z-50 w-full py-10 px-4 sm:px-6 md:px-8 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <RevealOnScroll>
+        <RevealOnScroll direction="left" duration={0.3} delay={0}>
           <span className="text-black dark:text-white font-bold text-2xl font-orbitron">
             MarcCarlson
           </span>
@@ -85,9 +84,9 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
             onClick={() => scrollToSection(ref, section)}
             className="cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
           >
-            <AnimateOnView direction="left" duration={1} delay={0}>
+            <RevealOnScroll direction="left" duration={1} delay={0}>
               {label}
-            </AnimateOnView>
+            </RevealOnScroll>
           </motion.a>
         ))}
       </div>
@@ -125,9 +124,9 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
                 onClick={() => scrollToSection(ref, section)}
                 className="bg-light-grey dark:bg-dark-grey rounded-xl cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
               >
-                <AnimateOnView direction="top" duration={0.7} delay={0}>
+                <RevealOnScroll direction="top" duration={0.7} delay={0}>
                   {label}
-                </AnimateOnView>
+                </RevealOnScroll>
               </motion.a>
             ))}
           </motion.div>

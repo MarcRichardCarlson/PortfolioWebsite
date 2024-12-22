@@ -84,8 +84,16 @@
     "contact-message-sent" : "Message sent!",
 
 
-    "footer-lets-work1" : "Let's Work",
-    "footer-lets-work2" : "Together",
+    "footer-lets-work-header1" : "Let's Work",
+    "footer-lets-work-header2" : "Together",
+    "footer-lets-work-text1" : "Collaborate with Me",
+    "footer-lets-work-text2" : "Hire Me",
+    "footer-lets-work-text3" : "Book a Meeting",
+    "footer-lets-work-text4" : "Become a Partner",
+
+
+    
+    "footer-menu-h1-header" : "Before you go, Check out these links",
     "footer-menu-header" : "Menu",
     "footer-contact-header" : "Contact",
     "footer-socials-header" : "Socials",

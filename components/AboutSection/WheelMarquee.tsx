@@ -68,7 +68,7 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
 
   return (
     <div
-      className="relative h-80 w-full overflow-hidden"
+      className="relative h-[400px] w-full overflow-hidden"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onTouchStart={handleTouchStart}

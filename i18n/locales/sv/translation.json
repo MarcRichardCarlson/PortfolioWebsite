@@ -84,8 +84,24 @@
     "contact-message-sent" : "Meddelande Skickat!",
 
 
-    "footer-lets-work1" : "Låt oss",
-    "footer-lets-work2" : "Samarbeta",
+    "footer-lets-work-header1" : "Låt oss",
+    "footer-lets-work-header2" : "Samarbeta",
+    "footer-lets-work-text1" : "Samarbeta med mig",
+    "footer-lets-work-text2" : "Anlita mig",
+    "footer-lets-work-text3" : "Boka Möte",
+    "footer-lets-work-text4" : "Bli en partner",
+
+    "footer-lets-work-modal-title": "Fyll i dina uppgifter för att boka ett möte",
+    "booking-form-name": "Namn",
+    "booking-form-email": "E-post",
+    "booking-form-time-placeholder": "Föreslå datum och tid",
+    "booking-form-submit": "Boka nu",
+    "booking-form-error-required": "Alla fält måste fyllas i.",
+    "booking-form-error-email": "Ange en giltig e-postadress.",
+    "booking-form-error-spam": "Spam upptäckt!",
+
+    
+    "footer-menu-h1-header" : "Innan du går, ta en titt på länkarna nedan",
     "footer-menu-header" : "Meny",
     "footer-contact-header" : "Kontakt",
     "footer-socials-header" : "Sociala plattformar",

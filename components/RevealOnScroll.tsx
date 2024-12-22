@@ -1,36 +1,58 @@
-import React from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
-  className?: string;
+  direction?: "top" | "bottom" | "left" | "right";
+  duration?: number; // Animation duration
+  delay?: number; // Animation delay
 }
 
-export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, className }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0, triggerOnce: true });
+const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
+  children,
+  direction, // Direction is optional
+  duration = 0.3, // Default duration
+  delay = 0, // Default delay
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true }); // Trigger only once when in view
 
-  React.useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [inView, controls]);
+  // Determine initial position if a direction is set
+  const initialPosition = direction
+    ? direction === "top"
+      ? { y: -50 }
+      : direction === "bottom"
+        ? { y: 50 }
+        : direction === "left"
+          ? { x: -50 }
+          : { x: 50 }
+    : {}; // No position offset for default fade/scale
 
-  const variants = {
-    hidden: { y: "10%", opacity: 0 },
-    visible: { y: "0%", opacity: 1, transition: { duration: 0.2, ease: "easeOut" } },
+  const animationVariants = {
+    hidden: { opacity: 0, scale: direction ? 1 : 0.8, ...initialPosition }, // Scale if no direction
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0, // Reset horizontal position
+      y: 0, // Reset vertical position
+      transition: {
+        duration,
+        delay,
+        ease: "easeOut", // Smooth easing
+      },
+    },
   };
 
   return (
     <motion.div
       ref={ref}
-      className={`overflow-hidden inline-block ${className}`}
+      variants={animationVariants}
       initial="hidden"
-      animate={controls}
-      variants={variants}
+      animate={isInView ? "visible" : "hidden"}
     >
-      <motion.div>{children}</motion.div>
+      {children}
     </motion.div>
   );
 };
+
+export default RevealOnScroll;

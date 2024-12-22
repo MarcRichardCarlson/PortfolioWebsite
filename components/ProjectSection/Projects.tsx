@@ -114,7 +114,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   }; */
 
   return (
-    <div className="w-full p-0 md:p-4 overflow-x-scroll scrollbar-hidden">
+    <div className="w-full overflow-x-scroll scrollbar-hidden">
       <Slider ref={sliderRef} {...settings}>
         {projects.map((project, index) => (
           <motion.div
@@ -122,7 +122,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: activeTab === index ? 0 : 0 }}
             transition={{ duration: 0.2 }}
-            className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl bg-light-grey dark:bg-dark-grey duration-300 p-0 md:p-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
+            className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl duration-300 px-0 md:px-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
             style={{ width: '200px' }}
             /* onClick={() => handleCardClick(index)} */
             /* onMouseDown={handleMouseDown}
