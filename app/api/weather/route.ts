@@ -13,7 +13,12 @@ export async function GET(request: Request) {
     try {
         // Rate limiting
         const ip = request.headers.get('x-forwarded-for') || 'unknown';
-        const { success } = await rateLimit(ip);
+        const limiter = rateLimit({
+            interval: 60 * 1000, // 1 minute
+            uniqueTokenPerInterval: 500
+        });
+
+        const success = await limiter.check(10, ip); // 10 requests per minute
 
         if (!success) {
             return NextResponse.json(
