@@ -29,7 +29,7 @@ export async function GET(request: Request) {
 
         // Input validation
         const { searchParams } = new URL(request.url);
-        const city = searchParams.get('city');
+        const city = searchParams.get('city') || '';
 
         if (!city || typeof city !== 'string' || city.length > 100) {
             return NextResponse.json(
