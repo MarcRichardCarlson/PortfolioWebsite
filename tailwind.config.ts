@@ -56,9 +56,8 @@ const config: Config = {
         targa: ['Targa', 'sans-serif'],
         'targa-ms': ['Targa MS', 'sans-serif'],
         'targa-hand': ['Targa MS Hand', 'sans-serif'],
-        orbitron: ['Orbitron', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
-
+        orbitron: ['var(--font-orbitron)'],
+        montserrat: ['var(--font-montserrat)'],
       },
       borderRadius: {
         'none': '0',

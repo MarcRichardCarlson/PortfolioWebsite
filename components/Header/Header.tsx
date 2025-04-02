@@ -1,6 +1,6 @@
 "use client";
 
-import React, { RefObject, useState, useEffect } from "react";
+import React, { RefObject, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
@@ -32,18 +32,18 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
     }
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (isOpen && !document.getElementById('menu')?.contains(event.target as Node)) {
       setIsOpen(false);
     }
-  };
+  }, [isOpen]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [handleClickOutside]);
 
   // Auto-close menu on screen resize above breakpoint
   useEffect(() => {

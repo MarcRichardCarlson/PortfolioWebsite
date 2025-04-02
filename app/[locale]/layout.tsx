@@ -3,6 +3,7 @@ import AppProviders from "./providers";
 import { AppLocale } from "./locales";
 import "./globals.css";
 import ThemeScript from "@/hooks/ThemeScript";
+import { orbitron, montserrat } from "../fonts";
 
 export const metadata: Metadata = {
   title: "Marc Carlson | Web Development, Redefined",
@@ -17,22 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${orbitron.variable} ${montserrat.variable}`}>
       <head>
         <link rel="shortcut icon" href="/public/favicon/favicon.ico"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
         <ThemeScript />
 
         <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark')
-                } else {
+                if (localStorage.theme === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.documentElement.classList.remove('dark')
+                } else {
+                  document.documentElement.classList.add('dark')
                 }
               } catch (_) {}
             `,
