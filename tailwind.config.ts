@@ -46,7 +46,7 @@ const config: Config = {
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #1b2024 20%, #243037 50%, #007AFF 200%)',
-        'custom-gradient-light': 'linear-gradient(to right, #d9d4cf 20%, #bfc3c8 50%, #508fdd 100%)',
+        'custom-gradient-light': 'linear-gradient(to right, #ffffff 10%, #f1f5f9 20%, #007AFF 100%)',
       },
       boxShadow: {
         'custom-shadow': '0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',

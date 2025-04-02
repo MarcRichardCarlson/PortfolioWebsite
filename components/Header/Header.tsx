@@ -82,15 +82,15 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
       {/* Menu for Large Screens */}
       <div className="hidden md:flex gap-4">
         {navItems.map(({ label, section, ref }) => (
-          <motion.a
+          <motion.button
             key={section}
             onClick={() => scrollToSection(ref, section)}
-            className="cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all"
+            className="cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all bg-transparent border-none select-none"
           >
             <RevealOnScroll direction="left" duration={1} delay={0}>
               {label}
             </RevealOnScroll>
-          </motion.a>
+          </motion.button>
         ))}
       </div>
 
@@ -98,9 +98,9 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
       <div className="md:hidden">
         <button
           onClick={toggleMenu}
-          className="py-2 px-4 rounded bg-light-grey dark:bg-dark-grey text-black dark:text-white"
+          className="py-2 px-4 rounded bg-light-grey dark:bg-dark-grey text-black dark:text-white select-none"
         >
-          <Image src={MenuIcon} alt={"Hamburger Menu Icon"} className="filter dark:invert"/>
+          <Image src={MenuIcon} alt={"Hamburger Menu Icon"} className="filter dark:invert" />
         </button>
       </div>
 
@@ -117,20 +117,20 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
           >
             <button
               onClick={toggleMenu}
-              className="self-end py-2 px-2 bg-light-grey dark:bg-input-black rounded-lg text-black dark:text-white"
+              className="self-end py-2 px-2 bg-light-grey dark:bg-input-black rounded-lg text-black dark:text-white select-none"
             >
-              <Image src={CloseIcon} alt={"Menu Closing Icon"} className="filter dark:invert"/>
+              <Image src={CloseIcon} alt={"Menu Closing Icon"} className="filter dark:invert" />
             </button>
             {navItems.map(({ label, section, ref }) => (
-              <motion.a
+              <motion.button
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className="w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer text-black dark:text-white font-semibold px-4 py-4 hover:bg-true-blue transition-all"
+                className="w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer text-black dark:text-white font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none"
               >
                 <RevealOnScroll direction="right" duration={0.6} delay={0}>
                   {label}
                 </RevealOnScroll>
-              </motion.a>
+              </motion.button>
             ))}
           </motion.div>
         )}

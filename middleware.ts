@@ -11,32 +11,49 @@ export const config = {
 
 export async function middleware(req: NextRequest) {
   try {
+    // Create response
+    let response: NextResponse;
+
     // Check if the request already contains a locale
     const matches = withLocaleUriPattern.exec(req.nextUrl.pathname);
     if (!matches) {
       const langHeaders = { "accept-language": req.headers.get("accept-language") || "" };
       const languages = new Negotiator({ headers: langHeaders }).languages();
-      const locale = match(languages, APP_LOCALES, "en"); // Default to "en" if no match
+      const locale = match(languages, APP_LOCALES, "en");
 
-      let appOrigin = process.env.NEXT_PUBLIC_APP_ORIGIN || "";
+      let appOrigin = process.env.APP_ORIGIN || "";
 
-      // Ensure appOrigin ends correctly
       if (!appOrigin.endsWith("/")) {
         appOrigin += "/";
       }
 
-      // Build the destination URL, preserving the original path and query
       const destinationUrl = new URL(req.nextUrl.href);
       destinationUrl.pathname = `/${locale}${req.nextUrl.pathname}`;
-      destinationUrl.search = req.nextUrl.search; // Keep query params
+      destinationUrl.search = req.nextUrl.search;
 
-      console.log("Redirecting to:", destinationUrl.href);
-
-      return NextResponse.redirect(destinationUrl);
+      response = NextResponse.redirect(destinationUrl);
+    } else {
+      response = NextResponse.next();
     }
 
-    // Proceed with the request if it already has a locale
-    return NextResponse.next();
+    // Add security headers
+    const headers = response.headers;
+
+    // Content Security Policy
+    headers.set(
+      'Content-Security-Policy',
+      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.openweathermap.org;"
+    );
+
+    // Other security headers
+    headers.set('X-DNS-Prefetch-Control', 'on');
+    headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    headers.set('X-Frame-Options', 'SAMEORIGIN');
+    headers.set('X-Content-Type-Options', 'nosniff');
+    headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+    return response;
   } catch (error) {
     console.error("Middleware Error:", error);
     return new Response("Internal Server Error", { status: 500 });

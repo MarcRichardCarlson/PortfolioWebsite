@@ -4,22 +4,27 @@ import { useEffect } from "react";
 
 const ThemeScript = () => {
   useEffect(() => {
-    try {
-      const theme = localStorage.getItem("theme");
-      if (
-        theme === "dark" ||
-        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       }
-    } catch (e) {
-      console.error("Error applying theme:", e);
-    }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
   }, []);
 
-  return null; // No visible output; logic is handled in useEffect.
+  return null;
 };
 
 export default ThemeScript;

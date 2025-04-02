@@ -56,7 +56,6 @@ const ContactSection: React.FC = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
           },
           body: JSON.stringify({ email: sanitizedData.email }),
         });
@@ -71,7 +70,6 @@ const ContactSection: React.FC = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
         },
         body: JSON.stringify(sanitizedData),
       });
@@ -144,9 +142,8 @@ const ContactSection: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(sanitizeInput(e.target.value))}
                   placeholder={t("contact-email")}
-                  className={`rounded-lg bg-white dark:bg-input-black px-4 py-4 text-sm md:text-base w-full ${
-                    !isEmailValid ? "border-red-500" : ""
-                  }`}
+                  className={`rounded-lg bg-white dark:bg-input-black px-4 py-4 text-sm md:text-base w-full ${!isEmailValid ? "border-red-500" : ""
+                    }`}
                   required
                 />
                 {!isEmailValid && (
@@ -180,11 +177,10 @@ const ContactSection: React.FC = () => {
                     className="absolute opacity-0 w-full h-full cursor-pointer"
                   />
                   <div
-                    className={`w-8 h-8 rounded-lg border ${
-                      agreeToNewsletter
+                    className={`w-8 h-8 rounded-lg border ${agreeToNewsletter
                         ? "bg-true-blue border-transparent"
                         : "bg-gray-300 border-gray-400"
-                    } flex items-center justify-center`}
+                      } flex items-center justify-center`}
                   >
                     {agreeToNewsletter && (
                       <motion.div
