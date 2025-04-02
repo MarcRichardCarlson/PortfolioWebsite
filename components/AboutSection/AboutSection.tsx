@@ -52,8 +52,7 @@ const AboutSection: React.FC = () => {
                 <Image
                     src={AboutImage}
                     alt="About image"
-                    width={500}
-                    height={500}
+                    sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-full max-h-[500px] h-full object-cover rounded-3xl"
                     unoptimized={true}
                 />

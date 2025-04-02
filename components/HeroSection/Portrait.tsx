@@ -9,7 +9,9 @@ const Portrait: React.FC = () => {
         src={PortraitImage}
         alt="Portrait"
         fill
-        className="rounded-full object-cover"
+        style={{ objectFit: 'cover' }}
+        className="rounded-full"
+        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </div>
   );

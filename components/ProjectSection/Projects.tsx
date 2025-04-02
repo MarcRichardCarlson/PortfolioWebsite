@@ -19,11 +19,43 @@ interface ProjectsProps {
   projects: Project[];
 }
 
-
-
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [activeTab, setActiveTab] = useState(0);
   const sliderRef = useRef<Slider>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [timeoutRef, setTimeoutRef] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (sliderRef.current) {
+        sliderRef.current.slickNext();
+      }
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleCardClick = (index: number) => {
+    setActiveTab(index);
+    if (timeoutRef) {
+      clearTimeout(timeoutRef);
+    }
+    setIsPaused(true);
+    const newTimeout = setTimeout(() => {
+      setIsPaused(false);
+    }, 7000); // Stay for 7 seconds
+    setTimeoutRef(newTimeout);
+  };
+
+  const handleMouseDown = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsPaused(false);
+  };
 
   const settings = {
     dots: false,
@@ -35,7 +67,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     centerPadding: '0px',
     afterChange: (current: number) => setActiveTab(current),
     arrows: false,
-    focusOnSelect: true,
+    focusOnSelect: false,
     responsive: [
       {
         breakpoint: 1800,
@@ -69,6 +101,9 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             transition={{ duration: 0.2 }}
             className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl duration-300 px-0 md:px-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
             style={{ width: '200px' }}
+            onClick={() => handleCardClick(index)}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
           >
             <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-3xl">
               <motion.div
@@ -80,8 +115,9 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
                   className="transition-transform duration-300 hover:scale-105"
                 />
               </motion.div>

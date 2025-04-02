@@ -9,7 +9,7 @@ import HeroImage from "../../public/images/HeroImage.png"
 import DynamicGrid from "./DynamicGrid";
 import RevealOnScroll from "../RevealOnScroll";
 
-const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projectsRef: React.RefObject<HTMLElement> }> = () => {
+const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projectsRef: React.RefObject<HTMLElement> }> = ({ contactRef, projectsRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
 
@@ -18,7 +18,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
 
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 md:gap-8 w-full">
 
-        <div className="overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-6 md:p-8 shadow-custom-shadow">
+        <div className="max-h-[600px] overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-6 md:p-8 shadow-custom-shadow">
 
           <div className="flex flex-col gap-6 md:gap-8">
             <RevealOnScroll direction="left" duration={1} delay={0}>
@@ -41,7 +41,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
         </div>
 
         <Image
-          className="rounded-3xl shadow-custom-shadow w-full min-w-325 h-[400px] md:h-[600px] lg:h-[600px] xl:h-[700px] object-cover"
+          className="max-h-[600px] rounded-3xl shadow-custom-shadow w-full min-w-325 h-[400px] md:h-[600px] lg:h-[600px] xl:h-[700px] object-cover"
           src={HeroImage}
           alt="Decorative image 1"
           height={500}
@@ -49,8 +49,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
         />
       </div>
 
-      <DynamicGrid />
-
+      <DynamicGrid contactRef={contactRef}/>
     </section>
   );
 }

@@ -9,9 +9,41 @@ import { useCurrentLocale } from "@/hooks/locale";
 import ResponsiveButton from "../Buttons";
 import RevealOnScroll from "../RevealOnScroll";
 
-const DynamicGrid: React.FC = () => {
+interface DynamicGridProps {
+  contactRef: React.RefObject<HTMLElement>;
+}
+
+const DynamicGrid: React.FC<DynamicGridProps> = ({ contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+
+  const handleScrollToContact = () => {
+    if (contactRef && contactRef.current) {
+      // Create and style the dark overlay
+      const darkOverlay = document.createElement("div");
+      darkOverlay.style.position = "fixed";
+      darkOverlay.style.inset = "0";
+      darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0)"; // Start transparent
+      darkOverlay.style.zIndex = "9999";
+      darkOverlay.style.transition = "background-color 0.5s ease-in-out, opacity 0.5s ease-in-out";
+      darkOverlay.style.opacity = "1"; // Ensure visibility
+      document.body.appendChild(darkOverlay);
+  
+      // Smooth fade-in effect
+      setTimeout(() => {
+        darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+      }, 10); // Delay to allow CSS transition to kick in
+  
+      setTimeout(() => {
+        // Fade-out effect after 2 seconds
+        darkOverlay.style.opacity = "0";
+        setTimeout(() => darkOverlay.remove(), 500); // Remove after fade-out
+      }, 2000);
+  
+      // Scroll to the contact section
+      contactRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const boxes = [
     { title: t("hero-gridbox-header-1"), content: t("hero-gridbox-text-1"), icon: <Image height={45} width={45} src={Icon1} alt="" className="w-8 h-8 md:w-12 md:h-12" /> },
@@ -45,7 +77,7 @@ const DynamicGrid: React.FC = () => {
             {box.button && (
               <RevealOnScroll direction="bottom" duration={1} delay={0}>
                 {/* Button */}
-                <div>{box.button}</div>
+                <div onClick={handleScrollToContact}>{box.button}</div>
               </RevealOnScroll>
             )}
 

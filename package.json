@@ -13,6 +13,8 @@
     "@splinetool/react-spline": "^4.0.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "email-validator": "^2.0.4",
+    "express-rate-limit": "^7.5.0",
     "framer-motion": "^11.2.10",
     "i18next": "^23.11.5",
     "i18next-resources-to-backend": "^1.2.1",
@@ -34,6 +36,7 @@
     "use-media": "^1.5.0"
   },
   "devDependencies": {
+    "@types/grecaptcha": "^3.0.9",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.15",

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectImage1 from '../../public/images/hD$VW$d5L.png';
+import ProjectImage1 from '../../public/images/GrönaHusMockup.png';
 import ProjectImage2 from '../../public/images/6e0e167b589.png';
 import ProjectImage3 from '../../public/images/Lamtek.png';
 import ProjectImage4 from '../../public/images/164fe47a71001a6c.png';

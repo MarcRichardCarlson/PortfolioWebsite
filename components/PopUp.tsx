@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 interface PopupProps {
   message: string;
   onClose: () => void;
-  type: 'success' | 'fail';
+  type: "success" | "fail";
 }
 
 const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
@@ -17,8 +17,8 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
 
     // Start animation for the loading bar
     progressControls.start({
-      width: '0%',
-      transition: { duration: 2.5, ease: 'linear' },
+      width: "0%",
+      transition: { duration: 2.5, ease: "linear" },
     });
 
     // Set a timeout to close the popup after 2.5 seconds
@@ -31,8 +31,10 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
     return () => clearTimeout(timeout);
   }, [controls, progressControls, onClose]);
 
-  // Determine the background color based on the type
-  const backgroundColor = type === 'success' ? 'bg-green-300' : 'bg-red-300';
+  // Determine styles based on the type
+  const backgroundColor = type === "success" ? "bg-green-300" : "bg-red-300";
+  const icon = type === "success" ? "✓" : "✗"; // Dynamic icon for success/fail
+  const textColor = type === "success" ? "text-green-700" : "text-red-700";
 
   return (
     <motion.div
@@ -40,21 +42,25 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={controls}
       exit={{ opacity: 0, scale: 0.5 }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      transition={{ type: "spring", stiffness: 300 }}
       onClick={onClose} // Close popup on click anywhere
     >
       <motion.div
-        className="relative bg-white p-2 md:p-4 rounded shadow-lg"
+        className={`relative ${backgroundColor} p-2 md:p-4 rounded shadow-lg`}
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-sm md:text-base text-gray-800 text-lg font-semibold">
-          {message}
-        </p>
+        <div className="flex items-center gap-2">
+          {/* Dynamic Icon */}
+          <span className={`text-lg font-bold ${textColor}`}>{icon}</span>
+          <p className={`text-sm md:text-base font-semibold ${textColor}`}>
+            {message}
+          </p>
+        </div>
 
-        {/* Dynamic loading bar positioned at the bottom with border-radius on bottom-left for md */}
+        {/* Dynamic loading bar */}
         <motion.div
           className={`${backgroundColor} h-2 absolute bottom-0 left-0 rounded-none md:rounded-bl-md`}
-          initial={{ width: '100%' }}
+          initial={{ width: "100%" }}
           animate={progressControls}
         ></motion.div>
       </motion.div>
