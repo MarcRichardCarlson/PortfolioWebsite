@@ -65,7 +65,7 @@ export default function AppLocaleSwitcher() {
       {/* Dropdown button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 xl:p-4 w-fit xl:w-24 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 xl:p-4 w-fit xl:w-24 rounded-lg"
       >
         <span className="xl:block hidden">
           {activeLocale === "en" ? "EN" : "SV"}

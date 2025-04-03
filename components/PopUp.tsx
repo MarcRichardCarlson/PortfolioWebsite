@@ -37,7 +37,7 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
 
   return (
     <motion.div
-      className="fixed right-2 bottom-2 md:right-4 md:bottom-4 flex items-end justify-start z-50"
+      className="fixed right-2 bottom-2 md:right-8 md:bottom-8 flex items-end justify-start z-50"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={controls}
       exit={{ opacity: 0, scale: 0.5 }}
@@ -45,7 +45,7 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
       onClick={onClose}
     >
       <motion.div
-        className="relative bg-black-soil p-4 rounded-lg shadow-lg overflow-hidden"
+        className="relative bg-black p-6 rounded-lg shadow-lg overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Progress bar at the top */}

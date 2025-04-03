@@ -54,9 +54,9 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
         <RevealOnScroll direction="top" duration={0.4} delay={0}>
           <div className="flex justify-between gap-2">
             <p className="text-2xl md:text-3xl font-bold text-black dark:text-white">{t("footer-menu-h1-header")}</p>
-            <div className="min-h-12 min-w-12">
+           {/*  <div className="min-h-12 min-w-12">
               <LanguagePicker />
-            </div>
+            </div> */}
           </div>
         </RevealOnScroll>
 
