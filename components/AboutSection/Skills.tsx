@@ -68,7 +68,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-3xl shadow-custom-shadow font-montserrat">
+        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow font-montserrat">
 
             <div className="grid grid-cols-2 gap-2 2xl:grid-cols-4 gap-8 md:gap-4 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
@@ -82,7 +82,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                             tech && (
                                 <motion.div
                                     key={tech}
-                                    className="flex flex-col gap-2 text-center sm:text-left text-black dark:text-gray-200 text-xs sm:text-sx md:text-sm lg:text-base xl:text-lg"
+                                    className="flex flex-col gap-2 text-center sm:text-left text-black dark:text-gray-200 text-xs sm:text-sx md:text-sm lg:text-base"
                                     initial={{ opacity: 0, y: -50 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.3 }}

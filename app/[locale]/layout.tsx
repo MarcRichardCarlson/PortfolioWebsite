@@ -10,15 +10,16 @@ export const metadata: Metadata = {
   description: "Marc Carlson - Portfolio Website",
 };
 
-export default function RootLayout({
-  params,
-  children,
-}: Readonly<{
-  params: { locale: AppLocale };
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: AppLocale }>;
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params;
+  
   return (
-    <html lang="en" className={`${orbitron.variable} ${montserrat.variable}`}>
+    <html lang={locale} className={`${orbitron.variable} ${montserrat.variable}`}>
       <head>
         <link rel="shortcut icon" href="/public/favicon/favicon.ico"></link>
         <ThemeScript />
@@ -38,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="theme-background">
-        <AppProviders locale={params.locale}>
+        <AppProviders locale={locale}>
           {children}
         </AppProviders>
       </body>

@@ -99,13 +99,13 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: activeTab === index ? 0 : 0 }}
             transition={{ duration: 0.2 }}
-            className={`flex flex-col overflow-hidden cursor-pointer rounded-3xl duration-300 px-0 md:px-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
+            className={`flex flex-col overflow-hidden cursor-pointer rounded-xl duration-300 px-0 md:px-4 ${activeTab === index ? 'scale-105' : 'scale-95'}`}
             style={{ width: '200px' }}
             onClick={() => handleCardClick(index)}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
           >
-            <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-3xl">
+            <div className="relative w-full h-64 sm:h-96 md:h-64 lg:h-96 overflow-hidden rounded-xl">
               <motion.div
                 initial={{ opacity: 1 }}
                 animate={{ opacity: activeTab === index ? 0.1 : 1 }}

@@ -65,7 +65,7 @@ export default function AppLocaleSwitcher() {
       {/* Dropdown button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 xl:p-4 w-fit xl:w-24 rounded-xl"
+        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 xl:p-4 w-fit xl:w-24 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.2)]"
       >
         <span className="xl:block hidden">
           {activeLocale === "en" ? "EN" : "SV"}
@@ -98,7 +98,7 @@ export default function AppLocaleSwitcher() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`absolute mt-1 bg-light-grey dark:bg-dark-grey shadow-lg z-50 rounded-lg ${
+            className={`absolute mt-1 bg-light-grey dark:bg-dark-grey shadow-[0_0_15px_rgba(255,255,255,0.2)] z-50 rounded-lg ${
               isMediumScreen ? "right-0" : "-left-[3.25rem]"
             }`}
           >

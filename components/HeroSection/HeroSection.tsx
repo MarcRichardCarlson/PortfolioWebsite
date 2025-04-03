@@ -18,18 +18,20 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
 
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 md:gap-8 w-full">
 
-        <div className="max-h-[600px] overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-3xl p-6 md:p-8 shadow-custom-shadow">
+        <div className="max-h-[500px] overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-xl p-6 md:p-8 shadow-custom-shadow">
 
           <div className="flex flex-col gap-6 md:gap-8">
             <RevealOnScroll direction="left" duration={1} delay={0}>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <Portrait />
-                <LanguagePicker />
+                <div className="flex flex-col items-end gap-2">
+                  <LanguagePicker />
+                </div>
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll direction="right" duration={0.8} delay={0.4}>
-              <h1 className="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-montserrat text-black dark:text-white">{t("hero-header")}</h1>
+              <h1 className="font-light text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-montserrat text-black dark:text-white">{t("hero-header")}</h1>
             </RevealOnScroll>
           </div>
 
@@ -41,7 +43,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
         </div>
 
         <Image
-          className="max-h-[600px] rounded-3xl shadow-custom-shadow w-full min-w-325 h-[400px] md:h-[600px] lg:h-[600px] xl:h-[700px] object-cover"
+          className="max-h-[500px] rounded-xl shadow-custom-shadow w-full min-w-325 h-[500px] object-cover"
           src={HeroImage}
           alt="Decorative image 1"
           height={500}

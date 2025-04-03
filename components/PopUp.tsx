@@ -18,23 +18,22 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
     // Start animation for the loading bar
     progressControls.start({
       width: "0%",
-      transition: { duration: 2.5, ease: "linear" },
+      transition: { duration: 3, ease: "linear" },
     });
 
-    // Set a timeout to close the popup after 2.5 seconds
+    // Set a timeout to close the popup after 3 seconds
     const timeout = setTimeout(() => {
       controls.start({ opacity: 0, scale: 0.5 });
       onClose();
-    }, 2500);
+    }, 3000);
 
     // Clean up the timeout if the component unmounts or onClose is triggered
     return () => clearTimeout(timeout);
   }, [controls, progressControls, onClose]);
 
   // Determine styles based on the type
-  const backgroundColor = type === "success" ? "bg-green-300" : "bg-red-300";
-  const icon = type === "success" ? "✓" : "✗"; // Dynamic icon for success/fail
-  const textColor = type === "success" ? "text-green-700" : "text-red-700";
+  const icon = type === "success" ? "✓" : "✗";
+  const textColor = "text-white";
 
   return (
     <motion.div
@@ -43,26 +42,25 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
       animate={controls}
       exit={{ opacity: 0, scale: 0.5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      onClick={onClose} // Close popup on click anywhere
+      onClick={onClose}
     >
       <motion.div
-        className={`relative ${backgroundColor} p-2 md:p-4 rounded shadow-lg`}
+        className="relative bg-black-soil p-4 rounded-lg shadow-lg overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Progress bar at the top */}
+        <motion.div
+          className="absolute top-0 left-0 h-1 bg-white"
+          initial={{ width: "100%" }}
+          animate={progressControls}
+        />
+
         <div className="flex items-center gap-2">
-          {/* Dynamic Icon */}
           <span className={`text-lg font-bold ${textColor}`}>{icon}</span>
           <p className={`text-sm md:text-base font-semibold ${textColor}`}>
             {message}
           </p>
         </div>
-
-        {/* Dynamic loading bar */}
-        <motion.div
-          className={`${backgroundColor} h-2 absolute bottom-0 left-0 rounded-none md:rounded-bl-md`}
-          initial={{ width: "100%" }}
-          animate={progressControls}
-        ></motion.div>
       </motion.div>
     </motion.div>
   );
