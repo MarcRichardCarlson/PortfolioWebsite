@@ -20,16 +20,64 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const scrollToSection = (ref: RefObject<HTMLElement>, section: string) => {
     if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      const headerOffset = 80; // Height of the fixed header
+      const elementPosition = ref.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      setActiveSection(section); // Immediately update active section when clicked
       setIsOpen(false); // Close menu on section click
     }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const sections = [
+        { id: 'home', ref: heroRef },
+        { id: 'about', ref: aboutRef },
+        { id: 'projects', ref: projectsRef },
+        { id: 'contact', ref: contactRef }
+      ];
+
+      // Special case for home section
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+        return;
+      }
+
+      // Check other sections
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.ref.current) {
+          const rect = section.ref.current.getBoundingClientRect();
+          const headerOffset = 80; // Same as scroll offset
+
+          if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount to set initial active section
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [heroRef, projectsRef, aboutRef, contactRef]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -63,34 +111,55 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
 
   const navItems = [
     { label: t("nav-home"), ref: heroRef, section: "home" },
-    { label: t("nav-projects"), ref: projectsRef, section: "projects" },
     { label: t("nav-about"), ref: aboutRef, section: "about" },
+    { label: t("nav-projects"), ref: projectsRef, section: "projects" },
     { label: t("nav-contact"), ref: contactRef, section: "contact" },
   ];
 
   return (
-    <nav className="z-50 w-full py-10 px-4 sm:px-6 md:px-8 flex justify-between items-center">
+    <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-300 ${
+      isScrolled 
+        ? 'py-4 bg-white/90 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg' 
+        : 'py-10 bg-transparent'
+    } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
       {/* Logo */}
       <div className="flex items-center gap-2">
         <RevealOnScroll direction="left" duration={0.3} delay={0}>
-          <span className="text-black dark:text-white font-bold text-2xl font-orbitron">
+          <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-300 ${
+            isScrolled ? 'text-xl' : 'text-2xl'
+          }`}>
             MarcCarlson
           </span>
         </RevealOnScroll>
       </div>
 
       {/* Menu for Large Screens */}
-      <div className="hidden md:flex gap-4">
+      <div className="hidden md:flex gap-4 relative">
         {navItems.map(({ label, section, ref }) => (
-          <motion.button
-            key={section}
-            onClick={() => scrollToSection(ref, section)}
-            className="cursor-pointer text-black dark:text-white font-semibold px-4 py-2 hover:underline transition-all bg-transparent border-none select-none"
-          >
-            <RevealOnScroll direction="left" duration={1} delay={0}>
-              {label}
-            </RevealOnScroll>
-          </motion.button>
+          <div key={section} className="relative">
+            <motion.button
+              onClick={() => scrollToSection(ref, section)}
+              className={`cursor-pointer text-black dark:text-white font-semibold px-4 py-2 transition-all bg-transparent border-none select-none ${
+                activeSection === section ? 'text-true-blue' : ''
+              }`}
+            >
+              <RevealOnScroll direction="left" duration={1} delay={0}>
+                {label}
+              </RevealOnScroll>
+            </motion.button>
+            {activeSection === section && (
+              <motion.div
+                layoutId="underline"
+                className="absolute -bottom-0 left-[10%] w-[80%] h-[3px] bg-true-blue rounded-full shadow-[0_0_8px_rgba(0,122,255,0.4)] dark:shadow-[0_0_8px_rgba(0,122,255,0.6)]"
+                transition={{ 
+                  type: "spring", 
+                  bounce: 0.2, 
+                  duration: 0.6,
+                  ease: "easeInOut"
+                }}
+              />
+            )}
+          </div>
         ))}
       </div>
 
@@ -125,7 +194,11 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.button
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className="w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer text-black dark:text-white font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none"
+                className={`w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none ${
+                  activeSection === section 
+                    ? 'text-true-blue bg-opacity-10 dark:bg-opacity-10' 
+                    : 'text-black dark:text-white'
+                }`}
               >
                 <RevealOnScroll direction="right" duration={0.6} delay={0}>
                   {label}

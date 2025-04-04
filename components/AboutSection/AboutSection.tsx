@@ -25,14 +25,14 @@ const AboutSection: React.FC = () => {
                 <section className="overflow-hidden bg-light-grey dark:bg-dark-grey rounded-xl p-6 md:p-8 w-full shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
                     <div className="w-full flex flex-col h-full">
                         <RevealOnScroll direction="left" duration={0.5} delay={0}>
-                            <h3 className="text-3xl md:text-5xl font-montserrat flex items-center gap-2 mb-4 md:mb-6">
+                            <h3 className="text-xl md:text-3xl lg:text-5xl font-montserrat flex items-center gap-2 mb-2 md:mb-4">
                                 <span className="bg-gradient-to-r from-true-blue to-tech-orange bg-clip-text text-transparent">{t("about-header")}</span>
                                 <span className="text-tech-orange">.</span>
                             </h3>
                         </RevealOnScroll>
 
                         <RevealOnScroll direction="top" duration={0.5} delay={0.4}>
-                            <div className="relative mb-6 md:mb-8">
+                            <div className="relative mb-2 md:mb-4">
                                 <div className="absolute -inset-1 bg-gradient-to-r from-true-blue/20 to-tech-orange/20 rounded-lg blur opacity-20"></div>
                                 {mounted && <TypingEffect />}
                             </div>
@@ -40,7 +40,7 @@ const AboutSection: React.FC = () => {
 
                         <RevealOnScroll direction="right" duration={0.5} delay={0}>
                             <div className="flex-1">
-                                <span className="font-montserrat text-white-grey leading-[1.6] block text-[clamp(0.875rem,1.5vw,1rem)] md:text-[clamp(1rem,1.8vw,1.125rem)] lg:text-[clamp(1.125rem,2vw,1.25rem)] max-w-[90%]">
+                                <span className="font-montserrat text-white-grey leading-[1.2] block text-[clamp(0.875rem,1.4vw,1rem)] md:text-[clamp(1rem,1.6vw,1rem)] lg:text-[clamp(1.125rem,1.8vw,1rem)] max-w-[100%]">
                                     {t("about-text")}
                                 </span>
                             </div>

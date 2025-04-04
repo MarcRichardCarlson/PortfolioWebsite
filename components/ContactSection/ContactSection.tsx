@@ -104,7 +104,7 @@ const ContactSection: React.FC = () => {
         unoptimized={true}
       />
 
-      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-xl z-[10000]">
+      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-xl z-8">
         <RevealOnScroll direction="bottom" duration={0.2} delay={0.2}>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white font-montserrat">

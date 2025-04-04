@@ -14,19 +14,19 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
   const { t } = useTranslation(locale, "translation");
 
   return (
-    <section className="relative z-10 flex flex-col items-center md:items-start text-white-grey gap-4 md:gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-4 md:pb-8">
+    <section className="mt-32 relative z-10 flex flex-col items-center md:items-start text-white-grey gap-4 md:gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-4 md:pb-8">
 
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 md:gap-8 w-full">
 
         <div className="max-h-[500px] overflow-hidden relative w-full flex flex-col gap-4 justify-between bg-custom-gradient-light dark:bg-custom-gradient rounded-xl p-6 md:p-8 shadow-custom-shadow">
+          <div className="absolute top-4 right-4">
+            <LanguagePicker />
+          </div>
 
           <div className="flex flex-col gap-6 md:gap-8">
             <RevealOnScroll direction="left" duration={1} delay={0}>
               <div className="flex justify-between items-center">
                 <Portrait />
-                <div className="flex flex-col items-end gap-2">
-                  <LanguagePicker />
-                </div>
               </div>
             </RevealOnScroll>
 
