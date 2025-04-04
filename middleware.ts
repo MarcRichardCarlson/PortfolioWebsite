@@ -14,18 +14,37 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const hostname = request.nextUrl.hostname;
+  
+  // Check if the path already has a locale
   const pathnameIsMissingLocale = APP_LOCALES.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const acceptLanguage = request.headers.get('accept-language') || '';
-    const locale = acceptLanguage.split(',')[0].split('-')[0];
-    const defaultLocale = APP_LOCALES.includes(locale as any) ? locale : 'en';
-    
-    return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, request.url)
-    );
+  // Handle domain-specific routing
+  if (hostname === 'carlsonmarc.com') {
+    // If no locale in path, redirect to English
+    if (pathnameIsMissingLocale) {
+      return NextResponse.redirect(
+        new URL(`/en${pathname}`, request.url)
+      );
+    }
+  } else if (hostname === 'carlsonmarc.se') {
+    // If no locale in path, redirect to Swedish
+    if (pathnameIsMissingLocale) {
+      return NextResponse.redirect(
+        new URL(`/sv${pathname}`, request.url)
+      );
+    }
+  } else {
+    // For any other domain, default to English if no locale specified
+    if (pathnameIsMissingLocale) {
+      return NextResponse.redirect(
+        new URL(`/en${pathname}`, request.url)
+      );
+    }
   }
+
+  // If locale is specified in the path, let it through
+  return NextResponse.next();
 }

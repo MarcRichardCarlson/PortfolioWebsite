@@ -19,7 +19,7 @@ export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params;
   
   return (
-    <html lang={locale} className={`${orbitron.variable} ${montserrat.variable}`}>
+    <html lang={locale} className={`${orbitron.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
         <link rel="shortcut icon" href="/public/favicon/favicon.ico"></link>
         <ThemeScript />
@@ -38,7 +38,7 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         />
       </head>
-      <body className="theme-background">
+      <body className="theme-background" suppressHydrationWarning>
         <AppProviders locale={locale}>
           {children}
         </AppProviders>

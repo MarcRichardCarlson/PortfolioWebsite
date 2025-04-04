@@ -4,6 +4,19 @@ import { useEffect } from "react";
 
 const ThemeScript = () => {
   useEffect(() => {
+    // Set initial theme based on localStorage or system preference
+    const theme = localStorage.getItem('theme');
+    
+    // Always default to dark theme
+    if (!theme) {
+      localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add('dark');
+    } else if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 

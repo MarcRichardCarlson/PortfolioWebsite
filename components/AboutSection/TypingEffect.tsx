@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/i18n/client';
@@ -6,8 +8,9 @@ import { useCurrentLocale } from '@/hooks/locale';
 const TypingEffect: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
+  const [mounted, setMounted] = useState(false);
 
-  const quotes  = useMemo(() => [
+  const quotes = useMemo(() => [
     t('about-text1'),
     t('about-text2'),
     t('about-text3'),
@@ -18,10 +21,15 @@ const TypingEffect: React.FC = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
-  const [text, setText] = useState('');
+  const [text, setText] = useState(quotes[0]);
   const textRef = useRef<HTMLSpanElement>(null);
   const [minHeight, setMinHeight] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setText('');
+  }, []);
 
   useEffect(() => {
     if (textRef.current) {
@@ -35,16 +43,19 @@ const TypingEffect: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!mounted) return;
+    
     updateScreenSize();
     window.addEventListener('resize', updateScreenSize);
     return () => {
       window.removeEventListener('resize', updateScreenSize);
     };
-  }, []);
+  }, [mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     if (isSmallScreen) {
-      // Finish writing the current quote if the screen is sm size
       if (!isErasing && currentCharIndex < quotes[currentQuoteIndex].length) {
         const timer = setTimeout(() => {
           setText(text + quotes[currentQuoteIndex].charAt(currentCharIndex));
@@ -53,7 +64,6 @@ const TypingEffect: React.FC = () => {
         return () => clearTimeout(timer);
       }
     } else {
-      // Normal typing effect when the screen is above sm size
       if (isErasing) {
         if (currentCharIndex > 0) {
           const timer = setTimeout(() => {
@@ -78,7 +88,7 @@ const TypingEffect: React.FC = () => {
         }
       }
     }
-  }, [currentCharIndex, isErasing, text, currentQuoteIndex, quotes, isSmallScreen]);
+  }, [currentCharIndex, isErasing, text, currentQuoteIndex, quotes, isSmallScreen, mounted]);
 
   return (
     <div className="flex justify-start items-center h-fit" style={{ minHeight }}>
@@ -89,14 +99,16 @@ const TypingEffect: React.FC = () => {
         transition={{ duration: 1 }}
       >
         <span ref={textRef}>{text}</span>
-        <motion.span
-          className="text-lg font-mono sm:min-h-16 md:min-h-12 lg:min-h-6"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ repeat: Infinity, duration: 0.8 }}
-        >
-          |
-        </motion.span>
+        {mounted && (
+          <motion.span
+            className="text-lg font-mono sm:min-h-16 md:min-h-12 lg:min-h-6"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ repeat: Infinity, duration: 0.8 }}
+          >
+            |
+          </motion.span>
+        )}
       </motion.div>
     </div>
   );
