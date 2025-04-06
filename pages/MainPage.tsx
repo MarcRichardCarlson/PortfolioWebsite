@@ -15,7 +15,7 @@ const MainPage = () => {
   const contactRef = useRef(null);
 
   return (
-    <div className="bg-white-smooth dark:bg-black-smooth transition-colors duration-250">
+    <div className="bg-white dark:bg-black-smooth transition-colors duration-250">
       
       <Navbar 
         heroRef={heroRef}

@@ -100,11 +100,11 @@ const ContactSection: React.FC = () => {
         alt="Description"
         width={500}
         height={700}
-        className="max-h-[700px] h-[400px] md:h-[600px] lg:h-[500px] xl:h-[700px]  w-full object-cover rounded-xl"
+        className="max-h-[700px] h-[400px] md:h-[600px] lg:h-[500px] xl:h-[700px]  w-full object-cover rounded-xl shadow-custom-shadow hover:shadow-lg transition-shadow duration-300"
         unoptimized={true}
       />
 
-      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-6 md:p-8 rounded-xl z-8">
+      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl z-8">
         <RevealOnScroll direction="bottom" duration={0.2} delay={0.2}>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white font-montserrat">
@@ -130,7 +130,7 @@ const ContactSection: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(sanitizeInput(e.target.value))}
                   placeholder={t("contact-name")}
-                  className="rounded-lg bg-white dark:bg-input-black px-4 py-3 text-sm md:text-base w-full"
+                  className="rounded-lg border border-grey-300 dark:border-none bg-light-grey dark:bg-input-black px-4 py-3 text-sm md:text-base w-full"
                   required
                 />
               </RevealOnScroll>
@@ -142,7 +142,7 @@ const ContactSection: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(sanitizeInput(e.target.value))}
                   placeholder={t("contact-email")}
-                  className={`rounded-lg bg-white dark:bg-input-black px-4 py-3 text-sm md:text-base w-full ${!isEmailValid ? "border-red-500" : ""
+                  className={`rounded-lg border border-grey-300 dark:border-none bg-light-grey dark:bg-input-black px-4 py-3 text-sm md:text-base w-full ${!isEmailValid ? "border-red-500" : ""
                     }`}
                   required
                 />
@@ -160,7 +160,7 @@ const ContactSection: React.FC = () => {
                 value={message}
                 onChange={(e) => setMessage(sanitizeInput(e.target.value))}
                 placeholder={t("contact-message")}
-                className="rounded-xl bg-white dark:bg-input-black max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base"
+                className="rounded-xl border border-grey-300 dark:border-none bg-light-grey dark:bg-input-black max-h-64 min-h-32 px-4 py-3 block w-full text-sm md:text-base"
                 rows={5}
                 required
               ></textarea>
@@ -179,7 +179,7 @@ const ContactSection: React.FC = () => {
                   <div
                     className={`w-8 h-8 rounded-lg border ${agreeToNewsletter
                         ? "bg-true-blue border-transparent"
-                        : "bg-gray-300 border-gray-400"
+                        : "bg-light-grey border-gray-400"
                       } flex items-center justify-center`}
                   >
                     {agreeToNewsletter && (

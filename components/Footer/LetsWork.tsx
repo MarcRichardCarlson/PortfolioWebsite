@@ -41,7 +41,7 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
   
 
   return (
-    <div className="min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 bg-light-grey dark:bg-dark-grey rounded-xl shadow-lg font-montserrat">
+    <div className="min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl font-montserrat shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
       <div className="flex flex-col justify-between items-start h-full">
         <RevealOnScroll direction="bottom" duration={0.4} delay={0.4}>
           <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">

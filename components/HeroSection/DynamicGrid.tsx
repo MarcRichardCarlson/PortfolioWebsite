@@ -59,7 +59,7 @@ const DynamicGrid: React.FC<DynamicGridProps> = ({ contactRef }) => {
         {boxes.map((box, index) => (
           <div
             key={index}
-            className="overflow-hidden flex flex-col justify-start gap-4 p-6 md:p-8 bg-light-grey dark:bg-dark-grey rounded-xl shadow-custom-shadow"
+            className="overflow-hidden flex flex-col justify-start gap-4 p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl shadow-custom-shadow"
           >
 
             <RevealOnScroll direction="left" duration={1} delay={0}>

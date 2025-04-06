@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
       <MediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
 
-      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-light-grey dark:bg-dark-grey p-8 rounded-xl">
+      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-white dark:bg-dark-grey p-8 rounded-xl">
 
         <RevealOnScroll direction="top" duration={0.4} delay={0}>
           <div className="flex justify-between gap-2">

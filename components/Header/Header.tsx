@@ -50,30 +50,42 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         { id: 'contact', ref: contactRef }
       ];
 
-      // Special case for home section
-      if (window.scrollY < 100) {
-        setActiveSection('home');
-        return;
-      }
+      const headerHeight = 80;
+      const currentScroll = window.scrollY + headerHeight;
+      let currentSection = 'home';
 
-      // Check other sections
-      for (let i = sections.length - 1; i >= 0; i--) {
+      // Basic section tracking
+      for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
         if (section.ref.current) {
-          const rect = section.ref.current.getBoundingClientRect();
-          const headerOffset = 80; // Same as scroll offset
-
-          if (rect.top <= headerOffset && rect.bottom > headerOffset) {
-            setActiveSection(section.id);
+          const sectionTop = section.ref.current.offsetTop;
+          const sectionBottom = sectionTop + section.ref.current.offsetHeight;
+          
+          if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
+            currentSection = section.id;
             break;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Add throttling to improve performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll);
     handleScroll(); // Call once on mount to set initial active section
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, [heroRef, projectsRef, aboutRef, contactRef]);
 
   const toggleMenu = () => {
@@ -119,7 +131,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   return (
     <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-300 ${
       isScrolled 
-        ? 'py-4 bg-white/90 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg' 
+        ? 'py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg' 
         : 'py-10 bg-transparent'
     } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
       {/* Logo */}

@@ -40,6 +40,7 @@ const config: Config = {
         'black-smooth': '#0d1014',
         'white-smooth': '#e1e4e8',
         'true-blue': '#007AFF',
+        'true-blue-light': '#339CFF',
         'tech-orange': '#D55F28',
         'tech-orange-hover': '#C14E21',
         'custom-purple': '#c0a8f2',
@@ -49,7 +50,7 @@ const config: Config = {
         'custom-gradient-light': 'linear-gradient(to right, #ffffff 10%, #f1f5f9 20%, #007AFF 100%)',
       },
       boxShadow: {
-        'custom-shadow': '0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        'custom-shadow': '0 8px 15px 5px rgba(0, 0, 0, 0.1), 0 4px 6px 0px rgba(0, 0, 0, 0.1)',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
