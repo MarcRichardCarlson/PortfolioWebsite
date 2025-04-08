@@ -17,11 +17,11 @@ type Props = {
 
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params;
-  
+
   return (
     <html lang={locale} className={`${orbitron.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/public/favicon/favicon.ico"></link>
+        <link rel="shortcut icon" href="/favicon/favicon.ico"></link>
         <ThemeScript />
 
         <script

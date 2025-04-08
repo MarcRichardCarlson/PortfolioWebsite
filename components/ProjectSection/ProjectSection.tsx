@@ -1,14 +1,14 @@
 import React from 'react';
 import ProjectImage1 from '../../public/images/GrönaHusMockup.png';
-import ProjectImage2 from '../../public/images/6e0e167b589.png';
+import ProjectImage2 from '../../public/images/hellosmart.png';
 import ProjectImage3 from '../../public/images/Lamtek.png';
 import ProjectImage4 from '../../public/images/164fe47a71001a6c.png';
-import ProjectImage5 from '../../public/images/Discord.png';
-import ProjectImage6 from '../../public/images/UnknownMedia.png';
+import ProjectImage5 from '../../public/images/discord.jpg';
+import ProjectImage6 from '../../public/images/f1.png';
+import ProjectImage7 from '../../public/images/zenithia.jpg';
 import Projects from './Projects';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
-import RevealOnScroll from '../RevealOnScroll';
 
 const ProjectSection = () => {
   const locale = useCurrentLocale();
@@ -80,10 +80,10 @@ const ProjectSection = () => {
                 }
               },
               {
-                title: 'Unknown Media',
-                description: t("projects-media"),
+                title: 'F1 Stream',
+                description: t("projects-f1"),
                 image: ProjectImage6,
-                tag: { text: t("projects-media-tag"), color: '#9046cf' },
+                tag: { text: t("projects-f1-tag"), color: '#9046cf' },
                 website: 'https://unknownmedia.se',
                 customButton: {
                   text: 'Private Repository',
@@ -93,9 +93,9 @@ const ProjectSection = () => {
               },
               {
                 title: 'Zenithia',
-                description: t("projects-media"),
-                image: ProjectImage6,
-                tag: { text: t("projects-media-tag"), color: '#9046cf' },
+                description: t("projects-zenithia"),
+                image: ProjectImage7,
+                tag: { text: t("projects-zenithia-tag"), color: '#9046cf' },
                 website: 'https://zenithia.se',
                 customButton: {
                   text: 'Private Repository',

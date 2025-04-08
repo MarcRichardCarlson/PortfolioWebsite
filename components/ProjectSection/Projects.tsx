@@ -31,15 +31,15 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   useEffect(() => {
     const updateColumns = () => {
       if (!containerRef.current) return;
-      
+
       const width = containerRef.current.offsetWidth;
       let newColumns = 1;
-      
+
       if (width >= 1536) newColumns = 4; // 2xl
       else if (width >= 1280) newColumns = 3; // xl
       else if (width >= 1024) newColumns = 3; // lg
       else if (width >= 768) newColumns = 2; // md
-      
+
       setColumns(newColumns);
     };
 
@@ -89,7 +89,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   };
 
   return (
-    <div className="w-full min-h-screen" ref={containerRef}>
+    <div className="w-full" ref={containerRef}>
       <motion.div
         className="grid gap-y-4 md:gap-y-8 gap-x-0 [@media(min-width:831px)]:gap-x-8"
         style={{
@@ -121,7 +121,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/80 flex items-center justify-center p-4"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -170,22 +170,21 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                   </div>
                   <div className="mt-6 flex gap-4">
                     {projects[selectedProject].customButton ? (
-                      <a 
+                      <a
                         href={projects[selectedProject].customButton.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`px-4 py-2 rounded-lg transition-colors duration-200 ${
-                          projects[selectedProject].customButton.type === 'primary'
-                            ? 'bg-blue-500 text-white hover:bg-blue-600'
-                            : 'border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                        }`}
+                        className={`px-4 py-2 rounded-lg transition-colors duration-200 ${projects[selectedProject].customButton.type === 'primary'
+                          ? 'bg-blue-500 text-white hover:bg-blue-600'
+                          : 'border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                          }`}
                       >
                         {projects[selectedProject].customButton.text}
                       </a>
                     ) : (
                       <>
                         {projects[selectedProject].website ? (
-                          <a 
+                          <a
                             href={projects[selectedProject].website}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -194,7 +193,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                             View Project
                           </a>
                         ) : (
-                          <button 
+                          <button
                             disabled
                             className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 rounded-lg cursor-not-allowed"
                           >
@@ -202,7 +201,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                           </button>
                         )}
                         {projects[selectedProject].code ? (
-                          <a 
+                          <a
                             href={projects[selectedProject].code}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -211,7 +210,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                             View Code
                           </a>
                         ) : (
-                          <button 
+                          <button
                             disabled
                             className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-lg cursor-not-allowed"
                           >
@@ -246,8 +245,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, variants, size, onCl
       className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300`}
       onClick={onClick}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-1" />
+
       <Image
         src={project.image}
         alt={project.title}
@@ -256,7 +255,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, variants, size, onCl
       />
 
       <motion.span
-        className="absolute top-4 left-4 py-1 px-3 text-sm font-semibold rounded-lg z-20"
+        className="absolute top-4 left-4 py-1 px-3 text-sm font-semibold rounded-lg z-1"
         style={{
           color: project.tag.color,
           backgroundColor: `${project.tag.color}33`,
@@ -265,11 +264,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, variants, size, onCl
         {project.tag.text}
       </motion.span>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-4 z-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
         <motion.h3 className="text-xl font-bold text-white mb-1">
           {project.title}
         </motion.h3>
-        <motion.p className="text-white/80 text-sm line-clamp-2  pb-2">
+        <motion.p className="text-white/80 text-sm pb-2">
           {project.description}
         </motion.p>
       </div>

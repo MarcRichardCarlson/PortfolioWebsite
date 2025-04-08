@@ -18,30 +18,37 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
       darkOverlay.style.position = "fixed";
       darkOverlay.style.inset = "0";
       darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0)"; // Start transparent
-      darkOverlay.style.zIndex = "9999";
+      darkOverlay.style.zIndex = "10";
       darkOverlay.style.transition = "background-color 0.5s ease-in-out, opacity 0.5s ease-in-out";
       darkOverlay.style.opacity = "1"; // Ensure visibility
       document.body.appendChild(darkOverlay);
-  
+
       // Smooth fade-in effect
       setTimeout(() => {
         darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
       }, 10); // Delay to allow CSS transition to kick in
-  
+
       setTimeout(() => {
         // Fade-out effect after 2 seconds
         darkOverlay.style.opacity = "0";
         setTimeout(() => darkOverlay.remove(), 500); // Remove after fade-out
       }, 2000);
-  
-      // Scroll to the contact section
-      contactRef.current.scrollIntoView({ behavior: "smooth" });
+
+      // Scroll to the contact section with header offset
+      const headerOffset = 80; // Height of the fixed header
+      const elementPosition = contactRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
-  
+
 
   return (
-    <div className="min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl font-montserrat shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
+    <div className="min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl font-montserrat shadow-custom-shadow">
       <div className="flex flex-col justify-between items-start h-full">
         <RevealOnScroll direction="bottom" duration={0.4} delay={0.4}>
           <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
@@ -66,7 +73,7 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
             )}
           </div>
         </RevealOnScroll>
-      
+
       </div>
     </div>
   );

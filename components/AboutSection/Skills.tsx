@@ -68,7 +68,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow hover:shadow-lg transition-shadow duration-300 font-montserrat shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
+        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow font-montserrat shadow-custom-shadow">
             <div className="grid grid-cols-2 gap-4 2xl:grid-cols-4 md:gap-6 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex} className="relative group">

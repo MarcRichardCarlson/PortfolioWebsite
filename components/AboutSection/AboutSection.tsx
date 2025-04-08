@@ -22,7 +22,7 @@ const AboutSection: React.FC = () => {
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pb-4 md:pb-8 px-4 sm:px-6 md:px-8 text-black dark:text-white">
-                <section className="overflow-hidden bg-white dark:bg-dark-grey rounded-xl p-6 md:p-8 w-full shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
+                <section className="overflow-hidden bg-white dark:bg-dark-grey rounded-xl p-6 md:p-8 w-full shadow-custom-shadow">
                     <div className="w-full flex flex-col h-full">
                         <RevealOnScroll direction="left" duration={0.5} delay={0}>
                             <h3 className="text-xl md:text-3xl lg:text-5xl font-montserrat flex items-center gap-2 mb-2 md:mb-4">
@@ -52,7 +52,7 @@ const AboutSection: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 pb-4 md:pb-8 px-4 sm:px-6 md:px-8 gap-4 md:gap-8">
-                <div className="text-black dark:text-white bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow hover:shadow-lg transition-shadow duration-300">
+                <div className="text-black dark:text-white bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow">
                     <RevealOnScroll direction="bottom" duration={0.5} delay={0}>
                         <Education />
                     </RevealOnScroll>
@@ -62,7 +62,7 @@ const AboutSection: React.FC = () => {
                     src={AboutImage}
                     alt="About image"
                     sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="w-full max-h-[500px] h-full object-cover rounded-xl shadow-custom-shadow hover:shadow-lg transition-shadow duration-300"
+                    className="w-full max-h-[500px] h-full object-cover rounded-xl shadow-custom-shadow"
                     unoptimized={true}
                 />
             </div>

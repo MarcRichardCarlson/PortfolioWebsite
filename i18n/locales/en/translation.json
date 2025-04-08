@@ -9,14 +9,15 @@
     "hero-header": "My name is Marc Carlson, I'm a web developer working and living in Sweden",
     "weather-loading": "Loading weather...",
     
-    "hero-gridbox-header-1": "Interactive Animations",
-    "hero-gridbox-text-1": "Crafting smooth and engaging animations that bring your ideas to life with motion design expertise. Whether it's micro-interactions or full-scale motion, I make every pixel move with purpose.",
-    "hero-gridbox-header-2": "Scalable Web Experiences",
-    "hero-gridbox-text-2": "Building modern web solutions designed to grow with your audience. From responsive layouts to performance optimization, I focus on creating a seamless experience no matter where your users are.",
-    "hero-gridbox-header-3": "Custom Digital Identity",
-    "hero-gridbox-text-3": "Developing bespoke features and functionality to ensure your platform stands out. Every line of code is tailored to meet your unique needs and showcase your individuality online.",
-    "hero-gridbox-header-4": "Have a project in mind?",
-    "hero-gridbox-text-4": "Let's discuss your project and how we can make it a reality. Reach out today, and let's create something extraordinary together!",
+    "hero-gridbox-header-1": "Frontend Development",
+    "hero-gridbox-text-1": "Building clean, responsive, and user-focused interfaces with modern frameworks. Frontend is where I thrive — translating ideas into smooth and interactive web experiences.",
+    "hero-gridbox-header-2": "Backend & Architecture",
+    "hero-gridbox-text-2": "Handling data, APIs, and server-side logic to support powerful applications. While frontend is my main focus, I actively work with backend tools to bring full-stack solutions to life.",
+    "hero-gridbox-header-3": "Always Learning Design",
+    "hero-gridbox-text-3": "Constantly exploring design systems, UX patterns, and visual principles to improve my eye for detail. I believe strong design and clean code go hand in hand.",
+    "hero-gridbox-header-4": "Let’s Get in Touch",
+    "hero-gridbox-text-4": "Have a project or idea in mind? Let’s talk about how we can help make it happen.",
+
       
 
     "projects-grönahus": "A tech company where I conducted a detailed analysis of their website's content, scalability, and SEO potential. I provided insights and made minor adjustments to enhance their overall site structure.",
@@ -24,14 +25,16 @@
     "projects-hellosmart": "This is a company that sells motorized blinds for smart homes. I'm currently designing their full e-commerce site from scratch, with a strong emphasis on SEO to attract traffic and grow their online sales.",
     "projects-digitalfans": "A company where I completed my internship during my studies in development. I created a customer analysis form to help them better understand client needs and improve their service offerings.",
     "projects-discord": "A passion project where I recreated the Discord interface as a custom \"skin.\" This was purely for learning, with no collaboration with Discord. It's not fully functional but captures the design elements.",
-    "projects-media": "Coming Soon! A media company I may collaborate with to create a website showcasing their film projects and team. This project is currently in the planning stages.",
+    "projects-f1": "A self-made F1 streaming platform built purely out of passion for the sport and coding. No clients, no deadlines — just a fun side project to dive into real-time streaming, clean UI design, and the world of Formula 1.",
+    "projects-zenithia": "An ongoing project at a startup, focused on building a therapy-centered app with strong emphasis on privacy, user experience, and mental well-being. Currently in active development with a passionate team.",
 
     "projects-grönahus-tag": "Content & SEO Strategy",
     "projects-lamtek-tag": "E-commerce Development",
     "projects-hellosmart-tag": "Full E-commerce Site",
     "projects-digitalfans-tag": "Client Research & Analysis",
     "projects-discord-tag": "UI Design Exploration",
-    "projects-media-tag": "Media-production",
+    "projects-f1-tag": "Formula 1 Streaming Platform",
+    "projects-zenithia-tag": "Zenithia App startup",
       
 
     "about-header": "Carlson – Frontend Developer",

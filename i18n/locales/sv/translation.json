@@ -9,14 +9,14 @@
     "hero-header": "Jag heter Marc Carlson, jag är en webbutvecklare som bor och arbetar i Sverige",
     "weather-loading": "Laddar väder...",
     
-    "hero-gridbox-header-1": "Interaktiva Animationer",
-    "hero-gridbox-text-1": "Skapar smidiga och engagerande animationer som förverkligar dina idéer med expertis inom rörelsedesign. Oavsett om det handlar om mikrointeraktioner eller storskalig rörelse, ser jag till att varje pixel rör sig med ett syfte.",
-    "hero-gridbox-header-2": "Skalbara webbupplevelser",
-    "hero-gridbox-text-2": "Bygger moderna webblösningar utformade för att växa med din publik. Från responsiva layouter till prestandaoptimering, jag fokuserar på att skapa en sömlös upplevelse oavsett var dina användare befinner sig.",
-    "hero-gridbox-header-3": "Anpassad digital identitet",
-    "hero-gridbox-text-3": "Utvecklar skräddarsydda funktioner och lösningar som gör att din plattform sticker ut. Varje kodrad är anpassad för att uppfylla dina unika behov och visa upp din individualitet online.",
-    "hero-gridbox-header-4": "Har du ett projekt i åtanke?",
-    "hero-gridbox-text-4": "Låt oss diskutera ditt projekt och hur vi kan förverkliga det. Hör av dig idag, så skapar vi något extraordinärt tillsammans!",
+    "hero-gridbox-header-1": "Frontend-utveckling",
+    "hero-gridbox-text-1": "Bygger rena, responsiva och användarvänliga gränssnitt med moderna ramverk. Frontend är där jag trivs bäst – där idéer blir till smidiga och interaktiva upplevelser.",
+    "hero-gridbox-header-2": "Backend & Arkitektur",
+    "hero-gridbox-text-2": "Jobbar med data, API:er och serverlogik för att stötta kraftfulla applikationer. Även om frontend är mitt fokus, arbetar jag aktivt med backend för att skapa helhetslösningar.",
+    "hero-gridbox-header-3": "Ständig Designutveckling",
+    "hero-gridbox-text-3": "Utforskar ständigt designsystem, UX-mönster och visuella principer för att skärpa ögat för detaljer. Jag tror att bra design och ren kod hör ihop.",
+    "hero-gridbox-header-4": "Hör gärna av dig",
+    "hero-gridbox-text-4": "Har du ett projekt eller en idé? Hör av dig så ser vi kan få det att hända.",
 
 
     "projects-grönahus": "Fantastiska Grönahus, ett teknikföretag där jag genomförde en detaljerad analys av deras webbplats innehåll, skalbarhet och SEO-potential. Jag gav insikter och gjorde mindre justeringar för att förbättra deras övergripande webbstruktur.",
@@ -24,14 +24,16 @@
     "projects-hellosmart": "Ett företag som säljer motoriserade rullgardiner för smarta hem. Jag designar för närvarande deras fullständiga e-handelswebbplats från grunden, med ett starkt fokus på SEO för att attrahera trafik och öka deras onlineförsäljning.",
     "projects-digitalfans": "På detta företag där jag genomförde min praktik under mina studier inom utveckling. Jag skapade ett kundanalysformulär för att hjälpa dem att bättre förstå kundernas behov och förbättra deras tjänsteutbud.",
     "projects-discord": "Mitt egna passionerat projekt där jag återskapade Discord-gränssnittet som ett anpassat \"skin\". Detta var enbart för lärande, utan något samarbete med Discord. Det är inte fullt funktionellt men fångar designelementen.",
-    "projects-media": "Kommer snart! Ett medieföretag jag eventuellt kommer att samarbeta med för att skapa en webbplats som visar upp deras filmprojekt och team. Detta projekt är för närvarande i planeringsstadiet.",
-      
+    "projects-f1": "En egengjord F1-streamingplattform skapad helt ur passion för sporten och kodning. Inga kunder, inga deadlines – bara ett roligt sidoprojekt för att utforska realtidsstreaming, ren UI-design och Formel 1-världen.",
+    "projects-zenithia": "Ett pågående projekt på ett startupföretag, med fokus på att utveckla en terapicentrerad app med starkt fokus på integritet, användarupplevelse och psykiskt välmående. För närvarande under aktiv utveckling tillsammans med ett engagerat team.",
+
     "projects-grönahus-tag": "Innehåll & SEO-strategi",
     "projects-lamtek-tag": "E-handelsutveckling",
     "projects-hellosmart-tag": "Full e-handelssajt",
     "projects-digitalfans-tag": "Kundanalysplattform",
     "projects-discord-tag": "UI-designutforskning",
-    "projects-media-tag": "Media-produktion",
+    "projects-f1-tag": "Formel 1 Streamingplattform",
+    "projects-zenithia-tag": "Zenithia App startup",
       
     
     "about-header": "Carlson – Frontendutvecklare",
