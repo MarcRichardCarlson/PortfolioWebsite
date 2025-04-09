@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectImage1 from '../../public/images/kjGgBSc75G0.png';
-import ProjectImage2 from '../../public/images/hellosmart.png';
+import ProjectImage2 from '../../public/images/HelloSmart.png';
 import ProjectImage3 from '../../public/images/Lamtek.png';
 import ProjectImage4 from '../../public/images/164fe47a71001a6c.png';
 import ProjectImage5 from '../../public/images/discord.jpg';
