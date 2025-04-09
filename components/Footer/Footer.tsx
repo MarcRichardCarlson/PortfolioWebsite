@@ -49,18 +49,9 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
       <MediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
 
-      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-white dark:bg-dark-grey p-8 rounded-xl">
+      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-white dark:bg-dark-grey p-8 rounded-xl z-0">
 
-        <RevealOnScroll direction="top" duration={0.4} delay={0}>
-          <div className="flex justify-between gap-2">
-            <p className="text-2xl md:text-3xl font-bold text-black dark:text-white">{t("footer-menu-h1-header")}</p>
-            {/*  <div className="min-h-12 min-w-12">
-              <LanguagePicker />
-            </div> */}
-          </div>
-        </RevealOnScroll>
-
-        <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative z-10">
+        <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative">
           <div className="flex flex-col md:flex-row gap-8">
             <RevealOnScroll direction="top" duration={0.4} delay={0.2}>
               <div className="flex flex-col gap-4">

@@ -69,9 +69,6 @@ const config: Config = {
         'full': '9999px',
         'large': '64px',
       },
-      zIndex: {
-        '10000': '10000', // This is used for the contact form
-      },
     },
   },
   plugins: [],

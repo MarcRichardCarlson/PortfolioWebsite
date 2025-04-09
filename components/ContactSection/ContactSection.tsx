@@ -95,7 +95,7 @@ const ContactSection: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
-      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl z-[999] order-1 xl:order-2">
+      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl order-1 xl:order-2">
         <RevealOnScroll direction="bottom" duration={0.2} delay={0.2}>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white font-montserrat">

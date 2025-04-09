@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 interface ButtonProps {
   size: 'xl' | 'lg' | 'sm';
-  variant: 'primary' | 'secondary' | 'success' | 'bento' | 'plan' | 'remove' | 'skip' | 'redo' | 'scroll' | 'send';
+  variant: 'primary' | 'secondary' | 'success' | 'bento' | 'plan' | 'remove' | 'skip' | 'redo' | 'scroll' | 'send' | 'view';
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
@@ -26,7 +26,8 @@ const variantClasses = {
   skip: 'max-w-24 text-light-grey hover:text-neutral-500 underline underline-offset-2 font-semibold text-sm sm:text-base md:text-md',
   redo: 'flex justify-center items-center hover:bg-indigo-500 border border-white hover:text-white rounded-sm font-bold shadow-xl text-sm sm:text-base md:text-md max-w-10 sm:max-w-12',
   scroll: 'max-w-8 min-w-8 max-h-8 min-h-8 flex justify-center items-center hover:bg-indigo-500 text-black border border-black hover:text-white rounded-full font-bold shadow-xl text-sm sm:text-base md:text-md',
-  send: 'max-w-24 bg-green-800 hover:bg-green-700 text-white-grey rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md'
+  send: 'max-w-24 bg-green-800 hover:bg-green-700 text-white-grey rounded-sm font-semibold shadow-xl text-sm sm:text-base md:text-md',
+  view: 'min-w-16 min-h-16 max-w-16 max-h-16 h-16 w-16 bg-black-soil hover:bg-true-blue text-white rounded-full font-semibold shadow-xl text-sm sm:text-base md:text-md'
 };
 
 const ResponsiveButton: React.FC<ButtonProps> = ({ size, variant, children, onClick }) => {

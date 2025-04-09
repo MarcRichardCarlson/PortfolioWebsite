@@ -4,7 +4,7 @@ import PortraitImage from '../../public/images/DSCF9509.png';
 
 const Portrait: React.FC = () => {
   return (
-    <div className="z-50 md:h-24 md:w-24 h-36 w-36 relative overflow-hidden">
+    <div className="md:h-24 md:w-24 h-36 w-36 relative overflow-hidden">
       <Image
         src={PortraitImage}
         alt="Portrait"

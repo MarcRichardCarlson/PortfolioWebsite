@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
-
+import ResponsiveButton from '../Buttons';
+import arrow from '../../public/icons/PhArrowCounterClockwise.svg';
 interface Project {
   title: string;
   description: string;
@@ -27,6 +28,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [columns, setColumns] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const updateColumns = () => {
@@ -47,6 +49,24 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     window.addEventListener('resize', updateColumns);
     return () => window.removeEventListener('resize', updateColumns);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (selectedProject !== null) {
+        const currentScrollY = window.scrollY;
+        const scrollDiff = Math.abs(currentScrollY - lastScrollY.current);
+
+        if (scrollDiff > 100) {
+          setSelectedProject(null);
+        }
+
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedProject]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -245,32 +265,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, variants, size, onCl
       className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300`}
       onClick={onClick}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-1" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-300 z-1" />
 
       <Image
         src={project.image}
         alt={project.title}
         fill
-        className="object-cover transition-transform duration-500 group-hover:scale-110"
+        className="object-cover transition-transform duration-250 group-hover:scale-110"
       />
 
-      <motion.span
-        className="absolute top-4 left-4 py-1 px-3 text-sm font-semibold rounded-lg z-1"
-        style={{
-          color: project.tag.color,
-          backgroundColor: `${project.tag.color}33`,
-        }}
-      >
-        {project.tag.text}
-      </motion.span>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
-        <motion.h3 className="text-xl font-bold text-white mb-1">
+      <div className="flex flex-row justify-between items-center bg-black/90 absolute bottom-0 left-0 right-0 p-4">
+        <motion.h3 className="text-xl font-bold text-white">
           {project.title}
         </motion.h3>
-        <motion.p className="text-white/80 text-sm pb-2">
-          {project.description}
-        </motion.p>
+
+        <motion.span
+          className=" py-1 px-3 text-sm font-semibold rounded-lg z-1"
+          style={{
+            color: project.tag.color,
+            backgroundColor: `${project.tag.color}50`,
+          }}
+        >
+          {project.tag.text}
+        </motion.span>
+
       </div>
     </motion.div>
   );
