@@ -8,7 +8,7 @@ import { useCurrentLocale } from "@/hooks/locale";
 import TypingEffect from "./TypingEffect";
 import RevealOnScroll from "../RevealOnScroll";
 import Image from 'next/image';
-import AboutImage from "../../public/images/kjGgBSc75G0.png"
+import AboutImage from "../../public/images/GrönaHusMockup.png"
 
 const AboutSection: React.FC = () => {
     const locale = useCurrentLocale();
