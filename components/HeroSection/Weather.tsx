@@ -1,45 +1,69 @@
-import { useState, useEffect } from 'react';
-import { getWeather } from '../../services/WeatherComponent'
+import React, { memo, useEffect, useState, useCallback } from 'react';
+import Image from "next/image";
+import { useTranslation } from "@/i18n/client";
+import { useCurrentLocale } from "@/hooks/locale";
 
 interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-    humidity: number;
-  };
-  weather: {
-    description: string;
-    icon: string;
-  }[];
+  temperature: number;
+  condition: string;
+  icon: string;
 }
 
-const WeatherComponent = ({ city }: { city: string }) => {
+const Weather = memo(() => {
+  const locale = useCurrentLocale();
+  const { t } = useTranslation(locale, "translation");
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const data = await getWeather(city);
-        setWeather(data);
-      } catch (error) {
-        setError('Error fetching weather data');
-      } finally {
-        setLoading(false);
+  const fetchWeather = useCallback(async () => {
+    try {
+      const response = await fetch('/api/weather');
+      if (!response.ok) {
+        throw new Error('Weather data fetch failed');
       }
-    };
-    fetchWeather();
-  }, [city]);
+      const data = await response.json();
+      setWeather(data);
+      setError(null);
+    } catch (err) {
+      setError('Failed to load weather');
+      console.error('Weather fetch error:', err);
+    }
+  }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  useEffect(() => {
+    fetchWeather();
+    const interval = setInterval(fetchWeather, 300000); // Update every 5 minutes
+    return () => clearInterval(interval);
+  }, [fetchWeather]);
+
+  if (error) {
+    return null;
+  }
+
+  if (!weather) {
+    return (
+      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+        <div className="w-6 h-6 animate-pulse bg-gray-200 dark:bg-gray-700 rounded-full" />
+        <span>{t("loading")}</span>
+      </div>
+    );
+  }
 
   return (
-    <div className="text-white-grey font-semibold text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl">
-      <p>{weather ? Math.round(weather.main.temp) : ''}°C</p>
+    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+      <Image
+        src={weather.icon}
+        alt={weather.condition}
+        width={24}
+        height={24}
+        className="w-6 h-6"
+        priority
+      />
+      <span>{weather.temperature}°C</span>
     </div>
   );
-};
+});
 
-export default WeatherComponent;
+Weather.displayName = 'Weather';
+
+export default Weather;

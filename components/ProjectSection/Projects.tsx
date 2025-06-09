@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import ResponsiveButton from '../Buttons';
 import arrow from '../../public/icons/PhArrowCounterClockwise.svg';
+
 interface Project {
   title: string;
   description: string;
@@ -29,46 +30,11 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [columns, setColumns] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
+  const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  useEffect(() => {
-    const updateColumns = () => {
-      if (!containerRef.current) return;
-
-      const width = containerRef.current.offsetWidth;
-      let newColumns = 1;
-
-      if (width >= 1536) newColumns = 4; // 2xl
-      else if (width >= 1280) newColumns = 3; // xl
-      else if (width >= 1024) newColumns = 3; // lg
-      else if (width >= 768) newColumns = 2; // md
-
-      setColumns(newColumns);
-    };
-
-    updateColumns();
-    window.addEventListener('resize', updateColumns);
-    return () => window.removeEventListener('resize', updateColumns);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (selectedProject !== null) {
-        const currentScrollY = window.scrollY;
-        const scrollDiff = Math.abs(currentScrollY - lastScrollY.current);
-
-        if (scrollDiff > 100) {
-          setSelectedProject(null);
-        }
-
-        lastScrollY.current = currentScrollY;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [selectedProject]);
-
-  const containerVariants = {
+  // Memoize the container variants
+  const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,9 +42,10 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         staggerChildren: 0.1,
       },
     },
-  };
+  }), []);
 
-  const itemVariants = {
+  // Memoize the item variants
+  const itemVariants = useMemo(() => ({
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -87,26 +54,141 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         duration: 0.5,
       },
     },
-  };
+  }), []);
 
-  const getCardSize = (index: number) => {
-    // Special case for the last two cards to share the row
+  // Memoize the updateColumns function
+  const updateColumns = useCallback(() => {
+    if (!containerRef.current) return;
+
+    const width = containerRef.current.offsetWidth;
+    let newColumns = 1;
+
+    if (width >= 1536) newColumns = 4;
+    else if (width >= 1280) newColumns = 3;
+    else if (width >= 1024) newColumns = 3;
+    else if (width >= 768) newColumns = 2;
+
+    setColumns(newColumns);
+  }, []);
+
+  useEffect(() => {
+    updateColumns();
+    window.addEventListener('resize', updateColumns);
+    return () => window.removeEventListener('resize', updateColumns);
+  }, [updateColumns]);
+
+  // Memoize the scroll handler
+  const handleScroll = useCallback(() => {
+    if (selectedProject !== null) {
+      const currentScrollY = window.scrollY;
+      const scrollDiff = Math.abs(currentScrollY - lastScrollY.current);
+
+      if (scrollDiff > 100) {
+        setSelectedProject(null);
+      }
+
+      lastScrollY.current = currentScrollY;
+    }
+  }, [selectedProject]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  // Memoize the intersection observer callback
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = parseInt(entry.target.getAttribute('data-index') || '0');
+        setVisibleProjects((prev) => [...new Set([...prev, index])]);
+      }
+    });
+  }, []);
+
+  // Setup intersection observer
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(handleIntersection, {
+      rootMargin: '50px 0px',
+      threshold: 0.1,
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [handleIntersection]);
+
+  // Observe project cards
+  useEffect(() => {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card) => {
+      if (observerRef.current) {
+        observerRef.current.observe(card);
+      }
+    });
+  }, [projects]);
+
+  // Memoize the getCardSize function
+  const getCardSize = useCallback((index: number) => {
     if (index === projects.length - 2) {
-      return 'col-span-1 row-span-1 min-h-[200px] w-full'; // Second to last card
+      return 'col-span-1 row-span-1 min-h-[200px] w-full';
     }
     if (index === projects.length - 1) {
-      return 'col-span-1 row-span-1 min-h-[200px] w-full'; // Last card
+      return 'col-span-1 row-span-1 min-h-[200px] w-full';
     }
 
     const sizes = [
-      'col-span-2 row-span-2 min-h-[400px]', // Large card
-      'col-span-1 row-span-1 min-h-[200px] w-full', // Small card
-      'col-span-1 row-span-2 min-h-[400px]', // Tall card
-      'col-span-2 row-span-1 min-h-[200px]', // Wide card
-      'col-span-1 row-span-1 min-h-[200px] w-full', // Small card
+      'col-span-2 row-span-2 min-h-[400px]',
+      'col-span-1 row-span-1 min-h-[200px] w-full',
+      'col-span-1 row-span-2 min-h-[400px]',
+      'col-span-2 row-span-1 min-h-[200px]',
+      'col-span-1 row-span-1 min-h-[200px] w-full',
     ];
     return sizes[index % sizes.length];
-  };
+  }, [projects.length]);
+
+  // Memoize the ProjectCard component
+  const MemoizedProjectCard = useMemo(() => {
+    return React.memo(({ project, index, variants, size, onClick, isVisible }: ProjectCardProps) => (
+      <motion.div
+        variants={variants}
+        className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300 project-card`}
+        onClick={onClick}
+        data-index={index}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-300 z-1" />
+
+        {isVisible && (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-250 group-hover:scale-110"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        )}
+
+        <div className="flex flex-row justify-between items-center bg-black/90 absolute bottom-0 left-0 right-0 p-4">
+          <motion.h3 className="text-xl font-bold text-white">
+            {project.title}
+          </motion.h3>
+
+          <motion.span
+            className="py-1 px-3 text-sm font-semibold rounded-lg z-1"
+            style={{
+              color: project.tag.color,
+              backgroundColor: `${project.tag.color}50`,
+            }}
+          >
+            {project.tag.text}
+          </motion.span>
+        </div>
+      </motion.div>
+    ));
+  }, []);
 
   return (
     <div className="w-full" ref={containerRef}>
@@ -124,13 +206,14 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         animate="visible"
       >
         {projects.map((project, index) => (
-          <ProjectCard
+          <MemoizedProjectCard
             key={index}
             project={project}
             index={index}
             variants={itemVariants}
             size={getCardSize(index)}
             onClick={() => setSelectedProject(index)}
+            isVisible={visibleProjects.includes(index)}
           />
         ))}
       </motion.div>
@@ -168,6 +251,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                     alt={projects[selectedProject].title}
                     fill
                     className="object-cover"
+                    priority
                   />
                 </div>
                 <div className="flex flex-col justify-between">
@@ -256,43 +340,7 @@ interface ProjectCardProps {
   variants: any;
   size: string;
   onClick: () => void;
+  isVisible: boolean;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, variants, size, onClick }) => {
-  return (
-    <motion.div
-      variants={variants}
-      className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300`}
-      onClick={onClick}
-    >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-300 z-1" />
-
-      <Image
-        src={project.image}
-        alt={project.title}
-        fill
-        className="object-cover transition-transform duration-250 group-hover:scale-110"
-      />
-
-
-      <div className="flex flex-row justify-between items-center bg-black/90 absolute bottom-0 left-0 right-0 p-4">
-        <motion.h3 className="text-xl font-bold text-white">
-          {project.title}
-        </motion.h3>
-
-        <motion.span
-          className=" py-1 px-3 text-sm font-semibold rounded-lg z-1"
-          style={{
-            color: project.tag.color,
-            backgroundColor: `${project.tag.color}50`,
-          }}
-        >
-          {project.tag.text}
-        </motion.span>
-
-      </div>
-    </motion.div>
-  );
-};
-
-export default Projects;
+export default React.memo(Projects);
