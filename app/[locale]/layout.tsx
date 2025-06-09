@@ -21,7 +21,7 @@ export default async function RootLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${orbitron.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/favicon/favicon.ico"></link>
+        <link rel="shortcut icon" href="/favicon.ico" />
         <ThemeScript />
 
         <script
