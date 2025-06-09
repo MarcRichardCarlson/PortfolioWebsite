@@ -346,10 +346,4 @@ interface ProjectCardProps {
   isVisible: boolean;
 }
 
-const ProjectCard = memo(({ project, index }: ProjectCardProps) => {
-  // ... existing component code ...
-});
-
-ProjectCard.displayName = 'ProjectCard';
-
-export default ProjectCard;
+export default Projects;
