@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import ResponsiveButton from '../Buttons';
@@ -151,7 +151,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   // Memoize the ProjectCard component
   const MemoizedProjectCard = useMemo(() => {
-    return React.memo(({ project, index, variants, size, onClick, isVisible }: ProjectCardProps) => (
+    const ProjectCard = React.memo(({ project, index, variants, size, onClick, isVisible }: ProjectCardProps) => (
       <motion.div
         variants={variants}
         className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300 project-card`}
@@ -188,6 +188,9 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         </div>
       </motion.div>
     ));
+
+    ProjectCard.displayName = 'ProjectCard';
+    return ProjectCard;
   }, []);
 
   return (
@@ -343,4 +346,10 @@ interface ProjectCardProps {
   isVisible: boolean;
 }
 
-export default React.memo(Projects);
+const ProjectCard = memo(({ project, index }: ProjectCardProps) => {
+  // ... existing component code ...
+});
+
+ProjectCard.displayName = 'ProjectCard';
+
+export default ProjectCard;

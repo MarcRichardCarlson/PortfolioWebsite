@@ -2,6 +2,11 @@
 
 import React, { useRef, useEffect, Suspense, lazy } from 'react';
 import Head from 'next/head';
+import HeroImage from '../public/images/HeroImage.png';
+import PortraitImage from '../public/images/DSCF9509.png';
+import HelloSmartImage from '../public/images/HelloSmart.png';
+import LamtekImage from '../public/images/Lamtek.png';
+import kjGgBSc75G0Image from '../public/images/kjGgBSc75G0.png';
 
 // Lazy load components
 const Navbar = lazy(() => import('@/components/Header/Header'));
@@ -30,16 +35,16 @@ const MainPage = () => {
   // Preload critical images
   useEffect(() => {
     const preloadImages = [
-      '/images/HeroImage.png',
-      '/images/DSCF9509.png',
-      '/images/kjGgBSc75G0.png',
-      '/images/HelloSmart.png',
-      '/images/Lamtek.png'
+      HeroImage,
+      PortraitImage,
+      kjGgBSc75G0Image,
+      HelloSmartImage,
+      LamtekImage
     ];
 
     preloadImages.forEach(src => {
       const img = new Image();
-      img.src = src;
+      img.src = src.src; // Access the src property of the StaticImageData object
     });
   }, []);
 
