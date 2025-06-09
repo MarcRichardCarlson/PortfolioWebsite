@@ -8,6 +8,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
 const sizeClasses = {
@@ -30,13 +31,13 @@ const variantClasses = {
   view: 'min-w-16 min-h-16 max-w-16 max-h-16 h-16 w-16 bg-black-soil hover:bg-true-blue text-white rounded-full font-semibold shadow-xl text-sm sm:text-base md:text-md'
 };
 
-const ResponsiveButton: React.FC<ButtonProps> = ({ size, variant, children, onClick }) => {
+const ResponsiveButton: React.FC<ButtonProps> = ({ size, variant, children, onClick, className = '' }) => {
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className={`min-w-fit whitespace-nowrap ${sizeClasses[size]} ${variantClasses[variant]}`}
+      className={`min-w-fit whitespace-nowrap ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
       onClick={onClick}
     >
       {children}
