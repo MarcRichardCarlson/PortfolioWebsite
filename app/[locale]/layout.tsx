@@ -4,6 +4,7 @@ import { AppLocale } from "./locales";
 import "./globals.css";
 import ThemeScript from "@/hooks/ThemeScript";
 import { orbitron, montserrat } from "../fonts";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Marc Carlson | Web Development, Redefined",
@@ -42,6 +43,7 @@ export default async function RootLayout({ children, params }: Props) {
         <AppProviders locale={locale}>
           {children}
         </AppProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
