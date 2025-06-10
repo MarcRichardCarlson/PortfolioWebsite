@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         top: offsetPosition,
         behavior: "smooth"
       });
-      
+
       setActiveSection(section); // Immediately update active section when clicked
       setIsOpen(false); // Close menu on section click
     }
@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         if (section.ref.current) {
           const sectionTop = section.ref.current.offsetTop;
           const sectionBottom = sectionTop + section.ref.current.offsetHeight;
-          
+
           if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
             currentSection = section.id;
             break;
@@ -129,17 +129,15 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   ];
 
   return (
-    <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-300 ${
-      isScrolled 
-        ? 'py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg' 
-        : 'py-10 bg-transparent'
-    } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
+    <nav className={`z-50 w-full fixed top-0 transition-[padding,background-color,box-shadow] duration-100 transition-[width] duration-300 max-w-[2400px] mx-auto ${isScrolled
+      ? 'max-w-none mx-auto left-0 py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg'
+      : 'py-10 bg-transparent'
+      } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
       {/* Logo */}
       <div className="flex items-center gap-2">
         <RevealOnScroll direction="left" duration={0.3} delay={0}>
-          <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-300 ${
-            isScrolled ? 'text-xl' : 'text-2xl'
-          }`}>
+          <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-100 select-none ${isScrolled ? 'text-xl' : 'text-2xl'
+            }`}>
             MarcCarlson
           </span>
         </RevealOnScroll>
@@ -151,9 +149,8 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
           <div key={section} className="relative">
             <motion.button
               onClick={() => scrollToSection(ref, section)}
-              className={`cursor-pointer text-black dark:text-white font-semibold px-4 py-2 transition-all bg-transparent border-none select-none ${
-                activeSection === section ? 'text-true-blue' : ''
-              }`}
+              className={`cursor-pointer text-black dark:text-white font-semibold px-4 py-2 transition-all bg-transparent border-none select-none ${activeSection === section ? 'text-true-blue' : ''
+                }`}
             >
               <RevealOnScroll direction="left" duration={1} delay={0}>
                 {label}
@@ -163,9 +160,9 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.div
                 layoutId="underline"
                 className="absolute -bottom-0 left-[10%] w-[80%] h-[3px] bg-true-blue rounded-full shadow-[0_0_8px_rgba(0,122,255,0.4)] dark:shadow-[0_0_8px_rgba(0,122,255,0.6)]"
-                transition={{ 
-                  type: "spring", 
-                  bounce: 0.2, 
+                transition={{
+                  type: "spring",
+                  bounce: 0.2,
                   duration: 0.6,
                   ease: "easeInOut"
                 }}
@@ -206,11 +203,10 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.button
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className={`w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none ${
-                  activeSection === section 
-                    ? 'text-true-blue bg-opacity-10 dark:bg-opacity-10' 
-                    : 'text-black dark:text-white'
-                }`}
+                className={`w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none ${activeSection === section
+                  ? 'text-true-blue bg-opacity-10 dark:bg-opacity-10'
+                  : 'text-black dark:text-white'
+                  }`}
               >
                 <RevealOnScroll direction="right" duration={0.6} delay={0}>
                   {label}

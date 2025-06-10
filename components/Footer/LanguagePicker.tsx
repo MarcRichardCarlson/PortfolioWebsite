@@ -76,9 +76,8 @@ export default function AppLocaleSwitcher() {
           alt="Arrow"
           width={20}
           height={20}
-          className={`xl:block hidden transition-transform duration-300 ${
-            isOpen ? "rotate-180" : "rotate-0"
-          } dark:filter dark:invert`} // Add dark:filter and dark:invert here
+          className={`xl:block hidden transition-transform duration-100 ${isOpen ? "rotate-180" : "rotate-0"
+            } dark:filter dark:invert`} // Add dark:filter and dark:invert here
         />
 
         <Image
@@ -98,9 +97,8 @@ export default function AppLocaleSwitcher() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`absolute mt-1 bg-light-grey dark:bg-dark-grey z-50 rounded-lg ${
-              isMediumScreen ? "right-0" : "-left-[3.25rem]"
-            }`}
+            className={`absolute mt-1 bg-light-grey dark:bg-dark-grey z-50 rounded-lg ${isMediumScreen ? "right-0" : "-left-[3.25rem]"
+              }`}
           >
             {displayNames.map((locale) => (
               <button

@@ -72,7 +72,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
             <div className="grid grid-cols-2 gap-4 2xl:grid-cols-4 md:gap-6 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex} className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-true-blue/20 to-tech-orange/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-true-blue/20 to-tech-orange/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-100"></div>
                         <div className="relative">
                             <RevealOnScroll direction="left" duration={0.5} delay={0}>
                                 <h3 className="whitespace-nowrap text-true-blue text-2xl mb-2 md:mb-6 font-bold">{colName}</h3>

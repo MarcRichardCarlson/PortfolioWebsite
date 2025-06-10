@@ -54,7 +54,7 @@ const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebo
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-w-[150px] flex justify-center items-center dark:bg-dark-grey bg-white dark:hover:bg-true-blue hover:bg-true-blue-light cursor-pointer flex flex-row gap-2 p-2 rounded-xl transition-colors duration-300 ease-in-out shadow-custom-shadow"
+            className="min-w-[150px] flex justify-center items-center dark:bg-dark-grey bg-white dark:hover:bg-true-blue hover:bg-true-blue-light cursor-pointer flex flex-row gap-2 p-2 rounded-xl transition-colors duration-100 ease-in-out shadow-custom-shadow"
           >
             <RevealOnScroll direction="top" duration={0.4} delay={0.4}>
               <Image src={icon} alt={alt} width={50} height={50} className="filter dark:invert" />

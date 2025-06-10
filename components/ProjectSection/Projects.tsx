@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
-import ResponsiveButton from '../Buttons';
-import arrow from '../../public/icons/PhArrowCounterClockwise.svg';
 
 interface Project {
   title: string;
@@ -154,11 +152,11 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     const ProjectCard = React.memo(({ project, index, variants, size, onClick, isVisible }: ProjectCardProps) => (
       <motion.div
         variants={variants}
-        className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300 project-card`}
+        className={`relative group cursor-pointer rounded-lg overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-100 project-card`}
         onClick={onClick}
         data-index={index}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-300 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-100 z-1" />
 
         {isVisible && (
           <Image
@@ -171,13 +169,13 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           />
         )}
 
-        <div className="flex flex-row justify-between items-center bg-black/90 absolute bottom-0 left-0 right-0 p-4">
+        <div className="flex flex-row justify-between items-end bg-black/80 absolute bottom-0 left-0 right-0 p-4 h-full hover:bg-black/30 transition-all duration-100">
           <motion.h3 className="text-xl font-bold text-white">
             {project.title}
           </motion.h3>
 
           <motion.span
-            className="py-1 px-3 text-sm font-semibold rounded-lg z-1"
+            className="py-1 px-3 text-sm font-semibold rounded-lg z-1 h-fit"
             style={{
               color: project.tag.color,
               backgroundColor: `${project.tag.color}50`,

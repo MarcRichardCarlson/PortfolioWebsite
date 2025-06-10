@@ -15,7 +15,7 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
   const { t } = useTranslation(locale, "translation");
 
   return (
-    <section className="mt-32 relative flex flex-col items-center md:items-start text-white-grey gap-4 md:gap-8 w-full transition-all duration-300 ease-in-out px-4 sm:px-6 md:px-8 pb-4 md:pb-8">
+    <section className="mt-32 relative flex flex-col items-center md:items-start text-white-grey gap-4 md:gap-8 w-full transition-all duration-100 ease-in-out px-4 sm:px-6 md:px-8 pb-4 md:pb-8">
 
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 md:gap-8 w-full">
 
