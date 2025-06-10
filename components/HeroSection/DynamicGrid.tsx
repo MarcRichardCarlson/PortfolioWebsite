@@ -19,25 +19,6 @@ const DynamicGrid: React.FC<DynamicGridProps> = memo(({ contactRef }) => {
 
   const handleScrollToContact = useCallback(() => {
     if (contactRef && contactRef.current) {
-      // Create and style the dark overlay
-      const darkOverlay = document.createElement("div");
-      darkOverlay.style.position = "fixed";
-      darkOverlay.style.inset = "0";
-      darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0)";
-      darkOverlay.style.zIndex = "10";
-      darkOverlay.style.transition = "background-color 0.5s ease-in-out, opacity 0.5s ease-in-out";
-      darkOverlay.style.opacity = "1";
-      document.body.appendChild(darkOverlay);
-
-      // Smooth fade-in effect
-      setTimeout(() => {
-        darkOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-      }, 10);
-
-      setTimeout(() => {
-        darkOverlay.style.opacity = "0";
-        setTimeout(() => darkOverlay.remove(), 500);
-      }, 2000);
 
       // Scroll to the contact section with header offset
       const headerOffset = 80;
