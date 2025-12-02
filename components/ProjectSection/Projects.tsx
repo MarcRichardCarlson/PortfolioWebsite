@@ -201,7 +201,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           </motion.h3>
 
           <motion.span
-            className="py-1 px-3 text-sm font-semibold rounded-lg z-1"
+            className="py-1 px-3 text-sm font-semibold rounded-lg z-1 h-fit"
             style={{
               color: project.tag.color,
               backgroundColor: `${project.tag.color}50`,

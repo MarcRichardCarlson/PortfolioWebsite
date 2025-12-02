@@ -16,7 +16,7 @@ const Education: React.FC = () => {
         : 'hover:bg-white/5'
     }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
-        KYH Liljeholmen {t("about-item1")} -  
+        KYH Liljeholmen {t("about-item1")} -
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
       </h2>
       <p className="text-neutral-600 dark:text-neutral-300 font-semibold text-sm md:text-base leading-relaxed">
@@ -29,7 +29,7 @@ const Education: React.FC = () => {
         : 'hover:bg-white/5'
     }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
-        NTI {t("about-item2")} -  
+        NTI {t("about-item2")} -
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
       </h2>
       <p className="text-neutral-600 dark:text-neutral-300 font-semibold text-sm md:text-base leading-relaxed">
@@ -42,7 +42,7 @@ const Education: React.FC = () => {
         : 'hover:bg-white/5'
     }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
-        NTI {t("about-item3")} -  
+        NTI {t("about-item3")} -
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
       </h2>
       <p className="text-neutral-600 dark:text-neutral-300 font-semibold text-sm md:text-base leading-relaxed">
@@ -55,7 +55,7 @@ const Education: React.FC = () => {
         : 'hover:bg-white/5'
     }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
-        NTI {t("about-item4")} -  
+        NTI {t("about-item4")} -
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
       </h2>
       <p className="text-neutral-600 dark:text-neutral-300 font-semibold text-sm md:text-base leading-relaxed">
@@ -68,7 +68,7 @@ const Education: React.FC = () => {
         : 'hover:bg-white/5'
     }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
-        NTI {t("about-item5")} -  
+        NTI {t("about-item5")} -
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
       </h2>
       <p className="text-neutral-600 dark:text-neutral-300 font-semibold text-sm md:text-base leading-relaxed">
