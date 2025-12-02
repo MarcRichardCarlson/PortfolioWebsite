@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import RevealOnScroll from "../RevealOnScroll";
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 interface LetsWorkProps {
   contactRef: React.RefObject<HTMLElement>;
@@ -10,6 +13,7 @@ interface LetsWorkProps {
 const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const handleScrollToContact = () => {
     if (contactRef && contactRef.current) {
@@ -28,7 +32,11 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
 
 
   return (
-    <div className="min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl font-montserrat shadow-custom-shadow">
+    <div className={`min-w-[325px] md:min-w-[350px] w-full p-6 md:p-8 rounded-xl font-montserrat shadow-custom-shadow transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'bg-white dark:bg-dark-grey'
+    }`}>
       <div className="flex flex-col justify-between items-start h-full">
         <RevealOnScroll direction="bottom" duration={0.4} delay={0.4}>
           <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">

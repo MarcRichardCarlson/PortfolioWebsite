@@ -47,7 +47,7 @@ const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebo
   
     return (
       <div className='flex justify-between items-center w-full'>
-        <div className="gap-4 flex flex-row transition-all duration-300 ease-in-out">
+        <div className="gap-4 flex flex-row transition-all duration-200 ease-in-out">
           {urls.map(({ url, icon, alt }, index) => (
             isValidUrl(url) ? (
               <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex flex-col gap-2 md:flex-row">
@@ -56,7 +56,9 @@ const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebo
             ) : null
           ))}
         </div>
+        <div className="flex gap-2">
           <DarkModeToggle/>
+        </div>
       </div>
     );
   };

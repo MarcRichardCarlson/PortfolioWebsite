@@ -4,12 +4,51 @@
 
 @layer components {
   .theme-background {
-    background-color: #ffffff;
-    transition: all 0.2s;
+    background-color: #e0e0e0;
+    transition: all 0.2s ease-in-out;
   }
 
   .dark .theme-background {
-    background-color: #0d1014;
+    background-color: #373b3f;
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Liquid Glass Background Styles */
+  .liquid-glass-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .dark .liquid-glass-bg {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Liquid Glass Component Styles */
+  .liquid-glass {
+    @apply backdrop-blur-[8px];
+    transition: all 0.2s ease-in-out;
+  }
+
+  .liquid-glass-light {
+    @apply bg-[linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)];
+  }
+
+  .liquid-glass-dark {
+    @apply bg-[linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.1))] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+
+  /* Component-specific glass styles */
+  .glass-card {
+    @apply liquid-glass border border-white/20;
+  }
+
+  .glass-nav {
+    @apply liquid-glass border-b border-white/10;
+  }
+
+  .glass-modal {
+    @apply liquid-glass border border-white/20;
   }
 }
 

@@ -1,8 +1,11 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import ResponsiveButton from '../Buttons';
 import arrow from '../../public/icons/PhArrowCounterClockwise.svg';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 interface Project {
   title: string;
@@ -26,6 +29,7 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+  const { isLiquidGlassEnabled } = useLiquidGlass();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [columns, setColumns] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,25 +37,26 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Memoize the container variants
+  // Memoize the container variants - optimized for snappier animations
   const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05, // Reduced from 0.1 for snappier feel
       },
     },
   }), []);
 
-  // Memoize the item variants
+  // Memoize the item variants - optimized for snappier animations
   const itemVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 }, // Reduced from 20
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3, // Reduced from 0.5 for snappier feel
+        ease: [0.25, 0.1, 0.25, 1], // Custom cubic-bezier
       },
     },
   }), []);
@@ -151,28 +156,47 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   // Memoize the ProjectCard component
   const MemoizedProjectCard = useMemo(() => {
-    const ProjectCard = React.memo(({ project, index, variants, size, onClick, isVisible }: ProjectCardProps) => (
+    const ProjectCard = React.memo(({ project, index, variants, size, onClick, isVisible, isLiquidGlassEnabled }: ProjectCardProps) => (
       <motion.div
         variants={variants}
-        className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-shadow duration-300 project-card`}
+        className={`relative group cursor-pointer rounded-xl overflow-hidden ${size} shadow-custom-shadow hover:shadow-lg transition-all duration-200 project-card ${
+          isLiquidGlassEnabled
+            ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+            : ''
+        }`}
         onClick={onClick}
         data-index={index}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-1 group-hover:opacity-100 transition-opacity duration-300 z-1" />
+        <div className={`absolute inset-0 opacity-1 group-hover:opacity-100 transition-opacity duration-200 z-1 ${
+          isLiquidGlassEnabled
+            ? 'bg-gradient-to-t from-black/80 via-black/40 to-transparent'
+            : 'bg-gradient-to-t from-white/90 via-white/60 to-transparent dark:from-black/80 dark:via-black/40 dark:to-transparent'
+        }`} />
 
         {isVisible && (
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-250 group-hover:scale-110"
+            className="object-cover transition-transform duration-200 group-hover:scale-110"
             loading="lazy"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         )}
+        {isLiquidGlassEnabled && (
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none rounded-xl border-4 border-white/20 shadow-inner z-0" />
+        )}
 
-        <div className="flex flex-row justify-between items-center bg-black/90 absolute bottom-0 left-0 right-0 p-4">
-          <motion.h3 className="text-xl font-bold text-white">
+        <div className={`flex flex-row justify-between items-center absolute bottom-0 left-0 right-0 p-4 transition-all duration-200 ${
+          isLiquidGlassEnabled
+            ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border-t border-white/20 dark:border-white/10'
+            : 'bg-white/95 dark:bg-black/90'
+        }`}>
+          <motion.h3 className={`text-xl font-bold ${
+            isLiquidGlassEnabled
+              ? 'text-white'
+              : 'text-black dark:text-white'
+          }`}>
             {project.title}
           </motion.h3>
 
@@ -217,6 +241,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             size={getCardSize(index)}
             onClick={() => setSelectedProject(index)}
             isVisible={visibleProjects.includes(index)}
+            isLiquidGlassEnabled={isLiquidGlassEnabled}
           />
         ))}
       </motion.div>
@@ -234,12 +259,16 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 20, stiffness: 300 }}
-              className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full p-6 relative overflow-hidden"
+              transition={{ type: "spring", damping: 25, stiffness: 400 }}
+              className={`rounded-xl max-w-4xl w-full p-6 relative overflow-hidden transition-all duration-200 ${
+                isLiquidGlassEnabled
+                  ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+                  : 'bg-white dark:bg-gray-800'
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200"
+                className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors duration-200 z-10"
                 onClick={() => setSelectedProject(null)}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,9 +282,12 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                     src={projects[selectedProject].image}
                     alt={projects[selectedProject].title}
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-lg"
                     priority
                   />
+                  {isLiquidGlassEnabled && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none rounded-lg border-4 border-white/20 shadow-inner" />
+                  )}
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>
@@ -268,10 +300,10 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                     >
                       {projects[selectedProject].tag.text}
                     </motion.span>
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 className="text-3xl font-bold text-white mb-4">
                       {projects[selectedProject].title}
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    <p className="text-white/90 text-lg leading-relaxed">
                       {projects[selectedProject].description}
                     </p>
                   </div>
@@ -283,7 +315,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                         rel="noopener noreferrer"
                         className={`px-4 py-2 rounded-lg transition-colors duration-200 ${projects[selectedProject].customButton.type === 'primary'
                           ? 'bg-blue-500 text-white hover:bg-blue-600'
-                          : 'border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                          : 'border border-white/30 text-white hover:bg-white/10'
                           }`}
                       >
                         {projects[selectedProject].customButton.text}
@@ -302,7 +334,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                         ) : (
                           <button
                             disabled
-                            className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 rounded-lg cursor-not-allowed"
+                            className="px-4 py-2 bg-white/10 text-white/50 rounded-lg cursor-not-allowed border border-white/20"
                           >
                             Internal Project
                           </button>
@@ -312,14 +344,14 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                             href={projects[selectedProject].code}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                            className="px-4 py-2 border border-white/30 text-white rounded-lg hover:bg-white/10 transition-colors duration-200"
                           >
                             View Code
                           </a>
                         ) : (
                           <button
                             disabled
-                            className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-lg cursor-not-allowed"
+                            className="px-4 py-2 border border-white/20 text-white/50 rounded-lg cursor-not-allowed"
                           >
                             Company Repository
                           </button>
@@ -344,6 +376,7 @@ interface ProjectCardProps {
   size: string;
   onClick: () => void;
   isVisible: boolean;
+  isLiquidGlassEnabled: boolean;
 }
 
 export default Projects;

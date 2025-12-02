@@ -41,7 +41,7 @@ const Popup: React.FC<PopupProps> = ({ message, onClose, type }) => {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={controls}
       exit={{ opacity: 0, scale: 0.5 }}
-      transition={{ type: "spring", stiffness: 300 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
       onClick={onClose}
     >
       <motion.div

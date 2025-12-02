@@ -2,8 +2,11 @@ import React, { memo } from 'react';
 import Image from "next/image";
 import RevealOnScroll from "../RevealOnScroll";
 import PortraitImage from "../../public/images/DSCF9509.png"
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 const Portrait = memo(() => {
+  const { isLiquidGlassEnabled } = useLiquidGlass();
+  
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <RevealOnScroll direction="bottom" duration={1} delay={0}>
@@ -17,6 +20,9 @@ const Portrait = memo(() => {
             priority
             quality={90}
           />
+          {isLiquidGlassEnabled && (
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none rounded-full border-4 border-white/20 shadow-inner" />
+          )}
         </div>
       </RevealOnScroll>
     </div>

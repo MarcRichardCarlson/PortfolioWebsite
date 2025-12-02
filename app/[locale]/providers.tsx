@@ -2,6 +2,7 @@
 
 import { createContext, useContext, type ReactNode } from "react";
 import { AppLocale } from "./locales";
+import { LiquidGlassProvider } from "@/contexts/LiquidGlassContext";
 
 interface AppProvidersProps {
   locale: AppLocale;
@@ -13,6 +14,10 @@ export const useAppContext = () => useContext(AppContext);
 
 export default function AppProviders({ locale, children }: AppProvidersProps) {
   return (
-    <AppContext.Provider value={{ locale }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ locale }}>
+      <LiquidGlassProvider>
+        {children}
+      </LiquidGlassProvider>
+    </AppContext.Provider>
   );
 }

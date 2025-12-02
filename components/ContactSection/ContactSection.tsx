@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
 import Popup from "../PopUp";
 import { useTranslation } from "@/i18n/client";
@@ -8,10 +8,12 @@ import ContactImage from "../../public/images/train.png";
 import RevealOnScroll from "../RevealOnScroll";
 import { motion } from "framer-motion";
 import CheckIcon from "../../public/icons/BxCheck.svg";
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 const ContactSection: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupType, setPopupType] = useState<"success" | "fail">("success");
@@ -22,14 +24,14 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreeToNewsletter, setAgreeToNewsletter] = useState(false);
 
-  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const sanitizeInput = (input: string) => input.replace(/[<>]/g, "");
-  const resetFormFields = () => {
+  const validateEmail = useCallback((email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), []);
+  const sanitizeInput = useCallback((input: string) => input.replace(/[<>]/g, ""), []);
+  const resetFormFields = useCallback(() => {
     setName("");
     setEmail("");
     setMessage("");
     setAgreeToNewsletter(false);
-  };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,11 +93,15 @@ const ContactSection: React.FC = () => {
     }
   };
 
-  const closePopup = () => setShowPopup(false);
+  const closePopup = useCallback(() => setShowPopup(false), []);
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
-      <section className="flex flex-col gap-4 justify-between items-start shadow-custom-shadow bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl order-1 xl:order-2">
+      <section className={`flex flex-col gap-4 justify-between items-start shadow-custom-shadow p-6 md:p-8 rounded-xl order-1 xl:order-2 transition-all duration-200 ${
+        isLiquidGlassEnabled
+          ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+          : 'bg-white dark:bg-dark-grey'
+      }`}>
         <RevealOnScroll direction="bottom" duration={0.2} delay={0.2}>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white font-montserrat">
@@ -228,14 +234,21 @@ const ContactSection: React.FC = () => {
         )}
       </section>
 
-      <Image
-        src={ContactImage}
-        alt="Description"
-        width={500}
-        height={700}
-        className="max-h-[700px] h-[400px] md:h-[600px] lg:h-[500px] xl:h-[700px] w-full object-cover rounded-xl shadow-custom-shadow order-2 xl:order-1"
-        unoptimized={true}
-      />
+      <div className="relative w-full transition-all duration-200 order-2 xl:order-1">
+        <div className="relative w-full h-full">
+          <Image
+            src={ContactImage}
+            alt="Description"
+            width={500}
+            height={700}
+            className="max-h-[700px] h-[400px] md:h-[600px] lg:h-[500px] xl:h-[700px] w-full object-cover rounded-xl shadow-custom-shadow"
+            unoptimized={true}
+          />
+          {isLiquidGlassEnabled && (
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none rounded-xl border-4 border-white/20 shadow-inner" />
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,13 +2,19 @@ import React from 'react';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import WheelMarquee from './WheelMarquee';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 const Education: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const items = [
-    <div key="item-1" className="flex flex-col gap-0 md:gap-2 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300">
+    <div key="item-1" className={`flex flex-col gap-0 md:gap-2 p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'hover:bg-white/5'
+    }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
         KYH Liljeholmen {t("about-item1")} -  
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
@@ -17,7 +23,11 @@ const Education: React.FC = () => {
         {t("about-item-text1")}
       </p>
     </div>,
-    <div key="item-2" className="flex flex-col gap-0 md:gap-3 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300">
+    <div key="item-2" className={`flex flex-col gap-0 md:gap-3 p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'hover:bg-white/5'
+    }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
         NTI {t("about-item2")} -  
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
@@ -26,7 +36,11 @@ const Education: React.FC = () => {
         {t("about-item-text2")}
       </p>
     </div>,
-    <div key="item-3" className="flex flex-col gap-0 md:gap-3 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300">
+    <div key="item-3" className={`flex flex-col gap-0 md:gap-3 p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'hover:bg-white/5'
+    }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
         NTI {t("about-item3")} -  
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
@@ -35,7 +49,11 @@ const Education: React.FC = () => {
         {t("about-item-text3")}
       </p>
     </div>,
-    <div key="item-4" className="flex flex-col gap-0 md:gap-3 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300">
+    <div key="item-4" className={`flex flex-col gap-0 md:gap-3 p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'hover:bg-white/5'
+    }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
         NTI {t("about-item4")} -  
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>
@@ -44,7 +62,11 @@ const Education: React.FC = () => {
         {t("about-item-text4")}
       </p>
     </div>,
-    <div key="item-5" className="flex flex-col gap-0 md:gap-3 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300">
+    <div key="item-5" className={`flex flex-col gap-0 md:gap-3 p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : 'hover:bg-white/5'
+    }`}>
       <h2 className="sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white-grey group">
         NTI {t("about-item5")} -  
         <span className='text-tech-orange sm:text-sm md:text-base lg:text-base xl:text-lg ml-2'>Stockholm</span>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 interface WheelMarqueeProps {
   items: React.ReactNode[];
@@ -15,13 +16,14 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [touchTimeout, setTouchTimeout] = useState<number | null>(null);
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 3500); // Change every 3.5 seconds
+    }, 6000); // Change every 6 seconds - less frequent
 
     return () => clearInterval(interval);
   }, [items.length, isPaused]);
@@ -68,7 +70,7 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
 
   return (
     <div
-      className="relative h-[400px] w-full overflow-hidden"
+      className="relative h-[400px] w-full overflow-hidden rounded-lg transition-all duration-200"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onTouchStart={handleTouchStart}
@@ -81,16 +83,18 @@ const WheelMarquee: React.FC<WheelMarqueeProps> = ({ items }) => {
         return (
           <motion.div
             key={`item-${index}`}
-            className="absolute left-0 right-0 flex items-center justify-center h-16 text-center"
+            className={`absolute left-0 right-0 flex items-center justify-center h-16 text-center transition-all duration-200 ${
+              isLiquidGlassEnabled ? 'hover:scale-105' : ''
+            }`}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
               opacity: position === 0 ? 1 : 0.5,
               scale: position === 0 ? 1 : 1,
               top: positions[position].top,
               zIndex: positions[position].zIndex,
-              transition: { duration: 0.8, type: 'spring' },
+              transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
             }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
           >
             <span className="text-lg cursor-pointer">{item}</span>
           </motion.div>

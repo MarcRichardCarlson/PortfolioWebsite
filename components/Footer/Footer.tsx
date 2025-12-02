@@ -1,6 +1,6 @@
 "use client";
 
-import React, { RefObject, useState } from "react";
+import React, { RefObject, useState, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import LanguagePicker from "./LanguagePicker";
 import { useTranslation } from "@/i18n/client";
@@ -9,6 +9,7 @@ import Popup from "../PopUp";
 import LetsWork from "./LetsWork";
 import MediaIcons from "../Footer/FooterMediaIcons"
 import RevealOnScroll from "../RevealOnScroll";
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 interface FooterProps {
   heroRef: RefObject<HTMLElement>;
@@ -17,30 +18,31 @@ interface FooterProps {
   contactRef: RefObject<HTMLElement>;
 }
 
-const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contactRef }) => {
+const Footer: React.FC<FooterProps> = memo(({ heroRef, projectsRef, aboutRef, contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupType, setPopupType] = useState<'success' | 'fail'>('success');
 
-  const scrollToSection = (ref: RefObject<HTMLElement>) => {
+  const scrollToSection = useCallback((ref: RefObject<HTMLElement>) => {
     if (ref.current) {
       window.scrollTo({
         top: ref.current.offsetTop,
         behavior: 'smooth',
       });
     }
-  };
+  }, []);
 
-  const copyToClipboard = (text: string) => {
+  const copyToClipboard = useCallback((text: string) => {
     navigator.clipboard.writeText(text);
     setPopupType('success');
     setShowPopup(true); // Show success popup
-  };
+  }, []);
 
-  const closePopup = () => {
+  const closePopup = useCallback(() => {
     setShowPopup(false);
-  };
+  }, []);
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr_4fr] gap-4 md:gap-8 w-full h-[600px] px-4 sm:px-6 md:px-8 text-black dark:text-white h-full pb-4 md:pb-8">
@@ -49,7 +51,11 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
 
       <MediaIcons linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"} facebookUrl={"https://www.facebook.com/marc.carlson.7"} instagramUrl={"https://www.instagram.com/marcrcarlson/"} githubUrl={"https://github.com/MarcRichardCarlson"} />
 
-      <footer className="w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow bg-white dark:bg-dark-grey p-8 rounded-xl z-0">
+      <footer className={`w-full flex flex-col justify-between gap-8 text-black dark:text-white relative shadow-custom-shadow p-8 rounded-xl z-0 transition-all duration-200 ${
+        isLiquidGlassEnabled
+          ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+          : 'bg-white dark:bg-dark-grey'
+      }`}>
 
         <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative">
           <div className="flex flex-col md:flex-row gap-8">
@@ -154,6 +160,8 @@ const Footer: React.FC<FooterProps> = ({ heroRef, projectsRef, aboutRef, contact
       </footer>
     </div>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

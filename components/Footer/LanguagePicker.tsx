@@ -9,6 +9,7 @@ import Image from "next/image";
 import ArrowIcon from "../../public/icons/IcTwotoneKeyboardArrowUp.svg";
 import Globe from "../../public/icons/CarbonEarthEuropeAfrica.svg";
 import useMedia from "use-media";
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 const allLanguageItems = [
   { label: "en", displayNameEn: "English", displayNameSv: "Engelska" },
@@ -19,6 +20,7 @@ export default function AppLocaleSwitcher() {
   const activeLocale = useCurrentLocale();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const isMediumScreen = useMedia("(min-width: 768px)");
 
@@ -65,7 +67,11 @@ export default function AppLocaleSwitcher() {
       {/* Dropdown button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat bg-light-grey dark:bg-dark-grey p-3 xl:p-4 w-fit xl:w-24 rounded-lg"
+        className={`flex flex-row justify-between text-black dark:text-white cursor-pointer text-base xl:text-sm font-montserrat p-3 xl:p-4 w-fit xl:w-24 rounded-lg transition-all duration-200 ${
+          isLiquidGlassEnabled
+            ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-[30px] border border-white/20 dark:border-white/10'
+            : 'bg-light-grey dark:bg-dark-grey'
+        }`}
       >
         <span className="xl:block hidden">
           {activeLocale === "en" ? "EN" : "SV"}
@@ -76,7 +82,7 @@ export default function AppLocaleSwitcher() {
           alt="Arrow"
           width={20}
           height={20}
-          className={`xl:block hidden transition-transform duration-300 ${
+          className={`xl:block hidden transition-transform duration-200 ${
             isOpen ? "rotate-180" : "rotate-0"
           } dark:filter dark:invert`} // Add dark:filter and dark:invert here
         />
@@ -98,8 +104,12 @@ export default function AppLocaleSwitcher() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`absolute mt-1 bg-light-grey dark:bg-dark-grey z-50 rounded-lg ${
+            className={`absolute mt-1 z-50 rounded-lg transition-all duration-200 ${
               isMediumScreen ? "right-0" : "-left-[3.25rem]"
+            } ${
+              isLiquidGlassEnabled
+                ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-[30px] border border-white/20 dark:border-white/10'
+                : 'bg-light-grey dark:bg-dark-grey'
             }`}
           >
             {displayNames.map((locale) => (
@@ -108,8 +118,12 @@ export default function AppLocaleSwitcher() {
                 onClick={handleClick}
                 data-locale={locale.label}
                 className={twMerge(
-                  "font-montserrat block w-full text-left px-4 py-3 text-black dark:text-white hover:bg-light-grey hover:bg-opacity-10 cursor-pointer min-w-fit rounded-lg",
-                  locale.label === activeLocale && "text-true-blue"
+                  "font-montserrat block w-full text-left px-4 py-3 text-black dark:text-white cursor-pointer min-w-fit rounded-lg transition-all duration-200",
+                  locale.label === activeLocale 
+                    ? "text-true-blue" 
+                    : isLiquidGlassEnabled
+                      ? "hover:bg-white/10 dark:hover:bg-white/5"
+                      : "hover:bg-light-grey hover:bg-opacity-10"
                 )}
               >
                 {locale.displayName}

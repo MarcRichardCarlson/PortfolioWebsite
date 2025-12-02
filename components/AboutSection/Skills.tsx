@@ -5,12 +5,13 @@ import { motion } from 'framer-motion';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import RevealOnScroll from '../RevealOnScroll';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 type TechStacks = {
-    [category: string]: (string | null)[];
+    [key: string]: string[];
 };
 
-const columnNames = ["Web Design", "Frontend", "Backend", "Others"];
+export const columnNames = ["Web Design", "Frontend", "Backend", "Others"];
 
 interface SkillsProps {
     columnNames: string[];
@@ -19,6 +20,7 @@ interface SkillsProps {
 const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     const locale = useCurrentLocale();
     const { t } = useTranslation(locale, "translation");
+    const { isLiquidGlassEnabled } = useLiquidGlass();
 
     const techStacks: TechStacks = {
         "Web Design": [
@@ -68,11 +70,19 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
     };
 
     return (
-        <div className="overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 bg-white dark:bg-dark-grey p-6 md:p-8 rounded-xl shadow-custom-shadow font-montserrat shadow-custom-shadow">
+        <div className={`overflow-hidden flex flex-col justify-center gap-8 min-w-64 w-full px-4 sm:px-6 md:px-8 p-6 md:p-8 rounded-xl shadow-custom-shadow font-montserrat transition-all duration-200 ${
+            isLiquidGlassEnabled
+                ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+                : 'bg-white dark:bg-dark-grey'
+        }`}>
             <div className="grid grid-cols-2 gap-4 2xl:grid-cols-4 md:gap-6 text-center sm:text-left">
                 {columnNames.map((colName, colIndex) => (
                     <div key={colIndex} className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-true-blue/20 to-tech-orange/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                        <div className={`absolute -inset-1 rounded-lg blur transition-all duration-200 ${
+                            isLiquidGlassEnabled
+                                ? 'bg-gradient-to-r from-true-blue/30 to-tech-orange/30 opacity-0 group-hover:opacity-100'
+                                : 'bg-gradient-to-r from-true-blue/20 to-tech-orange/20 opacity-0 group-hover:opacity-100'
+                        }`}></div>
                         <div className="relative">
                             <RevealOnScroll direction="left" duration={0.5} delay={0}>
                                 <h3 className="whitespace-nowrap text-true-blue text-2xl mb-2 md:mb-6 font-bold">{colName}</h3>
@@ -83,13 +93,15 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                                     tech && (
                                         <motion.div
                                             key={tech}
-                                            className="flex flex-col gap-2 text-center sm:text-left text-black dark:text-gray-200 text-xs sm:text-sx md:text-sm lg:text-base group/item"
+                                            className={`flex flex-col gap-2 text-center sm:text-left text-black dark:text-gray-200 text-xs sm:text-sx md:text-sm lg:text-base group/item transition-all duration-200 ${
+                                                isLiquidGlassEnabled ? 'hover:text-tech-orange' : ''
+                                            }`}
                                             initial={{ opacity: 0, y: -50 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.3 }}
                                         >
                                             <RevealOnScroll direction="top" duration={0.5} delay={0}>
-                                                <span className="relative inline-block group-hover/item:text-tech-orange transition-colors duration-100 cursor-default">
+                                                <span className="relative inline-block cursor-default">
                                                     {tech}
                                                 </span>
                                             </RevealOnScroll>
@@ -106,4 +118,3 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
 };
 
 export default Skills;
-export { columnNames };

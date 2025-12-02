@@ -7,6 +7,8 @@ import PortraitImage from '../public/images/DSCF9509.png';
 import HelloSmartImage from '../public/images/HelloSmart.png';
 import LamtekImage from '../public/images/Lamtek.png';
 import kjGgBSc75G0Image from '../public/images/kjGgBSc75G0.png';
+import { LiquidGlassProvider } from '@/contexts/LiquidGlassContext';
+import LiquidGlassBackground from '@/components/LiquidGlassBackground';
 
 // Lazy load components
 const Navbar = lazy(() => import('@/components/Header/Header'));
@@ -67,7 +69,8 @@ const MainPage = () => {
   }, []);
 
   return (
-    <>
+    <LiquidGlassProvider>
+      <LiquidGlassBackground />
       <Head>
         <link
           rel="preload"
@@ -82,7 +85,7 @@ const MainPage = () => {
           type="image/png"
         />
       </Head>
-      <div className="bg-white dark:bg-black-smooth transition-colors duration-250">
+      <div className="transition-colors duration-250">
         <Suspense fallback={<LoadingFallback />}>
           <Navbar
             heroRef={heroRef}
@@ -128,7 +131,7 @@ const MainPage = () => {
           />
         </Suspense>
       </div>
-    </>
+    </LiquidGlassProvider>
   );
 };
 

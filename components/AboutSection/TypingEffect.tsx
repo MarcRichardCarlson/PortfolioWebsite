@@ -4,11 +4,13 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/i18n/client';
 import { useCurrentLocale } from '@/hooks/locale';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 const TypingEffect: React.FC = () => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, 'translation');
   const [mounted, setMounted] = useState(false);
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const quotes = useMemo(() => [
     t('about-text1'),
@@ -91,9 +93,15 @@ const TypingEffect: React.FC = () => {
   }, [currentCharIndex, isErasing, text, currentQuoteIndex, quotes, isSmallScreen, mounted]);
 
   return (
-    <div className="flex justify-start items-center h-fit" style={{ minHeight }}>
+    <div className={`flex justify-start items-center h-fit p-4 rounded-lg transition-all duration-200 ${
+      isLiquidGlassEnabled
+        ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+        : ''
+    }`} style={{ minHeight }}>
       <motion.div
-        className="flex items-center font-inter text-sm md:text-sm lg:text-base xl:text-lg text-neutral-600"
+        className={`flex items-center font-inter text-sm md:text-sm lg:text-base xl:text-lg transition-colors duration-200 ${
+          isLiquidGlassEnabled ? 'text-white-grey' : 'text-neutral-600'
+        }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -101,7 +109,9 @@ const TypingEffect: React.FC = () => {
         <span ref={textRef}>{text}</span>
         {mounted && (
           <motion.span
-            className="text-lg font-mono sm:min-h-16 md:min-h-12 lg:min-h-6"
+            className={`text-lg font-mono sm:min-h-16 md:min-h-12 lg:min-h-6 ${
+              isLiquidGlassEnabled ? 'text-tech-orange' : ''
+            }`}
             initial={{ opacity: 1 }}
             animate={{ opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 0.8 }}

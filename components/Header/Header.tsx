@@ -8,6 +8,7 @@ import RevealOnScroll from "../RevealOnScroll";
 import Image from "next/image";
 import CloseIcon from "../../public/icons/IcRoundClose.svg"
 import MenuIcon from "../../public/icons/TablerMenu2.svg"
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 interface NavbarProps {
   heroRef: RefObject<HTMLElement>;
@@ -22,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const scrollToSection = (ref: RefObject<HTMLElement>, section: string) => {
     if (ref.current) {
@@ -129,15 +131,17 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
   ];
 
   return (
-    <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-300 ${
+    <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-200 ${
       isScrolled 
-        ? 'py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg' 
-        : 'py-10 bg-transparent'
+        ? isLiquidGlassEnabled
+          ? 'py-4 liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass shadow-lg border-b border-white/20 dark:border-white/10'
+          : 'py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg'
+        : 'py-10 bg-transparent border-b border-transparent'
     } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
       {/* Logo */}
       <div className="flex items-center gap-2">
         <RevealOnScroll direction="left" duration={0.3} delay={0}>
-          <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-300 ${
+          <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-200 ${
             isScrolled ? 'text-xl' : 'text-2xl'
           }`}>
             MarcCarlson
@@ -179,7 +183,11 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
       <div className="md:hidden">
         <button
           onClick={toggleMenu}
-          className="py-2 px-4 rounded bg-light-grey dark:bg-dark-grey text-black dark:text-white select-none"
+          className={`py-2 px-4 rounded transition-all duration-200 ${
+            isScrolled && isLiquidGlassEnabled
+              ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+              : 'bg-light-grey dark:bg-dark-grey'
+          } text-black dark:text-white select-none`}
         >
           <Image src={MenuIcon} alt={"Hamburger Menu Icon"} className="filter dark:invert" />
         </button>
@@ -194,11 +202,19 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 w-full h-fit bg-white dark:bg-dark-grey shadow-lg z-50 flex flex-col p-4 pb-6 gap-4"
+            className={`fixed top-0 left-0 w-full h-fit ${
+              isLiquidGlassEnabled
+                ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border-b border-white/20 dark:border-white/10'
+                : 'bg-white dark:bg-dark-grey'
+            } shadow-lg z-50 flex flex-col p-4 pb-6 gap-4`}
           >
             <button
               onClick={toggleMenu}
-              className="self-end py-2 px-2 bg-light-grey dark:bg-input-black rounded-lg text-black dark:text-white select-none"
+              className={`self-end py-2 px-2 rounded-lg transition-all duration-200 ${
+                isLiquidGlassEnabled
+                  ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+                  : 'bg-light-grey dark:bg-input-black'
+              } text-black dark:text-white select-none`}
             >
               <Image src={CloseIcon} alt={"Menu Closing Icon"} className="filter dark:invert" />
             </button>
@@ -206,7 +222,11 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.button
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className={`w-full overflow-hidden bg-light-grey dark:bg-input-black rounded-lg cursor-pointer font-semibold px-4 py-4 hover:bg-true-blue transition-all border-none text-left select-none ${
+                className={`w-full overflow-hidden rounded-lg cursor-pointer font-semibold px-4 py-4 transition-all border-none text-left select-none ${
+                  isLiquidGlassEnabled
+                    ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+                    : 'bg-light-grey dark:bg-input-black'
+                } ${
                   activeSection === section 
                     ? 'text-true-blue bg-opacity-10 dark:bg-opacity-10' 
                     : 'text-black dark:text-white'

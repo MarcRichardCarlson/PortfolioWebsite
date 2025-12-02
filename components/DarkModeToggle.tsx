@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Sun from "../public/icons/TablerSunHigh.svg";
 import Moon from "../public/icons/CarbonMoon.svg";
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 const DarkModeButton = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null); // `null` means uninitialized
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   useEffect(() => {
     // Check the current class on the <html> element to set the initial state
@@ -46,8 +48,12 @@ const DarkModeButton = () => {
   return (
     <motion.button
       onClick={toggleDarkMode}
-      className={`flex items-center justify-center h-12 w-12 p-2 rounded-full shadow-md transition-transform duration-200 ${
-        isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+      className={`flex items-center justify-center h-12 w-12 p-2 rounded-full shadow-md transition-all duration-200 ${
+        isLiquidGlassEnabled
+          ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-[30px] border border-white/20 dark:border-white/10 text-black dark:text-white'
+          : isDarkMode 
+            ? "bg-gray-800 text-white" 
+            : "bg-gray-200 text-black"
       }`}
       aria-label="Toggle Dark Mode"
       variants={buttonVariants}

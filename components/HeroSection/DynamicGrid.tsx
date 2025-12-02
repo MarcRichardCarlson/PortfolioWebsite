@@ -8,6 +8,7 @@ import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import ResponsiveButton from "../Buttons";
 import RevealOnScroll from "../RevealOnScroll";
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 interface DynamicGridProps {
   contactRef: React.RefObject<HTMLElement>;
@@ -16,11 +17,10 @@ interface DynamicGridProps {
 const DynamicGrid: React.FC<DynamicGridProps> = memo(({ contactRef }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const handleScrollToContact = useCallback(() => {
     if (contactRef && contactRef.current) {
-
-      // Scroll to the contact section with header offset
       const headerOffset = 80;
       const elementPosition = contactRef.current.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -59,7 +59,11 @@ const DynamicGrid: React.FC<DynamicGridProps> = memo(({ contactRef }) => {
   const GridBox = memo(({ box, index }: { box: any, index: number }) => (
     <div
       key={index}
-      className="overflow-hidden flex flex-col justify-start gap-4 p-6 md:p-8 bg-white dark:bg-dark-grey rounded-xl shadow-custom-shadow"
+      className={`overflow-hidden flex flex-col justify-start gap-4 p-6 md:p-8 rounded-xl transition-all duration-200 ${
+        isLiquidGlassEnabled
+          ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+          : 'bg-white dark:bg-dark-grey'
+      } shadow-custom-shadow`}
     >
       <RevealOnScroll direction="left" duration={1} delay={0}>
         <div className="">{box.icon}</div>

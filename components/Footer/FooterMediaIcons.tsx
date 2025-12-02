@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Facebook from '../../public/IcSharpFacebook.svg';
 import Instagram from '../../public/BxBxlInstagram.svg';
@@ -7,6 +9,7 @@ import Image from 'next/image';
 import { useTranslation } from "@/i18n/client";
 import { useCurrentLocale } from "@/hooks/locale";
 import RevealOnScroll from '../RevealOnScroll';
+import { useLiquidGlass } from "@/contexts/LiquidGlassContext";
 
 type FooterMediaIconsProps = {
   linkedinUrl: string;
@@ -37,6 +40,7 @@ const isValidUrl = (url: string): boolean => {
 const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebookUrl, instagramUrl, githubUrl }) => {
   const locale = useCurrentLocale();
   const { t } = useTranslation(locale, "translation");
+  const { isLiquidGlassEnabled } = useLiquidGlass();
 
   const urls = [
     { url: ensureHttps(githubUrl), icon: Github, alt: 'Github' },
@@ -54,7 +58,11 @@ const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebo
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-w-[150px] flex justify-center items-center dark:bg-dark-grey bg-white dark:hover:bg-true-blue hover:bg-true-blue-light cursor-pointer flex flex-row gap-2 p-2 rounded-xl transition-colors duration-300 ease-in-out shadow-custom-shadow"
+            className={`min-w-[150px] flex justify-center items-center dark:hover:bg-true-blue hover:bg-true-blue-light cursor-pointer flex flex-row gap-2 p-2 rounded-xl transition-all duration-200 ease-in-out shadow-custom-shadow ${
+              isLiquidGlassEnabled
+                ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
+                : 'dark:bg-dark-grey bg-white'
+            }`}
           >
             <RevealOnScroll direction="top" duration={0.4} delay={0.4}>
               <Image src={icon} alt={alt} width={50} height={50} className="filter dark:invert" />
