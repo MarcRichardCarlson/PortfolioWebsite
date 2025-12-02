@@ -4,7 +4,7 @@
 
 @layer components {
   .theme-background {
-    background-color: #e0e0e0;
+    background-color: #dfdfdf;
     transition: all 0.2s ease-in-out;
   }
 
