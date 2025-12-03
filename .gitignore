@@ -73,3 +73,10 @@ pids
 .env.development.local
 .env.test.local
 .env.production.local
+
+# User data files (privacy-sensitive)
+newsletterSubscribers.json
+data/newsletter.json
+**/newsletterSubscribers.json
+**/newsletter.json
+*.subscribers.json
