@@ -132,7 +132,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
 
   return (
     <nav className={`z-50 w-full fixed top-0 left-0 transition-all duration-200 ${
-      isScrolled 
+      isScrolled && !isOpen
         ? isLiquidGlassEnabled
           ? 'py-4 liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass shadow-lg border-b border-white/20 dark:border-white/10'
           : 'py-4 bg-white/80 dark:bg-dark-grey/90 backdrop-blur-sm shadow-lg'
@@ -201,12 +201,8 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
             initial={{ y: "-100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.3 }}
-            className={`fixed top-0 left-0 w-full h-fit ${
-              isLiquidGlassEnabled
-                ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border-b border-white/20 dark:border-white/10'
-                : 'bg-white dark:bg-dark-grey'
-            } shadow-lg z-50 flex flex-col p-4 pb-6 gap-4`}
+            transition={{ duration: 0.1 }}
+            className="fixed top-0 left-0 w-full h-fit liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-[100px] border-b border-white/30 dark:border-white/20 shadow-2xl z-50 flex flex-col p-4 pb-6 gap-4"
           >
             <button
               onClick={toggleMenu}
@@ -222,17 +218,13 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.button
                 key={section}
                 onClick={() => scrollToSection(ref, section)}
-                className={`w-full overflow-hidden rounded-lg cursor-pointer font-semibold px-4 py-4 transition-all border-none text-left select-none ${
-                  isLiquidGlassEnabled
-                    ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
-                    : 'bg-light-grey dark:bg-input-black'
-                } ${
+                className={`w-full overflow-hidden rounded-lg cursor-pointer font-semibold px-4 py-4 transition-all border-none text-left select-none liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-xl border border-white/40 dark:border-white/30 ${
                   activeSection === section 
-                    ? 'text-true-blue bg-opacity-10 dark:bg-opacity-10' 
+                    ? 'text-true-blue' 
                     : 'text-black dark:text-white'
                 }`}
               >
-                <RevealOnScroll direction="right" duration={0.6} delay={0}>
+                <RevealOnScroll direction="right" duration={0.2} delay={0}>
                   {label}
                 </RevealOnScroll>
               </motion.button>
