@@ -11,11 +11,13 @@ interface RevealOnScrollProps {
 const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   children,
   direction, // Direction is optional
-  duration = 0.2, // Default duration - snappier (reduced from 0.3)
+  duration = 0.1, // Default duration - snappier (reduced from 0.3)
   delay = 0, // Default delay
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" }); // Trigger earlier for smoother feel
+  // Trigger much earlier - positive margin means it starts animating before element enters viewport
+  // Using larger margin (150px) for faster detection, especially on mobile
+  const isInView = useInView(ref, { once: true, margin: "150px" });
 
   // Determine initial position if a direction is set - reduced offsets for snappier feel
   const initialPosition = direction
