@@ -9,7 +9,7 @@ const Portrait = memo(() => {
   
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <RevealOnScroll direction="bottom" duration={1} delay={0}>
+      <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
         <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-64 md:h-64">
           <Image
             src={PortraitImage}

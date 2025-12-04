@@ -29,14 +29,14 @@ const AboutSection: React.FC = () => {
                         ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
                         : 'bg-white dark:bg-dark-grey'
                 } shadow-custom-shadow`}>
-                    <RevealOnScroll direction="left" duration={0.5} delay={0}>
+                    <RevealOnScroll direction="left" duration={0.2} delay={0}>
                         <h3 className="text-xl md:text-3xl lg:text-5xl font-montserrat flex items-center gap-2 mb-2 md:mb-4">
                             <span className="bg-gradient-to-r from-true-blue to-tech-orange bg-clip-text text-transparent">{t("about-header")}</span>
                             <span className="text-tech-orange">.</span>
                         </h3>
                     </RevealOnScroll>
 
-                    <RevealOnScroll direction="top" duration={0.5} delay={0.4}>
+                    <RevealOnScroll direction="top" duration={0.2} delay={0}>
                         <div className="relative mb-2 md:mb-4">
                             <div className={`absolute -inset-1 rounded-lg blur transition-all duration-200 ${
                                 isLiquidGlassEnabled
@@ -47,7 +47,7 @@ const AboutSection: React.FC = () => {
                         </div>
                     </RevealOnScroll>
 
-                    <RevealOnScroll direction="right" duration={0.5} delay={0}>
+                    <RevealOnScroll direction="right" duration={0.2} delay={0}>
                         <div className="flex-1">
                             <span className="font-montserrat text-white-grey leading-[1.2] block text-[clamp(0.875rem,1.4vw,1rem)] md:text-[clamp(1rem,1.6vw,1rem)] lg:text-[clamp(1.125rem,1.8vw,1rem)] max-w-[100%]">
                                 {t("about-text")}
@@ -65,7 +65,7 @@ const AboutSection: React.FC = () => {
                         ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
                         : 'bg-white dark:bg-dark-grey'
                 } shadow-custom-shadow`}>
-                    <RevealOnScroll direction="bottom" duration={0.5} delay={0}>
+                    <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
                         <Education />
                     </RevealOnScroll>
                 </div>

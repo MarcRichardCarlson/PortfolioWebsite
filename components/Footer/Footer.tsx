@@ -59,7 +59,7 @@ const Footer: React.FC<FooterProps> = memo(({ heroRef, projectsRef, aboutRef, co
 
         <div className="w-full flex flex-col md:flex-row justify-start items-start md:items-center relative">
           <div className="flex flex-col md:flex-row gap-8">
-            <RevealOnScroll direction="top" duration={0.4} delay={0.2}>
+            <RevealOnScroll direction="top" duration={0.2} delay={0}>
               <div className="flex flex-col gap-4">
                 <h4 className="font-inter font-bold">{t("footer-menu-header")}</h4>
 
@@ -98,7 +98,7 @@ const Footer: React.FC<FooterProps> = memo(({ heroRef, projectsRef, aboutRef, co
 
             <div className="hidden md:block w-px bg-stone"></div>
 
-            <RevealOnScroll direction="top" duration={0.4} delay={0.4}>
+            <RevealOnScroll direction="top" duration={0.2} delay={0}>
               <div className="flex flex-col gap-4">
                 <h4 className="font-inter font-bold">{t("footer-contact-header")}</h4>
                 <div className="flex flex-col gap-0">
@@ -133,11 +133,11 @@ const Footer: React.FC<FooterProps> = memo(({ heroRef, projectsRef, aboutRef, co
 
           <div className="hidden md:flex"></div>
 
-          <RevealOnScroll direction="top" duration={0.6} delay={0}>
+          <RevealOnScroll direction="top" duration={0.2} delay={0}>
             <p className="text-left md:text-center text-sm">© 2024, Carlsonmarc | Powered by Marc Carlson</p>
           </RevealOnScroll>
 
-          <RevealOnScroll direction="top" duration={0.4} delay={0.8}>
+          <RevealOnScroll direction="top" duration={0.2} delay={0}>
             <motion.button
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}

@@ -93,7 +93,7 @@ const TypingEffect: React.FC = () => {
   }, [currentCharIndex, isErasing, text, currentQuoteIndex, quotes, isSmallScreen, mounted]);
 
   return (
-    <div className={`flex justify-start items-center h-fit p-4 rounded-lg transition-all duration-200 ${
+    <div className={`flex justify-start items-center h-fit px-2 py-1 rounded-md transition-all duration-200 ${
       isLiquidGlassEnabled
         ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
         : ''

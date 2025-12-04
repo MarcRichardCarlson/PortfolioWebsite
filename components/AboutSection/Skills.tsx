@@ -84,8 +84,8 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                                 : 'bg-gradient-to-r from-true-blue/20 to-tech-orange/20 opacity-0 group-hover:opacity-100'
                         }`}></div>
                         <div className="relative">
-                            <RevealOnScroll direction="left" duration={0.5} delay={0}>
-                                <h3 className="whitespace-nowrap text-true-blue text-2xl mb-2 md:mb-6 font-bold">{colName}</h3>
+                            <RevealOnScroll direction="left" duration={0.2} delay={0}>
+                                <h3 className="whitespace-nowrap text-true-blue text-2xl mb-2 md:mb-2 font-bold">{colName}</h3>
                             </RevealOnScroll>
 
                             <div className="flex flex-col gap-1">
@@ -100,7 +100,7 @@ const Skills: React.FC<SkillsProps> = ({ columnNames }) => {
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.3 }}
                                         >
-                                            <RevealOnScroll direction="top" duration={0.5} delay={0}>
+                                            <RevealOnScroll direction="top" duration={0.2} delay={0}>
                                                 <span className="relative inline-block cursor-default">
                                                     {tech}
                                                 </span>

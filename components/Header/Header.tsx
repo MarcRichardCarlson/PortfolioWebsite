@@ -140,7 +140,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
     } px-4 sm:px-6 md:px-8 flex justify-between items-center`}>
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <RevealOnScroll direction="left" duration={0.3} delay={0}>
+        <RevealOnScroll direction="left" duration={0.2} delay={0}>
           <span className={`text-black dark:text-white font-bold font-orbitron transition-all duration-200 ${
             isScrolled ? 'text-xl' : 'text-2xl'
           }`}>
@@ -159,7 +159,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
                 activeSection === section ? 'text-true-blue' : ''
               }`}
             >
-              <RevealOnScroll direction="left" duration={1} delay={0}>
+              <RevealOnScroll direction="left" duration={0.2} delay={0}>
                 {label}
               </RevealOnScroll>
             </motion.button>

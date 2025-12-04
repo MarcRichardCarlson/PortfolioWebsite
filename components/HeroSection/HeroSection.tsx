@@ -32,18 +32,18 @@ const HeroSection: React.FC<{ contactRef: React.RefObject<HTMLElement>, projects
           </div>
 
           <div className="flex flex-row items-center gap-6 md:gap-8 pt-12">
-            <RevealOnScroll direction="left" duration={0.3} delay={0}>
+            <RevealOnScroll direction="left" duration={0.2} delay={0}>
               <div className="flex justify-between items-center">
                 <Portrait />
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll direction="right" duration={0.25} delay={0.1}>
+            <RevealOnScroll direction="right" duration={0.25} delay={0}>
               <h1 className="font-light text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-montserrat text-black dark:text-white">{t("hero-header")}</h1>
             </RevealOnScroll>
           </div>
 
-          <RevealOnScroll direction="top" duration={0.3} delay={0.2}>
+          <RevealOnScroll direction="top" duration={0.2} delay={0}>
             <div className="flex justify-between w-full text-black">
               <HeaderMediaIcons
                 linkedinUrl={"https://www.linkedin.com/in/marc-carlson-5671291a6/"}

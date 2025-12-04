@@ -65,17 +65,17 @@ const DynamicGrid: React.FC<DynamicGridProps> = memo(({ contactRef }) => {
           : 'bg-white dark:bg-dark-grey'
       } shadow-custom-shadow`}
     >
-      <RevealOnScroll direction="left" duration={1} delay={0}>
+      <RevealOnScroll direction="left" duration={0.2} delay={0}>
         <div className="">{box.icon}</div>
       </RevealOnScroll>
-      <RevealOnScroll direction="right" duration={1} delay={0.4}>
+      <RevealOnScroll direction="right" duration={0.2} delay={0}>
         <h2 className="text-xl md:text-3xl font-semibold text-black dark:text-white">{box.title}</h2>
       </RevealOnScroll>
-      <RevealOnScroll direction="left" duration={1} delay={0.8}>
+      <RevealOnScroll direction="left" duration={0.2} delay={0}>
         <p className="text-gray-800 dark:text-white">{box.content}</p>
       </RevealOnScroll>
       {box.button && (
-        <RevealOnScroll direction="bottom" duration={1} delay={0}>
+        <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
           <div onClick={handleScrollToContact}>{box.button}</div>
         </RevealOnScroll>
       )}

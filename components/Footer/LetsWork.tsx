@@ -38,7 +38,7 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
         : 'bg-white dark:bg-dark-grey'
     }`}>
       <div className="flex flex-col justify-between items-start h-full">
-        <RevealOnScroll direction="bottom" duration={0.4} delay={0.4}>
+        <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
           <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
             {t("footer-lets-work-header1")}
             <br />
@@ -46,7 +46,7 @@ const LetsWork: React.FC<LetsWorkProps> = ({ contactRef }) => {
           </h2>
         </RevealOnScroll>
 
-        <RevealOnScroll direction="left" duration={0.4} delay={0.6}>
+        <RevealOnScroll direction="left" duration={0.2} delay={0}>
           <div className="flex flex-col justify-start gap-2">
             {["footer-lets-work-text1", "footer-lets-work-text2", "footer-lets-work-text3", "footer-lets-work-text4"].map(
               (key, index) => (

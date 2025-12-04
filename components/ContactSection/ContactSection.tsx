@@ -102,7 +102,7 @@ const ContactSection: React.FC = () => {
           ? 'liquid-glass dark:liquid-glass-dark liquid-glass-light backdrop-blur-glass border border-white/20 dark:border-white/10'
           : 'bg-white dark:bg-dark-grey'
       }`}>
-        <RevealOnScroll direction="bottom" duration={0.2} delay={0.2}>
+        <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white font-montserrat">
               {t("contact-header")}
@@ -120,7 +120,7 @@ const ContactSection: React.FC = () => {
             className="flex flex-col gap-4 md:gap-6 text-black dark:text-white"
           >
             <div className="flex flex-col gap-4 md:gap-6">
-              <RevealOnScroll direction="bottom" duration={0.4} delay={0.2}>
+              <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
                 <input
                   type="text"
                   id="name"
@@ -132,7 +132,7 @@ const ContactSection: React.FC = () => {
                 />
               </RevealOnScroll>
 
-              <RevealOnScroll direction="bottom" duration={0.4} delay={0.4}>
+              <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
                 <input
                   type="email"
                   id="email"
@@ -151,7 +151,7 @@ const ContactSection: React.FC = () => {
               </RevealOnScroll>
             </div>
 
-            <RevealOnScroll direction="bottom" duration={0.4} delay={0.6}>
+            <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
               <textarea
                 id="message"
                 value={message}
@@ -163,7 +163,7 @@ const ContactSection: React.FC = () => {
               ></textarea>
             </RevealOnScroll>
 
-            <RevealOnScroll direction="bottom" duration={0.4} delay={0.8}>
+            <RevealOnScroll direction="bottom" duration={0.2} delay={0}>
               <div className="flex items-center justify-start gap-4">
                 <div className="relative w-8 h-8">
                   <input
@@ -206,7 +206,7 @@ const ContactSection: React.FC = () => {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll direction="right" duration={0.4} delay={1}>
+            <RevealOnScroll direction="right" duration={0.2} delay={0}>
               <div className="flex justify-end">
                 <ResponsiveButton
                   size="xl"

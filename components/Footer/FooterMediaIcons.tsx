@@ -64,7 +64,7 @@ const FooterMediaIcons: React.FC<FooterMediaIconsProps> = ({ linkedinUrl, facebo
                 : 'dark:bg-dark-grey bg-white'
             }`}
           >
-            <RevealOnScroll direction="top" duration={0.4} delay={0.4}>
+            <RevealOnScroll direction="top" duration={0.2} delay={0}>
               <Image src={icon} alt={alt} width={50} height={50} className="filter dark:invert" />
             </RevealOnScroll>
 
