@@ -11,6 +11,7 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
     "@splinetool/react-spline": "^4.0.0",
+    "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "email-validator": "^2.0.4",

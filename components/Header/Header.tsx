@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         top: offsetPosition,
         behavior: "smooth"
       });
-      
+
       setActiveSection(section); // Immediately update active section when clicked
       setIsOpen(false); // Close menu on section click
     }
@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
         if (section.ref.current) {
           const sectionTop = section.ref.current.offsetTop;
           const sectionBottom = sectionTop + section.ref.current.offsetHeight;
-          
+
           if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
             currentSection = section.id;
             break;
@@ -155,9 +155,8 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
           <div key={section} className="relative">
             <motion.button
               onClick={() => scrollToSection(ref, section)}
-              className={`cursor-pointer text-black dark:text-white font-semibold px-4 py-2 transition-all bg-transparent border-none select-none ${
-                activeSection === section ? 'text-true-blue' : ''
-              }`}
+              className={`cursor-pointer text-black dark:text-white font-semibold px-4 py-2 transition-all bg-transparent border-none select-none ${activeSection === section ? 'text-true-blue' : ''
+                }`}
             >
               <RevealOnScroll direction="left" duration={0.2} delay={0}>
                 {label}
@@ -167,9 +166,9 @@ const Navbar: React.FC<NavbarProps> = ({ heroRef, projectsRef, aboutRef, contact
               <motion.div
                 layoutId="underline"
                 className="absolute -bottom-0 left-[10%] w-[80%] h-[3px] bg-true-blue rounded-full shadow-[0_0_8px_rgba(0,122,255,0.4)] dark:shadow-[0_0_8px_rgba(0,122,255,0.6)]"
-                transition={{ 
-                  type: "spring", 
-                  bounce: 0.2, 
+                transition={{
+                  type: "spring",
+                  bounce: 0.2,
                   duration: 0.6,
                   ease: "easeInOut"
                 }}

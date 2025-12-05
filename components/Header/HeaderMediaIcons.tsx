@@ -16,23 +16,23 @@ type HeaderMediaIconsProps = {
 };
 
 const ensureHttps = (url: string): string => {
-    try {
-      const parsedUrl = new URL(url);
-      parsedUrl.protocol = 'https:';
-      return parsedUrl.toString();
-    } catch {
-      return url;
-    }
-  };
-  
-  const isValidUrl = (url: string): boolean => {
-    try {
-      new URL(url);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
+  try {
+    const parsedUrl = new URL(url);
+    parsedUrl.protocol = 'https:';
+    return parsedUrl.toString();
+  } catch {
+    return url;
+  }
+};
+
+const isValidUrl = (url: string): boolean => {
+  try {
+    new URL(url);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
 
 const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebookUrl, instagramUrl, githubUrl }) => {
     const locale = useCurrentLocale();
@@ -60,8 +60,10 @@ const HeaderMediaIcons: React.FC<HeaderMediaIconsProps> = ({ linkedinUrl, facebo
           <DarkModeToggle/>
         </div>
       </div>
-    );
-  };
-  
+      <DarkModeToggle />
+    </div>
+  );
+};
+
 
 export default HeaderMediaIcons;

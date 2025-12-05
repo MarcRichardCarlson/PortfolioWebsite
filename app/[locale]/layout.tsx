@@ -50,6 +50,7 @@ export default async function RootLayout({ children, params }: Props) {
             {children}
           </LiquidGlassProvider>
         </AppProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
